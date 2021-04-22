@@ -56,7 +56,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   ├── my_token.txt (IGNORED)
 │   └── seasons.json
 │
-├── scr
+├── src
 │   └── api_calls.py
 │
 ├── .deepsource.toml
