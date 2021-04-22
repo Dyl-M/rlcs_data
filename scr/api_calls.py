@@ -30,10 +30,10 @@ today = datetime.today()
 
 """ Playlist choices:
 - Ranked modes: ranked-duels / ranked-doubles / ranked-solo-standard / ranked-standard / tournament
-- Unranked modes: unranked-duels / unranked-doubles / unranked-standard / unranked-chaos 
+- Unranked modes: unranked-duels / unranked-doubles / unranked-standard / unranked-chaos
 - Extra modes: hoops / rumble / dropshot / snowday / dropshot-rumble / rocketlabs / heatseeker
-- Ranked Extra modes: ranked-hoops / ranked-rumble / ranked-dropshot / ranked-snowday 
-- Offline modes: season / offline 
+- Ranked Extra modes: ranked-hoops / ranked-rumble / ranked-dropshot / ranked-snowday
+- Offline modes: season / offline
 - private
 """
 
@@ -53,7 +53,6 @@ def add_to_list(api_call):
     :param api_call: Request object
     :return: list of replays.
     """
-
     the_list = api_call.json()['list']
 
     return the_list
@@ -71,7 +70,6 @@ def get_replays(token, season_name, season_alt_name, season_code, ref_date, star
     :param end_date: Season's endind date.
     :return replays_list: list of replays.
     """
-
     utc_tz = timezone.utc
 
     ref_date_code = ref_date.astimezone(utc_tz).strftime('%Y%m%d%H%M%S')
@@ -79,6 +77,10 @@ def get_replays(token, season_name, season_alt_name, season_code, ref_date, star
 
     start_date_as_utc = datetime.strptime(start_date, '%Y-%m-%d').astimezone(utc_tz)
     end_date_as_utc = datetime.strptime(end_date, '%Y-%m-%d').astimezone(utc_tz)
+
+    # TODO: print made to avoid "unused variable" warning.
+    print(start_date_as_utc)
+    print(end_date_as_utc)
 
     if season_alt_name is None:
         json_file_path = f'{ref_date_code}_{season_name}.json'
@@ -91,7 +93,7 @@ def get_replays(token, season_name, season_alt_name, season_code, ref_date, star
         headers = {'Authorization': token, 'season': season_code, 'created-before': ref_date_str, 'count': '200'}
 
     count = 1
-    replays_list = list()
+    replays_list = []
     replay_request = requests.get(replay_url, headers=headers)
     replays_list += add_to_list(replay_request)
     next_url = replay_request.json()['next']
