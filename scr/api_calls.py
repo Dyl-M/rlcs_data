@@ -59,7 +59,7 @@ def add_to_list(api_call):
 
 
 def get_replays(token, season_name, season_alt_name, season_code, ref_date, start_date, end_date):
-    """A function with filters to get replays from ballchasing.com.
+    """Get replays from ballchasing.com with filters.
 
     :param token: API Key.
     :param season_name: Rocket Pass season name on ballchasing.com.
@@ -142,7 +142,7 @@ def get_replays(token, season_name, season_alt_name, season_code, ref_date, star
 
 
 def api_full_retrieving(token, season_list, ref_date):
-    """A function to get all replays from ballchasing.com.
+    """Get all replays from ballchasing.com.
 
     :param token: API Key.
     :param season_list: list of competitive season in Rocket League.
