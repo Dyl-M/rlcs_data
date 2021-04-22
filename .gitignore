@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project directory
+.idea/
+
+# Ignored files for privacy reason
+data/my_token.txt

@@ -39,9 +39,39 @@ Tasks in progress / planned
 
 **Work in progress:**
 
-* Data retrieving (no file published yet).
+* Data retrieving (`api_call.py`).
 
 **Planned:**
 
 * Data rearrangement (no file associated yet).
 * Modeling (no file associated yet).
+
+Repository structure
+-------------
+
+Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy purpose.
+
+```
+├── data
+│   ├── my_token.txt (IGNORED)
+│   └── seasons.json
+│
+├── scr
+│   └── api_calls.py
+│
+├── .deepsource.toml
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
+
+Regarding `my_token.txt`:
+* You can generate your personal token on [ballchasing.com](https://ballchasing.com/) by connecting to your Steam 
+  account.
+* Then write this token into a text file like I did, it will be read to run API calls.
+
+External information
+-------------
+
+Codes are reviewed by the [DeepSource](https://deepsource.io/) bot.

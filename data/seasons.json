@@ -1,0 +1,135 @@
+[
+  {
+    "season_name": "Season 00",
+    "season_alt_name": null,
+    "season_code": "0",
+    "start_date": null,
+    "end_date": "2015-09-08"
+  },
+  {
+    "season_name": "Season 01",
+    "season_alt_name": null,
+    "season_code": "1",
+    "start_date": "2015-09-08",
+    "end_date": "2016-02-11"
+  },
+  {
+    "season_name": "Season 02",
+    "season_alt_name": null,
+    "season_code": "2",
+    "start_date": "2016-02-11",
+    "end_date": "2016-06-20"
+  },
+  {
+    "season_name": "Season 03",
+    "season_alt_name": null,
+    "season_code": "3",
+    "start_date": "2016-06-20",
+    "end_date": "2017-03-22"
+  },
+  {
+    "season_name": "Season 04",
+    "season_alt_name": null,
+    "season_code": "4",
+    "start_date": "2017-03-22",
+    "end_date": "2017-07-05"
+  },
+  {
+    "season_name": "Season 05",
+    "season_alt_name": null,
+    "season_code": "5",
+    "start_date": "2017-07-05",
+    "end_date": "2017-09-28"
+  },
+  {
+    "season_name": "Season 06",
+    "season_alt_name": null,
+    "season_code": "6",
+    "start_date": "2017-09-28",
+    "end_date": "2018-02-07"
+  },
+  {
+    "season_name": "Season 07",
+    "season_alt_name": null,
+    "season_code": "7",
+    "start_date": "2018-02-07",
+    "end_date": "2018-05-29"
+  },
+  {
+    "season_name": "Season 08",
+    "season_alt_name": null,
+    "season_code": "8",
+    "start_date": "2018-05-29",
+    "end_date": "2018-09-24"
+  },
+  {
+    "season_name": "Season 09",
+    "season_alt_name": null,
+    "season_code": "9",
+    "start_date": "2018-09-24",
+    "end_date": "2019-02-19"
+  },
+  {
+    "season_name": "Season 10",
+    "season_alt_name": null,
+    "season_code": "10",
+    "start_date": "2019-02-19",
+    "end_date": "2019-05-13"
+  },
+  {
+    "season_name": "Season 11",
+    "season_alt_name": null,
+    "season_code": "11",
+    "start_date": "2019-05-13",
+    "end_date": "2019-08-27"
+  },
+  {
+    "season_name": "Season 12",
+    "season_alt_name": null,
+    "season_code": "12",
+    "start_date": "2019-08-27",
+    "end_date": "2019-12-04"
+  },
+  {
+    "season_name": "Season 13",
+    "season_alt_name": null,
+    "season_code": "13",
+    "start_date": "2019-12-04",
+    "end_date": "2020-03-25"
+  },
+  {
+    "season_name": "Season 14",
+    "season_alt_name": null,
+    "season_code": "14",
+    "start_date": "2020-03-25",
+    "end_date": "2020-09-22"
+  },
+  {
+    "season_name": "Season 15",
+    "season_alt_name": "Season 1",
+    "season_code": "f1",
+    "start_date": "2020-09-22",
+    "end_date": "2020-12-09"
+  },
+  {
+    "season_name": "Season 16",
+    "season_alt_name": "Season 2",
+    "season_code": "f2",
+    "start_date": "2020-12-09",
+    "end_date": "2021-04-07"
+  },
+  {
+    "season_name": "Season 16",
+    "season_alt_name": "Season 3",
+    "season_code": "f3",
+    "start_date": "2021-04-07",
+    "end_date": "2021-08-11"
+  },
+  {
+    "season_name": "Off_Season",
+    "season_alt_name": null,
+    "season_code": null,
+    "start_date": "2021-08-11",
+    "end_date": null
+  }
+]
