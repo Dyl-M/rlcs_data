@@ -119,17 +119,31 @@
     "end_date": "2021-04-07"
   },
   {
-    "season_name": "Season 16",
+    "season_name": "Season 17",
     "season_alt_name": "Season 3",
     "season_code": "f3",
     "start_date": "2021-04-07",
     "end_date": "2021-08-11"
   },
   {
+    "season_name": "Season 18",
+    "season_alt_name": "Season 4",
+    "season_code": "f4",
+    "start_date": "2021-08-11",
+    "end_date": "2021-11-17"
+  },
+  {
+    "season_name": "Season 19",
+    "season_alt_name": "Season 5",
+    "season_code": "f5",
+    "start_date": "2021-11-17",
+    "end_date": "2022-03-09"
+  },
+  {
     "season_name": "Off_Season",
     "season_alt_name": null,
     "season_code": null,
-    "start_date": "2021-08-11",
+    "start_date": "2022-03-09",
     "end_date": null
   }
 ]

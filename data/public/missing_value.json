@@ -1,0 +1,70 @@
+{
+  "team_names": [
+    {
+      "ballchasing_id": [
+        "67f967d3-5f9f-4ea9-9aa1-d97e89218cb6",
+        "7abfec99-975d-4e23-8f57-79725c7f5783",
+        "7df79e33-ca00-45d3-ad5e-7c9c056ad6b3",
+        "84c19aa0-ac49-415b-a4b0-13221f75737a"
+      ],
+      "blue_name": "TEAM LIQUID",
+      "orange_name": "LILLE ESPORT"
+    },
+    {
+      "ballchasing_id": [
+        "fdc0766b-6620-48c9-ab7c-649c1de8adc4",
+        "8f106bd6-f4ea-43f5-b23b-bf052415cec7",
+        "8c8f9339-a949-46a5-887c-bdf593f9de87",
+        "c5d0e112-f3cc-446a-b4df-f4983263bd0d",
+        "9f93bab1-b17f-4ba0-a775-805a810fa5c2"
+      ],
+      "blue_name": "TEAM LIQUID",
+      "orange_name": "KUXIR'S MINIONS"
+    },
+    {
+      "ballchasing_id": [
+        "cca1c4fb-2f60-4add-ba62-30e551fa639d",
+        "4f542510-ad34-45c8-8b97-929d41444cf7",
+        "f2bcf669-aa9e-479b-ab25-329b9caf3359",
+        "9e7064b9-1198-4734-ac54-ff67420ebdf2",
+        "46240a9d-d9ec-4680-a541-e747b2697bc1"
+      ],
+      "blue_name": "TEAM LIQUID",
+      "orange_name": "VODAFONE GIANTS"
+    },
+    {
+      "ballchasing_id": [
+        "4a9709e3-6fc3-4e3c-a8dc-901cc18461a2",
+        "e074a7fb-aa48-4275-b0b8-f29324f6fa18",
+        "d90c4289-a73e-441f-aac7-b29fab5bff2d"
+      ],
+      "blue_name": "FC BARCELONA",
+      "orange_name": "GUILD ESPORTS"
+    },
+    {
+      "ballchasing_id": [
+        "b5047a23-09eb-4c4a-aded-df63de3f65d2",
+        "efb9d47e-a432-47ac-bf7a-870fb4428b10",
+        "e8d2d5ba-58db-419b-81ee-2cbeb1d00ffe"
+      ],
+      "blue_name": "BS+COMPETITION",
+      "orange_name": "KUXIR'S MINIONS"
+    },
+    {
+      "ballchasing_id": [
+        "181954a1-6126-41da-858d-075757f1f425",
+        "9534ded5-3c81-4d31-acc9-0e722f4b73ff",
+        "abc4c54e-7ca1-441d-8650-5ec5e9e58e3d",
+        "dfdb0abf-8dce-4893-98b0-fa68a7031855"
+      ],
+      "blue_name": "KUXIR'S MINIONS",
+      "orange_name": "GUILD ESPORTS"
+    }
+  ],
+  "car_names": [
+    {
+      "car_id": 6244,
+      "car_name": "BMW M240i"
+    }
+  ]
+}

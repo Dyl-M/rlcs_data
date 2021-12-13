@@ -1,62 +1,55 @@
 # ballchasing_ML
 
-Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/).
+Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship
+Series.
 
 Introduction
 -------------
 
-> Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for Microsoft Windows and PlayStation 4 in July 2015, with ports for Xbox One and Nintendo Switch being released later on. In June 2016, 505 Games began distributing a physical retail version for PlayStation 4 and Xbox One, with Warner Bros. Interactive Entertainment taking over those duties by the end of 2017. Versions for macOS and Linux were also released in 2016, but support for their online services was dropped in 2020. The game went free-to-play in September 2020. Rocket League is a vehicular soccer video game developed and published by Psyonix.
+> Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for Microsoft Windows and PlayStation 4 in July 2015, with ports for Xbox One and Nintendo Switch being released later on. In June 2016, 505 Games began distributing a physical retail version for PlayStation 4 and Xbox One, with Warner Bros. Interactive Entertainment taking over those duties by the end of 2017. Versions for macOS and Linux were also released in 2016, but support for their online services was dropped in 2020. The game went free-to-play in September 2020.
 
 [Wikipedia - Rocket League](https://en.wikipedia.org/wiki/Rocket_League "Wikipedia - Rocket League")
 
-The **`ballchasing_ML`** project aims to pursue the opening of analytical possibilities to the community by using [ballchasing.com](https://ballchasing.com/) database, a website gathering Rocket League games&#39; replays. &quot;ML&quot; stands here for &quot;Machine Learning&quot;, because my first works around this database will be:
+The **`ballchasing_ML`** project aims to pursue the opening of analytical possibilities to the community by
+using [ballchasing.com](https://ballchasing.com/) database, a website gathering Rocket League games&#39; replays.
+&quot;ML&quot; stands here for &quot;Machine Learning&quot;, because my first works around this database will be:
 
-* To collect all the data avaible on the website and trying to structure them as well as possible as frist short term goal.
-* Then, to create machine learning models able to predict games&#39; outcome as mid term goal.
+* To collect all the data available on the website and trying to structure them as well as possible as first short term
+  goal.
+* Then, to create machine learning models able to predict games' outcomes.
 
-The long term goal would be to implement machine learning predictions as a game feature (through a mod), but there would be several barriers to overcome before getting there.
-
-* The first is to define the purpose of such a tool, because at the moment of writing this ReadMe, there are two things that I don&#39;t know:
-	1. Can I model such a problem effectively?
-	2. And in the end, is it really interesting to predict games&#39; outcome?
-
-	Only some exploration of the problem will tell me.
-
-* And the second obstacle is technical, since I have no idea how to make a mod for this game and how to possibly implement this idea.
-
-Current in-game features
--------------
-
-*None so far.*
-
-Tasks done
--------------
-
-*None so far.*
-
-Tasks in progress / planned
--------------
-
-**Work in progress:**
-
-* Data retrieving (`api_call.py`).
-
-**Planned:**
-
-* Data rearrangement (no file associated yet).
-* Modeling (no file associated yet).
+First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are 
+available on Kaggle to the following link: `[COMING SOON]`.
 
 Repository structure
 -------------
 
-Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy purpose.
+Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy purpose or due to their size.
 
 ```
 ├── data
-│   ├── my_token.txt (IGNORED)
-│   └── seasons.json
+│   ├── private (IGNORED)
+│   │   └── my_token.txt
+│   │
+│   ├── public
+│   │   ├── alias.json
+│   │   ├── missing_values.json
+│   │   └── seasons.json
+│   │
+│   └── retrieved (IGNORED)
+│       ├── by_players.csv 
+│       ├── by_teams.csv
+│       ├── general.csv
+│       ├── groups.csv
+│       ├── pre_dataset.json
+│       └── raw.json
 │
 ├── src
+│   ├── RLCS
+│   │   ├── formatting.py
+│   │   ├── retrieving_step1.py
+│   │   └── retrieving_step2.py
+│   │
 │   └── api_calls.py
 │
 ├── .deepsource.toml
@@ -67,6 +60,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 ```
 
 Regarding `my_token.txt`:
+
 * You can generate your personal token on [ballchasing.com](https://ballchasing.com/) by connecting to your Steam 
   account.
 * Then write this token into a text file like I did, it will be read to run API calls.

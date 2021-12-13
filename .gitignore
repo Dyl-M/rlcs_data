@@ -132,4 +132,6 @@ dmypy.json
 .idea/
 
 # Ignored files for privacy reason
-data/my_token.txt
+
+/data/private/
+/data/retrieved/
