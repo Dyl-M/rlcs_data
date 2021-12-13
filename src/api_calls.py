@@ -21,7 +21,7 @@ Summary: #TODO
 
 "- PREPARATORY ELEMENTS -"
 
-with open('../data/my_token.txt', 'r', encoding='utf8') as token_file:
+with open('../data/private/my_token.txt', 'r', encoding='utf8') as token_file:
     my_token = token_file.read()
 
 replay_url = 'https://ballchasing.com/api/replays/'
@@ -39,7 +39,7 @@ today = datetime.today()
 
 # If you want to test this code using the API
 
-with open('../data/seasons.json', 'r', encoding='utf8') as seasons_file:
+with open('../data/public/seasons.json', 'r', encoding='utf8') as seasons_file:
     seasons = json.load(seasons_file)
 
 seasons_reverse = seasons[::-1]

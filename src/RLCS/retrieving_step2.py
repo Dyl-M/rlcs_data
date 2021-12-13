@@ -13,10 +13,10 @@ from time import sleep
 
 "PREPARATORY ELEMENTS"
 
-with open('../../data/my_token.txt', 'r', encoding='utf8') as token_file:
+with open('../../data/private/my_token.txt', 'r', encoding='utf8') as token_file:
     my_token = token_file.read()
 
-with open('../../data/pre_dataset.json', 'r', encoding='utf8') as pre_dataset_file:
+with open('../../data/retrieved/pre_dataset.json', 'r', encoding='utf8') as pre_dataset_file:
     pre_dataset = json.load(pre_dataset_file)
 
 "FUNCTIONS"
@@ -69,5 +69,5 @@ def add_details(replay_list, token):
 
 if __name__ == '__main__':
     dataset = add_details(pre_dataset, my_token)
-    with open('../../data/raw.json', 'w', encoding='utf-8') as dataset_file:
+    with open('../../data/retrieved/raw.json', 'w', encoding='utf-8') as dataset_file:
         json.dump(dataset, dataset_file, indent=4)

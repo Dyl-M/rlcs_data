@@ -11,13 +11,13 @@ import pandas as pd
 
 "PREPARATORY ELEMENTS"
 
-with open('../../data/raw.json', 'r', encoding='utf8') as json_file:
+with open('../../data/retrieved/raw.json', 'r', encoding='utf8') as json_file:
     dataset_json = json.load(json_file)
 
-with open('../../data/alias.json', 'r', encoding='utf8') as alias_file:
+with open('../../data/public/alias.json', 'r', encoding='utf8') as alias_file:
     alias = json.load(alias_file)
 
-with open('../../data/missing_value.json', 'r', encoding='utf8') as missing_value_file:
+with open('../../data/public/missing_value.json', 'r', encoding='utf8') as missing_value_file:
     missing_value = json.load(missing_value_file)
 
 "FUNCTIONS"
@@ -158,7 +158,7 @@ if __name__ == '__main__':
 
     # Exports
 
-    # by_team_dataframe.to_csv('../../data/by_teams.csv', encoding='utf8', index=False)
-    # by_players_dataframe.to_csv('../../data/by_players.csv', encoding='utf8', index=False)
-    # groups_dataframe.to_csv('../../data/groups.csv', encoding='utf8', index=False)
-    # general_dataframe.to_csv('../../data/general.csv', encoding='utf8', index=False)
+    # by_team_dataframe.to_csv('../../data/retrieved/by_teams.csv', encoding='utf8', index=False)
+    # by_players_dataframe.to_csv('../../data/retrieved/by_players.csv', encoding='utf8', index=False)
+    # groups_dataframe.to_csv('../../data/retrieved/groups.csv', encoding='utf8', index=False)
+    # general_dataframe.to_csv('../../data/retrieved/general.csv', encoding='utf8', index=False)

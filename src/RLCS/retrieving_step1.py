@@ -13,7 +13,7 @@ from time import sleep
 
 "PREPARATORY ELEMENTS"
 
-with open('../../data/my_token.txt', 'r', encoding='utf8') as token_file:
+with open('../../data/private/my_token.txt', 'r', encoding='utf8') as token_file:
     my_token = token_file.read()
 
 RLCS_EU_NA = 'rlcs-21-22-t30czbd3he'
@@ -191,5 +191,5 @@ def fill_none(pre_made_replays_list):
 if __name__ == '__main__':
     rlcs_replays = exploring_group(RLCS_EU_NA, my_token)
     the_none = fill_none(rlcs_replays)
-    with open('../../data/pre_dataset.json', 'w', encoding='utf-8') as pre_dataset_file:
+    with open('../../data/retrieved/pre_dataset.json', 'w', encoding='utf-8') as pre_dataset_file:
         json.dump(rlcs_replays, pre_dataset_file)
