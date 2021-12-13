@@ -131,7 +131,7 @@ if __name__ == '__main__':
                                   'stage', 'round', 'match']].drop_duplicates().reset_index(drop=True)
 
     bo_id_df['bo_id'] = bo_id_df.index  # .apply(str)
-    bo_id_df['bo_id'] = 'B0_' + bo_id_df['bo_id'].apply(str).apply(lambda x: '{0:0>5}'.format(x))
+    bo_id_df['bo_id'] = 'B0_' + bo_id_df['bo_id'].apply(str).str.zfill(5)
 
     general_dataframe = pd.merge(bo_id_df,
                                  general_dataframe,

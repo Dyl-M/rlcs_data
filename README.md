@@ -1,4 +1,6 @@
 # ballchasing_ML
+[![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=active+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)
+](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge) [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=resolved+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 
 Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship
 Series.

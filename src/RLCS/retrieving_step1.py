@@ -51,6 +51,7 @@ def get_groups(group_id, token):
 
     except json.decoder.JSONDecodeError:
         print("Error 500: Resources unavailable")
+        return None
 
 
 def get_replays_in_groups(group_id, token):
@@ -71,6 +72,7 @@ def get_replays_in_groups(group_id, token):
 
     except json.decoder.JSONDecodeError:
         print("Error 500: Resources unavailable")
+        return None
 
 
 def format_group(ballchasing_group_list):

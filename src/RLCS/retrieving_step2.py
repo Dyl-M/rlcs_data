@@ -46,6 +46,7 @@ def get_replay_stats(replay_id, token):
 
     except json.decoder.JSONDecodeError:
         print("Error 500: Resources unavailable")
+        return None
 
 
 def add_details(replay_list, token):
