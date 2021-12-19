@@ -175,6 +175,9 @@ def fill_none(pre_made_replays_list):
             replay["stage"] = "Tiebreaker"
             replay["round"] = "Finals"
 
+        if replay['region'] == 'Main Event':
+            replay['region'] = 'World'
+
         elif replay['region'] == 'Europe' and replay['phase'] == 'Tiebreaker':
             replay["phase"] = "Qualifier"
             replay["stage"] = "Tiebreaker"

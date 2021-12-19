@@ -113,8 +113,10 @@ if __name__ == '__main__':
     by_players_dataframe = bl_players_df.append(or_players_df)
     by_players_dataframe = map_missing_car_name(by_players_dataframe)
     by_players_dataframe['p_car_id'] = by_players_dataframe['p_car_id'].apply(str)
+    by_players_dataframe['p_platform_id'] = by_players_dataframe['p_platform_id'].apply(str)
     by_players_dataframe['p_positioning_goals_against_while_last_defender'] = by_players_dataframe[
         'p_positioning_goals_against_while_last_defender'].fillna(0)
+
     # by_players_dataframe['p_mvp'] = by_players_dataframe['p_mvp'].fillna(False)
 
     # Filtering / Formatting / Timezone normalization / Best-of ID generation
@@ -124,7 +126,7 @@ if __name__ == '__main__':
     main_dataframe['date'] = pd.to_datetime(main_dataframe['date'], utc=True)
 
     general_dataframe = pd \
-        .concat([main_dataframe.iloc[:, :30], main_dataframe.iloc[:, -3:]], axis=1) \
+        .concat([main_dataframe.iloc[:, :30], main_dataframe.iloc[:, -5:]], axis=1) \
         .sort_values(by='created')
 
     bo_id_df = general_dataframe[['region', 'split', 'event', 'phase',
@@ -145,6 +147,7 @@ if __name__ == '__main__':
                                'date_has_timezone', 'visibility']
 
     general_dataframe = general_dataframe.reindex(columns=general_df_cols_ordered)
+    general_dataframe['uploader_steam_id'] = general_dataframe['uploader_steam_id'].apply(str)
 
     # Team stats only
 

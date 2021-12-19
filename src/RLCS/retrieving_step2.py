@@ -19,6 +19,9 @@ with open('../../data/private/my_token.txt', 'r', encoding='utf8') as token_file
 with open('../../data/retrieved/pre_dataset.json', 'r', encoding='utf8') as pre_dataset_file:
     pre_dataset = json.load(pre_dataset_file)
 
+with open('../../data/retrieved/raw.json', 'r', encoding='utf8') as raw_dataset_file:
+    raw = json.load(raw_dataset_file)
+
 "FUNCTIONS"
 
 
@@ -49,26 +52,30 @@ def get_replay_stats(replay_id, token):
         return None
 
 
-def add_details(replay_list, token):
+def add_details(replay_list, raw_list, token):
     """Add detailed stats to replays.
 
     :param replay_list: list of replays without details.
+    :param raw_list:
     :param token: ballchasing.com API token.
     :return replay_list: list of replays with details added into 'details' field.
     """
+    raw_ids = {replay['ballchasing_id'] for replay in raw_list}
+    replay_list = [replay for replay in replay_list if replay['ballchasing_id'] not in raw_ids]
+
     for num, a_replay in enumerate(replay_list):
         print(f'REPLAY ID: {a_replay["ballchasing_id"]}')
         a_replay['details'] = get_replay_stats(a_replay['ballchasing_id'], token)
 
-        if (num + 1 % 2) == 0:
+        if (num + 1) % 2 == 0:
             sleep(1)
 
-    return replay_list
+    return replay_list + raw_list
 
 
 "MAIN"
 
 if __name__ == '__main__':
-    dataset = add_details(pre_dataset, my_token)
+    dataset = add_details(pre_dataset, raw, my_token)
     with open('../../data/retrieved/raw.json', 'w', encoding='utf-8') as dataset_file:
         json.dump(dataset, dataset_file, indent=4)
