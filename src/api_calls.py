@@ -164,13 +164,13 @@ if __name__ == '__main__':
     tz = timezone.utc
     # print(today.astimezone(tz))
     print(seasons_reverse[1])
-    # get_replays(my_token,
-    #             seasons_reverse[1]['season_name'],
-    #             seasons_reverse[1]['season_alt_name'],
-    #             seasons_reverse[1]['season_code'],
-    #             today,
-    #             seasons_reverse[1]['start_date'],
-    #             seasons_reverse[1]['end_date'])
+    get_replays(my_token,
+                seasons_reverse[1]['season_name'],
+                seasons_reverse[1]['season_alt_name'],
+                seasons_reverse[1]['season_code'],
+                today,
+                seasons_reverse[1]['start_date'],
+                seasons_reverse[1]['end_date'])
 
     # test = get_replays(my_token, 'test.json')
     # pprint.pprint(test)
