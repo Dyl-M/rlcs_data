@@ -22,9 +22,7 @@ def treatment_by_teams(ref_date_str):
     :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are.
     :return final_dataset: Dataset formatted for modeling.
     """
-
     # Reference date to game datetime
-
     ref_date = datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
 
     # Dataframe imports
