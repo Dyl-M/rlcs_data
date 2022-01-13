@@ -69,7 +69,6 @@ def treatment_by_teams(ref_date_str):
     # Set the maximum BO matches
     bo_results.loc[bo_results.stage == 'Swiss', 'bo_type'] = 'best_of_5'
     bo_results.loc[bo_results.stage != 'Swiss', 'bo_type'] = 'best_of_7'
-    # bo_results.max_match = bo_results.max_match.astype(int)
 
     # Count games played by BO
     game_count = match_results.groupby('bo_id', as_index=False) \
