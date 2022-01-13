@@ -7,7 +7,6 @@ import requests
 from datetime import datetime, timezone
 from time import sleep
 
-# import pprint
 
 """File Informations
 
@@ -162,7 +161,6 @@ def api_full_retrieving(token, season_list, ref_date):
 
 if __name__ == '__main__':
     tz = timezone.utc
-    # print(today.astimezone(tz))
     print(seasons_reverse[1])
     get_replays(my_token,
                 seasons_reverse[1]['season_name'],
@@ -172,14 +170,6 @@ if __name__ == '__main__':
                 seasons_reverse[1]['start_date'],
                 seasons_reverse[1]['end_date'])
 
-    # test = get_replays(my_token, 'test.json')
-    # pprint.pprint(test)
 
-    # my_replay = requests.get(replay_url, headers={'Authorization': token, 'playlist': 'ranked-standard'})
-    # pprint.pprint(my_replay.json())
 
-    # with open('test.json', 'w', encoding='utf-8') as json_file:
-    #     json.dump(my_replay.json(), json_file)
 
-    # with open('test.json', 'w', encoding='utf-8') as json_file:
-    #     json.dump(test, json_file)
