@@ -7,7 +7,6 @@ import requests
 from datetime import datetime, timezone
 from time import sleep
 
-
 """File Informations
 
 @file_name: api_calls.py
@@ -169,7 +168,3 @@ if __name__ == '__main__':
                 today,
                 seasons_reverse[1]['start_date'],
                 seasons_reverse[1]['end_date'])
-
-
-
-
