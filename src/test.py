@@ -21,7 +21,7 @@ def get_my_uploads(token: str):
     :return replays: list of replays
     """
     replays = []
-    uri = f'https://ballchasing.com/api/replays/?uploader=me&count=200'
+    uri = 'https://ballchasing.com/api/replays/?uploader=me&count=200'
     headers = {'Authorization': token}
     request = requests.get(uri, headers=headers)
     page = request.json()
