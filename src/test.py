@@ -44,4 +44,4 @@ def get_my_uploads(token: str):
 "MAIN"
 
 if __name__ == '__main__':
-    pass
+    get_my_uploads(token=my_token)
