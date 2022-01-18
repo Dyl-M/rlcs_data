@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-"""File Informations
+"""File Information
 
 @file_name: ml_main.py
 @author: Dylan "dyl-m" Monfret

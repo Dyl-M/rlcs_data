@@ -5,7 +5,7 @@ import pandas as pd
 
 from datetime import datetime
 
-"""File Informations
+"""File Information
 
 @file_name: ml_formatting.py
 @author: Dylan "dyl-m" Monfret

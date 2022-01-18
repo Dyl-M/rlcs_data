@@ -7,7 +7,7 @@ import requests
 from datetime import datetime, timezone
 from time import sleep
 
-"""File Informations
+"""File Information
 
 @file_name: api_calls.py
 @author: Dylan "dyl-m" Monfret

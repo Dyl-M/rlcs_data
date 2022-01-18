@@ -2,7 +2,7 @@
 
 import requests
 
-"""File Informations
+"""File Information
 
 @file_name: test.py
 @author: Dylan "dyl-m" Monfret
