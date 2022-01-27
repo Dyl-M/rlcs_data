@@ -5,11 +5,15 @@ import pandas as pd
 
 """File Informations
 
-@file_name: formatting.py
+@file_name: data_formatting.py
 @author: Dylan "dyl-m" Monfret
+
+Things to verify before formatting / export:
+1- Missing values (teams names and cars names) to fix (missing_values.json).
+2- New team alias (alias.json) to fix too.
 """
 
-"PREPARATORY ELEMENTS"
+"IMPORTS"
 
 with open('../../data/retrieved/raw.json', 'r', encoding='utf8') as json_file:
     dataset_json = json.load(json_file)
@@ -23,28 +27,26 @@ with open('../../data/public/missing_value.json', 'r', encoding='utf8') as missi
 "FUNCTIONS"
 
 
-def map_missing_team_name(dataframe):
+def map_missing_team_name(dataframe: pd.DataFrame):
+    """Fill team name field the right way
+    :param dataframe: main / original pandas dataframe
+    :return: fixed pandas dataframe.
     """
+    for series in missing_value["team_names"]:
+        blue_name = series['blue_name']
+        orange_name = series['orange_name']
 
-    :param dataframe:
-    :return:
-    """
-    for best_of in missing_value["team_names"]:
-        blue_name = best_of['blue_name']
-        orange_name = best_of['orange_name']
-
-        for match in best_of['ballchasing_id']:
+        for match in series['ballchasing_id']:
             dataframe.loc[dataframe['ballchasing_id'] == match, 'orange_name'] = orange_name
             dataframe.loc[dataframe['ballchasing_id'] == match, 'blue_name'] = blue_name
 
     return dataframe
 
 
-def map_missing_car_name(dataframe):
-    """
-
-    :param dataframe:
-    :return:
+def map_missing_car_name(dataframe: pd.DataFrame):
+    """Add missing car names to dataframe
+    :param dataframe: main / original pandas dataframe
+    :return: fixed pandas dataframe.
     """
     for car in missing_value['car_names']:
         car_name = car['car_name']
@@ -54,6 +56,40 @@ def map_missing_car_name(dataframe):
     return dataframe
 
 
+def apply_patch_delete(players_df: pd.DataFrame, to_delete_list: list):
+    """Delete some selected players from the dataset
+    :param players_df: data by players
+    :param to_delete_list: list of players to delete from the dataset (list of dictionaries)
+    :return: corrected dataframe.
+    """
+    delete_index_list = []
+    for player in to_delete_list:
+        delete_index = players_df.loc[(players_df.ballchasing_id == player['ballchasing_id']) &
+                                      (players_df.p_platform_id == player['p_platform_id'])].index[0]
+
+        delete_index_list.append(delete_index)
+
+    players_df.drop(delete_index_list, inplace=True)
+
+    return players_df
+
+
+def apply_patch(players_df: pd.DataFrame):
+    """Patch anomalies in dataframe(s)
+    :param players_df: data by players
+    :return: patched dataframe(s).
+    """
+    with open('../../data/public/patch.json', 'r', encoding='utf8') as patch_file:
+        patch = json.load(patch_file)
+
+    to_delete = patch['to_delete_players']
+    # to_move = patch['to_move_players']
+
+    players_df = apply_patch_delete(players_df=players_df, to_delete_list=to_delete)
+
+    return players_df
+
+
 "MAIN"
 
 if __name__ == '__main__':
@@ -61,29 +97,23 @@ if __name__ == '__main__':
     pd.set_option('display.width', 200)
 
     # Flat entire JSON
-
     main_dataframe = pd.json_normalize(dataset_json, sep='_')
     main_dataframe = main_dataframe.rename(
         columns={col: col.replace('details_', '').replace('stats_', '') for col in list(main_dataframe.columns)})
 
     # Fill empty team name field
-
     main_dataframe = map_missing_team_name(main_dataframe)
-    # print(main_dataframe[main_dataframe['orange_name'].isna() | main_dataframe['blue_name'].isna()])
 
     # Replacing team alias
-
     main_dataframe['orange_name'] = main_dataframe['orange_name'].replace(alias)
     main_dataframe['blue_name'] = main_dataframe['blue_name'].replace(alias)
     # print(set(main_dataframe['orange_name'].unique().tolist() + main_dataframe['blue_name'].unique().tolist()))
 
     # Flat ballchasing.com groups
-
     groups_dataframe = main_dataframe[['ballchasing_id', 'groups']].explode('groups').to_dict('records')
     groups_dataframe = pd.json_normalize(groups_dataframe, sep='_')
 
     # Flat players stats.
-
     bl_players_df = main_dataframe[['ballchasing_id', 'blue_color', 'blue_name', 'blue_players']] \
         .explode('blue_players').to_dict('records')
 
@@ -109,18 +139,15 @@ if __name__ == '__main__':
                 .replace('id_platform', 'platform') for col in list(or_players_df.columns)})
 
     # All players
-
     by_players_dataframe = bl_players_df.append(or_players_df)
     by_players_dataframe = map_missing_car_name(by_players_dataframe)
     by_players_dataframe['p_car_id'] = by_players_dataframe['p_car_id'].apply(str)
     by_players_dataframe['p_platform_id'] = by_players_dataframe['p_platform_id'].apply(str)
     by_players_dataframe['p_positioning_goals_against_while_last_defender'] = by_players_dataframe[
         'p_positioning_goals_against_while_last_defender'].fillna(0)
-
-    # by_players_dataframe['p_mvp'] = by_players_dataframe['p_mvp'].fillna(False)
+    by_players_dataframe.dropna(subset=['p_platform'], inplace=True)  # Drops BOT
 
     # Filtering / Formatting / Timezone normalization / Best-of ID generation
-
     main_dataframe = main_dataframe.drop(['orange_players', 'blue_players', 'groups'], axis=1)
     main_dataframe['created'] = pd.to_datetime(main_dataframe['created'], utc=True)
     main_dataframe['date'] = pd.to_datetime(main_dataframe['date'], utc=True)
@@ -150,7 +177,6 @@ if __name__ == '__main__':
     general_dataframe['uploader_steam_id'] = general_dataframe['uploader_steam_id'].apply(str)
 
     # Team stats only
-
     by_team_dataframe = main_dataframe.drop(columns=general_df_cols_ordered[2:])
     or_col = [col for col in list(by_team_dataframe.columns) if 'orange' in col or 'ballchasing' in col]
     bl_col = [col for col in list(by_team_dataframe.columns) if 'blue' in col or 'ballchasing' in col]
@@ -159,8 +185,20 @@ if __name__ == '__main__':
 
     by_team_dataframe = bl_side.append(or_side)
 
-    # Exports
+    "WIP - START"  # TODO: patch anomalies
 
+    by_players_dataframe = apply_patch(by_players_dataframe)
+
+    # import utils
+    # utils.display_rosters(pd_dataframe_players=by_players_dataframe,
+    #                       pd_dataframe_general=general_dataframe)
+
+    # print(by_players_dataframe.loc[by_players_dataframe.p_start_time > 3])
+    # print(by_players_dataframe.loc[by_players_dataframe.p_end_time < 300])
+
+    "WIP - END"
+
+    # Exports
     # by_team_dataframe.to_csv('../../data/retrieved/by_teams.csv', encoding='utf8', index=False)
     # by_players_dataframe.to_csv('../../data/retrieved/by_players.csv', encoding='utf8', index=False)
     # groups_dataframe.to_csv('../../data/retrieved/groups.csv', encoding='utf8', index=False)
