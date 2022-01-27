@@ -40,7 +40,7 @@ def sort_alias():
     with open('../../data/public/alias.json', 'r', encoding='utf8') as alias_file:
         alias_dict = json.load(alias_file)
 
-    sorted_alias_dict = {key: value for key, value in sorted(alias_dict.items(), key=lambda item: (item[1], item[0]))}
+    sorted_alias_dict = dict(sorted(alias_dict.items(), key=lambda item: (item[1], item[0])))
 
     with open('../../data/public/alias.json', 'w', encoding='utf-8') as sorted_alias_file:
         json.dump(sorted_alias_dict, sorted_alias_file)
