@@ -1,0 +1,88 @@
+{
+  "to_move_players": [
+    {
+      "ballchasing_id": "39c9e17f-0dc9-4df7-ba06-81a6de032c0a",
+      "players": [
+        {
+          "p_platform": "76561198400741914",
+          "name": "TEAM ATELIER",
+          "color": "blue"
+        },
+        {
+          "p_platform": "76561198328609305",
+          "name": "TEAM ATELIER",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "8a7acc71-8e68-408a-9a51-fc78ece0fd04",
+      "players": [
+        {
+          "p_platform": "76561198299456913",
+          "name": "UCHIHA",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "32a560c9-62c2-45ef-b523-116b4a8ffd74",
+      "players": [
+        {
+          "p_platform": "76561198027088474",
+          "name": "TRIPLEJAWA",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "9a172f03-46cb-4b2b-bb60-02210de15d83",
+      "players": [
+        {
+          "p_platform": "76561198286759507",
+          "name": "THE GENERAL NRG",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "dedeac83-2579-41bb-8118-ec4d357eb408",
+      "players": [
+        {
+          "p_platform": "76561198387068637",
+          "name": "TEAM BDS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "f8a5bdec-5996-4bb8-9004-30a2e8b54026",
+      "players": [
+        {
+          "p_platform": "76561198299456913",
+          "name": "INVADERS",
+          "color": "blue"
+        }
+      ]
+    }
+  ],
+  "to_delete_players": [
+    {
+      "ballchasing_id": "c37eeda8-0125-4a9b-9803-0d4a1aa68021",
+      "p_platform_id": "76561198375876842"
+    },
+    {
+      "ballchasing_id": "6b4af02c-a27e-4108-a503-0c4d993c0481",
+      "p_platform_id": "1f20ea59a56849248a7c5c5e53e718f1"
+    },
+    {
+      "ballchasing_id": "677429c0-e146-48f9-afd0-6748a8004a2a",
+      "p_platform_id": "1f20ea59a56849248a7c5c5e53e718f1"
+    },
+    {
+      "ballchasing_id": "55b66009-55d9-42d9-877c-0deef33112af",
+      "p_platform_id": "76561198074240205"
+    }
+  ]
+}
+

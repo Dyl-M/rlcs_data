@@ -1,9 +1,9 @@
 # ballchasing_ML
+
 [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=active+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)
 ](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge) [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=resolved+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 
-Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship
-Series.
+Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship Series.
 
 Introduction
 -------------
@@ -12,16 +12,12 @@ Introduction
 
 [Wikipedia - Rocket League](https://en.wikipedia.org/wiki/Rocket_League "Wikipedia - Rocket League")
 
-The **`ballchasing_ML`** project aims to pursue the opening of analytical possibilities to the community by
-using [ballchasing.com](https://ballchasing.com/) database, a website gathering Rocket League games&#39; replays.
-&quot;ML&quot; stands here for &quot;Machine Learning&quot;, because my first works around this database will be:
+The **`ballchasing_ML`** project aims to pursue the opening of analytical possibilities to the community by using [ballchasing.com](https://ballchasing.com/) database, a website gathering Rocket League games&#39; replays. &quot;ML&quot; stands here for &quot;Machine Learning&quot;, because my first works around this database will be:
 
-* To collect all the data available on the website and trying to structure them as well as possible as first short term
-  goal.
+* To collect all the data available on the website and trying to structure them as well as possible as first short term goal.
 * Then, to create machine learning models able to predict games' outcomes.
 
-First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are 
-available on Kaggle to the following link: `[COMING SOON]`.
+First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are available on Kaggle to the following link: `[COMING SOON]`.
 
 Repository structure
 -------------
@@ -36,6 +32,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   ├── public
 │   │   ├── alias.json
 │   │   ├── missing_values.json
+│   │   ├── patch.json
 │   │   └── seasons.json
 │   │
 │   └── retrieved (IGNORED)
@@ -48,13 +45,13 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │
 ├── src
 │   ├── RLCS
-│   │   ├── formatting.py
+│   │   ├── data_collection.py
+│   │   ├── data_collection_tools.py
+│   │   ├── data_formatting.py
+│   │   ├── data_formatting_tools.py
 │   │   ├── ml_formatting.py
-│   │   ├── ml_main.py
-│   │   ├── retrieving_step1.py
-│   │   └── retrieving_step2.py
+│   │   └── ml_main.py
 │   │
-│   ├── api_calls.py
 │   └── test.py
 │
 ├── .deepsource.toml
@@ -66,8 +63,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 
 Regarding `my_token.txt`:
 
-* You can generate your personal token on [ballchasing.com](https://ballchasing.com/) by connecting to your Steam 
-  account.
+* You can generate your personal token on [ballchasing.com](https://ballchasing.com/) by connecting to your Steam account.
 * Then write this token into a text file like I did, it will be read to run API calls.
 
 External information
