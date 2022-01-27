@@ -44,13 +44,3 @@ def sort_alias():
 
     with open('../../data/public/alias.json', 'w', encoding='utf-8') as sorted_alias_file:
         json.dump(sorted_alias_dict, sorted_alias_file)
-
-
-def do_nothing():
-    return None
-
-
-"MAIN"
-
-if __name__ == "__main__":
-    do_nothing()
