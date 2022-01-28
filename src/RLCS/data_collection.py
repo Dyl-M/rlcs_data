@@ -34,7 +34,7 @@ if __name__ == '__main__':
     rlcs_replays = data_collection_tools.exploring_group(RLCS_ALL, my_token)
 
     with open('../../data/retrieved/pre_dataset.json', 'w', encoding='utf-8') as pre_dataset_file:
-        json.dump(rlcs_replays, pre_dataset_file)  # Saving intermediate results
+        json.dump(rlcs_replays, pre_dataset_file, indent=4)  # Saving intermediate results
 
     # Step 2: collect details from each replay
 

@@ -3,7 +3,7 @@
 import json
 import requests
 
-from tqdm import tqdm
+from p_tqdm import p_map
 
 # from time import sleep | Unnecessary with Patreon Tier 3+ support ( ^_^)
 
@@ -441,17 +441,18 @@ def winter_routine(hidden_replays: int, groups: list, token: str):
     return replays_list
 
 
-def get_replay_stats(replay_id: str, token: str):  # TODO: try to add some multiprocessing
+def get_replay_stats(replay: dict, token: str):  # TODO: try to add some multiprocessing
     """Get detailed replay's stats
-    :param replay_id: ballchasing.com replay ID
+    :param replay: basic information from a replay uploaded on ballchasing.com (at least the ballchasing_id)
     :param token: ballchasing.com API token
     :return replay_stats: detailed replay stat as a dict
     """
-    replay_url = f'https://ballchasing.com/api/replays/{replay_id}'
+    replay_id = replay['ballchasing_id']
+    replay_uri = f'https://ballchasing.com/api/replays/{replay_id}'
     headers = {'Authorization': token}
 
     try:
-        request = requests.get(replay_url, headers=headers)
+        request = requests.get(replay_uri, headers=headers)
         replay_stats = request.json()
 
         replay_stats.pop('id')
@@ -464,28 +465,31 @@ def get_replay_stats(replay_id: str, token: str):  # TODO: try to add some multi
         except KeyError:
             pass
 
-        return replay_stats
+        replay['details'] = replay_stats
+
+        return replay
 
     except json.decoder.JSONDecodeError:
         print("Error 500: Resources unavailable")
         return None
 
 
-def add_details(replay_list: list, raw_list: list, token: str):
+def add_details(replays_unfiltered: list, raw_list: list, token: str, workers: int = 8):
     """Add detailed stats to replays
-    :param replay_list: list of replays without details
+    :param replays_unfiltered: list of all replays without details
     :param raw_list: list of replay already retrieved
     :param token: ballchasing.com API token
+    :param workers: CPU used for multiprocessing, must correspond to the number of possible requests per second (8
+    with Patreon Tier 3 support)
     :return replay_list: list of replays with details added into 'details' field
     """
     try:
         raw_ids = {replay['ballchasing_id'] for replay in raw_list}
-        replay_list = [replay for replay in replay_list if replay['ballchasing_id'] not in raw_ids]
+        replays_filtered = [replay for replay in replays_unfiltered if replay['ballchasing_id'] not in raw_ids]
+        replay_list = p_map(get_replay_stats, replays_filtered, [token] * len(replays_filtered), num_cpus=workers)
 
     except TypeError:
         raw_list = []
-
-    for a_replay in tqdm(replay_list, desc='Getting details'):
-        a_replay['details'] = get_replay_stats(a_replay['ballchasing_id'], token)
+        replay_list = p_map(get_replay_stats, replays_unfiltered, [token] * len(replays_unfiltered), num_cpus=workers)
 
     return replay_list + raw_list
