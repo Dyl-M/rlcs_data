@@ -203,6 +203,7 @@ def fall_routine(hidden_replays: int, groups: list, token: str):
                                               'stage': stage_name,
                                               'round': round_name,
                                               'match': series_name,
+                                              "stats_correction": False,
                                               'ballchasing_id': replay['id']} for replay in
                                              get_replays_in_groups(series["id"], token)["list"]]
 
@@ -441,7 +442,7 @@ def winter_routine(hidden_replays: int, groups: list, token: str):
     return replays_list
 
 
-def get_replay_stats(replay: dict, token: str):  # TODO: try to add some multiprocessing
+def get_replay_stats(replay: dict, token: str):
     """Get detailed replay's stats
     :param replay: basic information from a replay uploaded on ballchasing.com (at least the ballchasing_id)
     :param token: ballchasing.com API token

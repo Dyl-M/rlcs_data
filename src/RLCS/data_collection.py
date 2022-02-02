@@ -3,8 +3,6 @@
 import json
 import data_collection_tools
 
-# from time import sleep | Unnecessary with Patreon Tier 3+ support ( ^_^)
-
 """File Information
 
 @file_name: data_collection.py
@@ -41,7 +39,7 @@ if __name__ == '__main__':
     with open('../../data/retrieved/pre_dataset.json', 'r', encoding='utf8') as pre_dataset_file:
         pre_dataset = json.load(pre_dataset_file)
 
-    dataset = data_collection_tools.add_details(pre_dataset, raw, my_token)
+    dataset = data_collection_tools.add_details(pre_dataset, raw, my_token)  # workers=8
 
     with open('../../data/retrieved/raw.json', 'w', encoding='utf-8') as dataset_file:
         json.dump(dataset, dataset_file, indent=4)  # Saving final results
