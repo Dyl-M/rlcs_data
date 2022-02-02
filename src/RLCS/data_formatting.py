@@ -27,6 +27,42 @@ with open('../../data/public/missing_value.json', 'r', encoding='utf8') as missi
 "FUNCTIONS"
 
 
+def first_sorting(dataframe: pd.DataFrame):
+    """Fill team name field the right way
+    :param dataframe: main / original pandas dataframe
+    :return: sorted dataframe.
+    """
+    dataframe = dataframe \
+        .replace('Fall', 'Split 1 - Fall') \
+        .replace('Winter', 'Split 2 - Winter') \
+        .replace('World', '0 - World') \
+        .replace('Europe', '1 - Europe') \
+        .replace('North America', '2 - North America') \
+        .replace('Oceania', '3 - Oceania') \
+        .replace('South America', '4 - South America') \
+        .replace('Middle East & North Africa', '5 - Middle East & North Africa') \
+        .replace('Asia-Pacific North', '6 - Asia-Pacific North') \
+        .replace('Asia-Pacific South', '7 - Asia-Pacific South') \
+        .replace('Sub-Saharan Africa', '8 - Sub-Saharan Africa') \
+        .replace('Major', '0 Major') \
+        .sort_values(['split', 'region', 'event', 'created']) \
+        .replace('Split 1 - Fall', 'Fall') \
+        .replace('Split 2 - Winter', 'Winter') \
+        .replace('0 - World', 'World') \
+        .replace('1 - Europe', 'Europe') \
+        .replace('2 - North America', 'North America') \
+        .replace('3 - Oceania', 'Oceania') \
+        .replace('4 - South America', 'South America') \
+        .replace('5 - Middle East & North Africa', 'Middle East & North Africa') \
+        .replace('6 - Asia-Pacific North', 'Asia-Pacific North') \
+        .replace('7 - Asia-Pacific South', 'Asia-Pacific South') \
+        .replace('8 - Sub-Saharan Africa', 'Sub-Saharan Africa') \
+        .replace('0 Major', 'Major') \
+        .reset_index(drop=True)
+
+    return dataframe
+
+
 def map_missing_team_name(dataframe: pd.DataFrame):
     """Fill team name field the right way
     :param dataframe: main / original pandas dataframe
@@ -74,6 +110,23 @@ def apply_patch_delete(players_df: pd.DataFrame, to_delete_list: list):
     return players_df
 
 
+def apply_patch_move_players(players_df: pd.DataFrame, to_move: list):  # TODO: patch teams dataframe
+    """Delete some selected players from the dataset
+    :param players_df: data by players
+    :param to_move: list of players to move to the right side (list of dictionaries)
+    :return: corrected dataframe.
+    """
+    for match in to_move:
+        for player in match['players']:
+            players_df.loc[(players_df.ballchasing_id == match['ballchasing_id']) &
+                           (players_df.p_platform_id == player['p_platform']), 'name'] = player['name']
+
+            players_df.loc[(players_df.ballchasing_id == match['ballchasing_id']) &
+                           (players_df.p_platform_id == player['p_platform']), 'color'] = player['color']
+
+    return players_df
+
+
 def apply_patch(players_df: pd.DataFrame):
     """Patch anomalies in dataframe(s)
     :param players_df: data by players
@@ -83,9 +136,10 @@ def apply_patch(players_df: pd.DataFrame):
         patch = json.load(patch_file)
 
     to_delete = patch['to_delete_players']
-    # to_move = patch['to_move_players']
+    to_move = patch['to_move_players']
 
     players_df = apply_patch_delete(players_df=players_df, to_delete_list=to_delete)
+    players_df = apply_patch_move_players(players_df=players_df, to_move=to_move)
 
     return players_df
 
@@ -99,19 +153,19 @@ if __name__ == '__main__':
     # Flat entire JSON
     main_dataframe = pd.json_normalize(dataset_json, sep='_')
     main_dataframe = main_dataframe.rename(
-        columns={col: col.replace('details_', '').replace('stats_', '') for col in list(main_dataframe.columns)})
+        columns={col: col.replace('details_', '').replace('stats_', '') for col in list(main_dataframe.columns)}) \
+        .sort_values(by='created')
 
-    # Fill empty team name field
-    main_dataframe = map_missing_team_name(main_dataframe)
+    main_dataframe = first_sorting(main_dataframe)  # Apply first sorting
+    main_dataframe = map_missing_team_name(main_dataframe)  # Fill empty team name field
 
     # Replacing team alias
     main_dataframe['orange_name'] = main_dataframe['orange_name'].replace(alias)
     main_dataframe['blue_name'] = main_dataframe['blue_name'].replace(alias)
-    # print(set(main_dataframe['orange_name'].unique().tolist() + main_dataframe['blue_name'].unique().tolist()))
 
     # Flat ballchasing.com groups
     groups_dataframe = main_dataframe[['ballchasing_id', 'groups']].explode('groups').to_dict('records')
-    groups_dataframe = pd.json_normalize(groups_dataframe, sep='_')
+    groups_dataframe = pd.json_normalize(groups_dataframe, sep='_').drop('groups', axis=1)
 
     # Flat players stats.
     bl_players_df = main_dataframe[['ballchasing_id', 'blue_color', 'blue_name', 'blue_players']] \
@@ -153,8 +207,7 @@ if __name__ == '__main__':
     main_dataframe['date'] = pd.to_datetime(main_dataframe['date'], utc=True)
 
     general_dataframe = pd \
-        .concat([main_dataframe.iloc[:, :30], main_dataframe.iloc[:, -5:]], axis=1) \
-        .sort_values(by='created')
+        .concat([main_dataframe.iloc[:, :31], main_dataframe.iloc[:, -5:]], axis=1)
 
     bo_id_df = general_dataframe[['region', 'split', 'event', 'phase',
                                   'stage', 'round', 'match']].drop_duplicates().reset_index(drop=True)
@@ -166,18 +219,18 @@ if __name__ == '__main__':
                                  general_dataframe,
                                  on=['region', 'split', 'event', 'phase', 'stage', 'round', 'match'])
 
-    general_df_cols_ordered = ['ballchasing_id', 'bo_id', 'link', 'region', 'split', 'event', 'phase', 'stage', 'round',
-                               'match', 'created', 'uploader_steam_id', 'uploader_name', 'uploader_profile_url',
-                               'uploader_avatar', 'status', 'rocket_league_id', 'match_guid', 'title', 'recorder',
-                               'map_code', 'map_name', 'match_type', 'team_size', 'playlist_id', 'playlist_name',
-                               'duration', 'overtime', 'overtime_seconds', 'season', 'season_type', 'date',
-                               'date_has_timezone', 'visibility']
+    general_df_cols_ordered = ['ballchasing_id', 'correction', 'bo_id', 'link', 'region', 'split', 'event', 'phase',
+                               'stage', 'round', 'match', 'created', 'uploader_steam_id', 'uploader_name',
+                               'uploader_profile_url', 'uploader_avatar', 'status', 'rocket_league_id', 'match_guid',
+                               'title', 'recorder', 'map_code', 'map_name', 'match_type', 'team_size', 'playlist_id',
+                               'playlist_name', 'duration', 'overtime', 'overtime_seconds', 'season', 'season_type',
+                               'date', 'date_has_timezone', 'visibility']
 
     general_dataframe = general_dataframe.reindex(columns=general_df_cols_ordered)
     general_dataframe['uploader_steam_id'] = general_dataframe['uploader_steam_id'].apply(str)
 
     # Team stats only
-    by_team_dataframe = main_dataframe.drop(columns=general_df_cols_ordered[2:])
+    by_team_dataframe = main_dataframe.drop(columns=general_df_cols_ordered[3:])
     or_col = [col for col in list(by_team_dataframe.columns) if 'orange' in col or 'ballchasing' in col]
     bl_col = [col for col in list(by_team_dataframe.columns) if 'blue' in col or 'ballchasing' in col]
     or_side = by_team_dataframe[or_col].rename(columns={col: col.replace('orange_', '') for col in or_col})
@@ -185,21 +238,10 @@ if __name__ == '__main__':
 
     by_team_dataframe = bl_side.append(or_side)
 
-    "WIP - START"  # TODO: patch anomalies
-
-    by_players_dataframe = apply_patch(by_players_dataframe)
-
-    # import utils
-    # utils.display_rosters(pd_dataframe_players=by_players_dataframe,
-    #                       pd_dataframe_general=general_dataframe)
-
-    # print(by_players_dataframe.loc[by_players_dataframe.p_start_time > 3])
-    # print(by_players_dataframe.loc[by_players_dataframe.p_end_time < 300])
-
-    "WIP - END"
+    by_players_dataframe = apply_patch(by_players_dataframe)  # Apply dataset correction
 
     # Exports
-    # by_team_dataframe.to_csv('../../data/retrieved/by_teams.csv', encoding='utf8', index=False)
-    # by_players_dataframe.to_csv('../../data/retrieved/by_players.csv', encoding='utf8', index=False)
-    # groups_dataframe.to_csv('../../data/retrieved/groups.csv', encoding='utf8', index=False)
-    # general_dataframe.to_csv('../../data/retrieved/general.csv', encoding='utf8', index=False)
+    by_team_dataframe.to_csv('../../data/retrieved/by_teams.csv', encoding='utf8', index=False)
+    by_players_dataframe.to_csv('../../data/retrieved/by_players.csv', encoding='utf8', index=False)
+    groups_dataframe.to_csv('../../data/retrieved/groups.csv', encoding='utf8', index=False)
+    general_dataframe.to_csv('../../data/retrieved/general.csv', encoding='utf8', index=False)
