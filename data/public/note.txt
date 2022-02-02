@@ -8,3 +8,29 @@
 - 8a365691-15d5-4add-ad00-2ae26dd6c918
 - c75f892c-8dff-4d66-8b4c-ac41b6f472e3
 - ad696dd1-3bf1-469f-97a6-0adf29fd33d4
+
+///////////////////////////////////////////////////////////////
+
+# Funny things
+
+- [ERA] Aztromick played with two Steam accounts for the RLCS
+    https://steamcommunity.com/profiles/76561199030800445
+    https://steamcommunity.com/profiles/76561198153434719
+
+///////////////////////////////////////////////////////////////
+
+# Code to execute to patch datasets
+
+"WIP - START"  # TODO: patch anomalies
+
+import data_formatting_tools
+
+# data_formatting_tools.sort_alias()
+data_formatting_tools.display_teams_names(by_players_dataframe)
+# data_formatting_tools.display_rosters(by_players_dataframe, general_dataframe)
+# print(by_players_dataframe.loc[by_players_dataframe.p_car_name.isna()])
+# print(by_players_dataframe.loc[by_players_dataframe.p_core_score == 0])
+# print(by_players_dataframe.loc[by_players_dataframe.p_start_time > 3])
+# print(by_players_dataframe.loc[by_players_dataframe.p_end_time < 300])
+
+"WIP - END"

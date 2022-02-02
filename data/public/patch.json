@@ -64,6 +64,71 @@
           "color": "blue"
         }
       ]
+    },
+    {
+      "ballchasing_id": "a20a39d3-2b60-4439-8cdf-901adb3741b3",
+      "players": [
+        {
+          "p_platform": "76561198142293058",
+          "name": "1NE ESPORTS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "30ee491f-def7-4383-992c-45edcaccd50b",
+      "players": [
+        {
+          "p_platform": "76561198796347232",
+          "name": "MOONBOOTS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "714ab9f9-fe56-4537-9299-cacdef964a2b",
+      "players": [
+        {
+          "p_platform": "76561198277037221",
+          "name": "AZURE ESPORTS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "4f28c595-4357-4977-89f0-5238cc31e6c6",
+      "players": [
+        {
+          "p_platform": "76561198206559231",
+          "name": "RAPZERS ESPORTS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "cc980bf8-9bdc-44cb-82e4-f3e2949f5949",
+      "players": [
+        {
+          "p_platform": "76561199020823683",
+          "name": "SUDOR ESPORTS",
+          "color": "blue"
+        }
+      ]
+    },
+    {
+      "ballchasing_id": "1fde3b9f-0c55-431f-9243-ef71fa546ca1",
+      "players": [
+        {
+          "p_platform": "76561198455812546",
+          "name": "HAWKS ESPORTS",
+          "color": "blue"
+        },
+        {
+          "p_platform": "76561198251294600",
+          "name": "HAWKS ESPORTS",
+          "color": "blue"
+        }
+      ]
     }
   ],
   "to_delete_players": [
@@ -82,6 +147,22 @@
     {
       "ballchasing_id": "55b66009-55d9-42d9-877c-0deef33112af",
       "p_platform_id": "76561198074240205"
+    },
+    {
+      "ballchasing_id": "09c2022c-f35b-4a1e-a7ec-4753ce4dd87a",
+      "p_platform_id": "76561198088627552"
+    },
+    {
+      "ballchasing_id": "308a395e-3cb2-439a-b065-8113cdd5fb89",
+      "p_platform_id": "76561198248299016"
+    },
+    {
+      "ballchasing_id": "6ab713d3-637b-4f0d-a204-ad8f716d2b00",
+      "p_platform_id": "76561198183693995"
+    },
+    {
+      "ballchasing_id": "d0e8528b-581e-4417-8883-44114564d656",
+      "p_platform_id": "76561199070529477"
     }
   ]
 }
