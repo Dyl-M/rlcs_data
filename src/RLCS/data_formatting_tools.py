@@ -60,7 +60,6 @@ def display_rosters(pd_dataframe_players: pd.DataFrame, pd_dataframe_general: pd
     splits = ['Fall', 'Winter']
     pd_dataframe_players = date_df.merge(pd_dataframe_players).sort_values('date')
     teams = sorted(pd_dataframe_players.name.unique())
-    # teams = pd_dataframe_players.name.unique()
 
     for team in teams:
         print(team)

@@ -354,8 +354,6 @@ def winter_routine(hidden_replays: int, groups: list, token: str):
 
             if event_type_name == 'International Major':  # Covering Major.
                 pass  # No event at the moment
-                # region_name = 'World'
-                # event_name = 'Major'
 
             else:
                 for region in event_type_groups:  # Iteration on regions
