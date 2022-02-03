@@ -32,7 +32,9 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   ├── public
 │   │   ├── alias.json
 │   │   ├── missing_values.json
+│   │   ├── note.txt
 │   │   ├── patch.json
+│   │   ├── pre_patch.json
 │   │   └── seasons.json
 │   │
 │   └── retrieved (IGNORED)
