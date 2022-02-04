@@ -98,14 +98,9 @@ def apply_patch_delete(players_df: pd.DataFrame, to_delete_list: list):
     :param to_delete_list: list of players to delete from the dataset (list of dictionaries)
     :return: corrected dataframe.
     """
-    delete_index_list = []
     for player in to_delete_list:
-        delete_index = players_df.loc[(players_df.ballchasing_id == player['ballchasing_id']) &
-                                      (players_df.p_platform_id == player['p_platform_id'])].index[0]
-
-        delete_index_list.append(delete_index)
-
-    players_df.drop(delete_index_list, inplace=True)
+        players_df = players_df.loc[~((players_df.ballchasing_id == player['ballchasing_id']) &
+                                      (players_df.p_platform_id == player['p_platform_id']))]
 
     return players_df
 
@@ -238,7 +233,8 @@ if __name__ == '__main__':
 
     by_team_dataframe = bl_side.append(or_side)
 
-    by_players_dataframe = apply_patch(by_players_dataframe)  # Apply dataset correction
+    # Apply dataset correction
+    by_players_dataframe = apply_patch(by_players_dataframe)
 
     # Exports
     by_team_dataframe.to_csv('../../data/retrieved/by_teams.csv', encoding='utf8', index=False)
