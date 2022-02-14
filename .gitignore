@@ -137,3 +137,5 @@ dmypy.json
 /data/retrieved/
 /kaggle_page.md
 /deprecated/
+/reports/figures/
+/models/

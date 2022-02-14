@@ -45,6 +45,14 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │       ├── pre_dataset.json
 │       └── raw.json
 │
+├── models (IGNORED, temporary)
+│   └── tuning_results
+│
+├── notebooks (IGNORED, temporary)
+│
+├── reports
+│   └── figures (IGNORED)
+│
 ├── src
 │   ├── RLCS
 │   │   ├── data_collection.py
