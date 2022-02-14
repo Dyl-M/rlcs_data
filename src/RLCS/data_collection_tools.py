@@ -326,17 +326,18 @@ def winter_routine(hidden_replays: int, groups: list, token: str):
                     replay['round'] = 'Tiebreaker Round'
 
             else:
-                if 'Series 1' in replay['match'] or 'Series 2' in replay['match']:
-                    replay['round'] = 'Lower Round 2'
+                if replay['round'] != "Lower Round 1":
+                    if 'Series 1' in replay['match'] or 'Series 2' in replay['match']:
+                        replay['round'] = 'Lower Round 2'
 
-                elif 'Series 3' in replay['match'] or 'Series 4' in replay['match']:
-                    replay['round'] = 'Upper Semifinal'
+                    elif 'Series 3' in replay['match'] or 'Series 4' in replay['match']:
+                        replay['round'] = 'Upper Semifinal'
 
-                elif 'Series 5' in replay['match'] or 'Series 6' in replay['match']:
-                    replay['round'] = 'Lower Quarterfinal'
+                    elif 'Series 5' in replay['match'] or 'Series 6' in replay['match']:
+                        replay['round'] = 'Lower Quarterfinal'
 
-                else:
-                    replay['round'] = 'Tiebreaker Round'
+                    else:
+                        replay['round'] = 'Tiebreaker Round'
 
             if replay['ballchasing_id'] in pre_patch.keys():
                 replay['ballchasing_id'] = pre_patch[replay['ballchasing_id']]

@@ -28,18 +28,13 @@ RLCS_ALL = 'rlcs-2021-22-6d4xifwwqz'
 
 if __name__ == '__main__':
     # Step 1: iteration on `RLCS_ALL` group
-
     rlcs_replays = data_collection_tools.exploring_group(RLCS_ALL, my_token)
-
     with open('../../data/retrieved/pre_dataset.json', 'w', encoding='utf-8') as pre_dataset_file:
         json.dump(rlcs_replays, pre_dataset_file, indent=4)  # Saving intermediate results
 
     # Step 2: collect details from each replay
-
     with open('../../data/retrieved/pre_dataset.json', 'r', encoding='utf8') as pre_dataset_file:
         pre_dataset = json.load(pre_dataset_file)
-
     dataset = data_collection_tools.add_details(pre_dataset, raw, my_token)  # workers=8
-
     with open('../../data/retrieved/raw.json', 'w', encoding='utf-8') as dataset_file:
         json.dump(dataset, dataset_file, indent=4)  # Saving final results

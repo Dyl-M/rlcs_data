@@ -45,7 +45,27 @@ def first_sorting(dataframe: pd.DataFrame):
         .replace('Asia-Pacific South', '7 - Asia-Pacific South') \
         .replace('Sub-Saharan Africa', '8 - Sub-Saharan Africa') \
         .replace('Major', '0 Major') \
-        .sort_values(['split', 'region', 'event', 'created']) \
+        .replace('Playoffs', '1 Playoffs') \
+        .replace('Swiss', '0 Swiss') \
+        .replace('Groups', '0 Groups') \
+        .replace('Round 1', '0 Round 1') \
+        .replace('Round 2', '0 Round 2') \
+        .replace('Round 3', '0 Round 3') \
+        .replace('Round 4', '0 Round 4') \
+        .replace('Round 5', '0 Round 5') \
+        .replace('Tiebreaker Round', '0 Tiebreaker Round') \
+        .replace('Lower Round 1', '1 Lower Round 1') \
+        .replace('Lower Round 2', '2 Lower Round 2') \
+        .replace('Quarterfinal', '2 Quarterfinal') \
+        .replace('Lower Quarterfinal', '3 Lower Quarterfinal') \
+        .replace('Semifinal', '4 Semifinal') \
+        .replace('Upper Semifinal', '4 Upper Semifinal') \
+        .replace('Lower Semifinal', '5 Lower Semifinal') \
+        .replace('Upper Final', '6 Upper Final') \
+        .replace('Lower Final', '7 Lower Final') \
+        .replace('Grand Final', '8 Grand Final') \
+        .replace('Final', '8 Final') \
+        .sort_values(['split', 'region', 'event', 'stage', 'round', 'match', 'created']) \
         .replace('Split 1 - Fall', 'Fall') \
         .replace('Split 2 - Winter', 'Winter') \
         .replace('0 - World', 'World') \
@@ -58,6 +78,26 @@ def first_sorting(dataframe: pd.DataFrame):
         .replace('7 - Asia-Pacific South', 'Asia-Pacific South') \
         .replace('8 - Sub-Saharan Africa', 'Sub-Saharan Africa') \
         .replace('0 Major', 'Major') \
+        .replace('1 Playoffs', 'Playoffs') \
+        .replace('0 Swiss', 'Swiss') \
+        .replace('0 Groups', 'Groups') \
+        .replace('0 Round 1', 'Round 1') \
+        .replace('0 Round 2', 'Round 2') \
+        .replace('0 Round 3', 'Round 3') \
+        .replace('0 Round 4', 'Round 4') \
+        .replace('0 Round 5', 'Round 5') \
+        .replace('0 Tiebreaker Round', 'Tiebreaker Round') \
+        .replace('1 Lower Round 1', 'Lower Round 1') \
+        .replace('2 Lower Round 2', 'Lower Round 2') \
+        .replace('2 Quarterfinal', 'Quarterfinal') \
+        .replace('3 Lower Quarterfinal', 'Lower Quarterfinal') \
+        .replace('4 Semifinal', 'Semifinal') \
+        .replace('4 Upper Semifinal', 'Upper Semifinal') \
+        .replace('5 Lower Semifinal', 'Lower Semifinal') \
+        .replace('6 Upper Final', 'Upper Final') \
+        .replace('7 Lower Final', 'Lower Final') \
+        .replace('8 Grand Final', 'Grand Final') \
+        .replace('8 Final', 'Final') \
         .reset_index(drop=True)
 
     return dataframe
