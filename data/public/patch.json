@@ -129,6 +129,16 @@
           "color": "blue"
         }
       ]
+    },
+    {
+      "ballchasing_id": "db186ccb-6986-4c43-8788-535430fddce2",
+      "players": [
+        {
+          "p_platform": "76561199032329047",
+          "name": "SHIROGANE",
+          "color": "blue"
+        }
+      ]
     }
   ],
   "to_delete_players": [
@@ -163,6 +173,18 @@
     {
       "ballchasing_id": "d0e8528b-581e-4417-8883-44114564d656",
       "p_platform_id": "76561199070529477"
+    },
+    {
+      "ballchasing_id": "2fa9015e-9f87-4c7a-a8f0-47a6fba2e3c0",
+      "p_platform_id": "76561198248299016"
+    },
+    {
+      "ballchasing_id": "eed765ce-a4b5-418b-b29e-2b614f3fb753",
+      "p_platform_id": "76561198248299016"
+    },
+    {
+      "ballchasing_id": "7c18b23e-4560-46a3-ad86-e0aa47c7ee5b",
+      "p_platform_id": "5cc6ccb17b324b2da6883046227a737d"
     }
   ]
 }

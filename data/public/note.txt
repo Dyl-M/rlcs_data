@@ -25,12 +25,14 @@
 
 import data_formatting_tools
 
+# data_formatting_tools.display_team_name_missing(by_players_dataframe)
+# data_formatting_tools.display_team_blue_orange(by_players_dataframe)
 # data_formatting_tools.sort_alias()
-data_formatting_tools.display_teams_names(by_players_dataframe)
+# data_formatting_tools.display_teams_names(by_players_dataframe)
 # data_formatting_tools.display_rosters(by_players_dataframe, general_dataframe)
 # print(by_players_dataframe.loc[by_players_dataframe.p_car_name.isna()])
 # print(by_players_dataframe.loc[by_players_dataframe.p_core_score == 0])
-# print(by_players_dataframe.loc[by_players_dataframe.p_start_time > 3])
+# print(by_players_dataframe.loc[by_players_dataframe.p_start_time > 10])
 # print(by_players_dataframe.loc[by_players_dataframe.p_end_time < 300])
 
 "WIP - END"
