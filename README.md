@@ -48,7 +48,8 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 ├── models (IGNORED, temporary)
 │   └── tuning_results
 │
-├── notebooks (IGNORED, temporary)
+├── notebooks
+│   └── rlcs-2021-22-demo.ipynb
 │
 ├── reports
 │   └── figures (IGNORED)
