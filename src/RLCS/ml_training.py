@@ -14,7 +14,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 """File Information
 
-@file_name: ml_main.py
+@file_name: ml_training.py
 @author: Dylan "dyl-m" Monfret
 """
 
