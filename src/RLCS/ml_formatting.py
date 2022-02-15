@@ -19,7 +19,7 @@ Treatment to apply on .csv files for ML model conception.
 "FUNCTIONS"
 
 
-def treatment_by_players(ref_date_str):  # TODO: Finish this
+def treatment_by_players(ref_date_str):  # TODO: Finish this - Add teammates columns (?)
     """Pretreatment pipeline to build a dataframe set for models by players
     :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are
     :return: Dataset formatted for modeling and players name and ID database.
