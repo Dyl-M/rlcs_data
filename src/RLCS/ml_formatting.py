@@ -5,6 +5,9 @@ import pandas as pd
 
 from datetime import datetime
 
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 200)
+
 """File Information
 
 @file_name: ml_formatting.py
@@ -16,68 +19,109 @@ Treatment to apply on .csv files for ML model conception.
 "FUNCTIONS"
 
 
-def treatment_by_teams(ref_date_str):
-    """Pretreatment pipeline to build a dataframe set for models by teams.
-
-    :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are.
-    :return final_dataset: Dataset formatted for modeling.
+def treatment_by_players(ref_date_str):  # TODO: Finish this
+    """Pretreatment pipeline to build a dataframe set for models by players
+    :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are
+    :return: Dataset formatted for modeling and players name and ID database.
     """
     # Reference date to game datetime
     ref_date = datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
 
     # Dataframe imports
-    teams_df = pd.read_csv('../../data/retrieved/by_teams.csv', encoding='utf8')
-    general_df = pd.read_csv('../../data/retrieved/general.csv', encoding='utf8')
+    players_df = pd.read_csv('../../data/retrieved/by_players.csv', encoding='utf8', low_memory=False)
+    general_df = pd.read_csv('../../data/retrieved/general.csv', encoding='utf8', low_memory=False)
 
-    # Filter sides (orange / blue)
-    blue_side = teams_df[teams_df['color'] == 'blue'] \
-        .drop(['color'], axis=1) \
-        .add_prefix('blue_') \
-        .rename(columns={'blue_ballchasing_id': 'ballchasing_id'})
+    players_df = players_df \
+        .rename(columns={'name': 'team'}) \
+        .rename(columns=lambda x: x[2:] if x.startswith('p_') else x)
 
-    orange_side = teams_df[teams_df['color'] == 'orange'] \
-        .drop(['color'], axis=1) \
-        .add_prefix('orange_') \
-        .rename(columns={'orange_ballchasing_id': 'ballchasing_id'})
+    # Keep relevant features from each dataset
+    general_df = general_df.loc[:, ['ballchasing_id', 'correction', 'region', 'split', 'event', 'phase', 'stage',
+                                    'round', 'date', 'duration', 'overtime', 'overtime_seconds']]
+    players_df = players_df.drop(['start_time', 'end_time', 'mvp', 'car_id'], axis=1)
 
-    # Join both sides
-    match_results = blue_side.merge(orange_side)
+    # Merge dataset and drop stats correction replays
+    dataframe = general_df.merge(players_df)
+    dataframe = dataframe.loc[~dataframe.correction].drop('correction', axis=1)
 
-    # Treatment for individual match results
-    bo_df = general_df.loc[:, ['ballchasing_id', 'bo_id', 'region', 'split', 'event', 'phase', 'stage', 'round',
-                               'map_name', 'duration', 'overtime', 'overtime_seconds', 'date']]
+    # Get matches results
+    results = dataframe.loc[:, ['ballchasing_id', 'color', 'core_mvp']] \
+        .drop_duplicates() \
+        .groupby(['ballchasing_id', 'color'], as_index=False).mean()
 
-    match_results = bo_df.merge(match_results)
+    results = results.loc[results.core_mvp > 0].drop('core_mvp', axis=1).rename(columns={'color': 'win'})
 
-    match_results.loc[match_results.blue_core_goals < match_results.orange_core_goals, 'win'] = 'orange'
-    match_results.loc[match_results.blue_core_goals > match_results.orange_core_goals, 'win'] = 'blue'
+    # Merge results with previous data and recode game_winner into 1 if the player won the game, else 0.
+    dataframe = dataframe.merge(results)
+    dataframe.win = np.where(dataframe.color == dataframe.win, 1, 0)
+
+    # Recode platform ID with "platform + _ + ID"
+    dataframe.platform_id = dataframe['platform'] + '_' + dataframe['platform_id'].astype(str)
+    dataframe = dataframe.drop(['platform'], axis=1)
 
     # Changing 'date' to a time delta with the reference date
-    match_results['date'] = pd.to_datetime(match_results['date'], utc=True)
-    match_results.date = (ref_date - match_results.date) / np.timedelta64(1, 'D')
-    match_results = match_results.rename(columns={'date': 'since_ref_date'})
+    dataframe.date = pd.to_datetime(dataframe.date, utc=True)
+    dataframe.date = (dataframe.date - ref_date) / np.timedelta64(1, 'D')
+    dataframe = dataframe.rename(columns={'date': 'since_ref_date'})
 
-    # Group-by for stats by match up
-    match_results_mean = match_results.groupby('bo_id', as_index=False).mean().drop(['duration', 'overtime'], axis=1)
-    match_results_sum = match_results.groupby('bo_id', as_index=False).sum()[['bo_id', 'duration', 'overtime']]
+    # Fill overtime seconds
+    dataframe.overtime_seconds = dataframe.overtime_seconds.fillna(0)
 
-    bo_results = match_results \
-        .groupby('bo_id', as_index=False)[['region', 'split', 'event', 'phase', 'stage', 'round', 'blue_name',
-                                           'orange_name', 'win']] \
-        .agg(pd.Series.mode)
+    # Players name & ID dataset
+    players_db = dataframe.loc[:, ['team', 'name', 'platform_id', 'since_ref_date']] \
+        .sort_values('since_ref_date', ascending=False) \
+        .drop_duplicates(subset=['platform_id'], keep='first') \
+        .reset_index(drop=True) \
+        .sort_values(['team', 'name']) \
+        .drop('since_ref_date', axis=1)
 
-    # Set the maximum BO matches
-    bo_results.loc[bo_results.stage == 'Swiss', 'bo_type'] = 'best_of_5'
-    bo_results.loc[bo_results.stage != 'Swiss', 'bo_type'] = 'best_of_7'
+    # Add opponents as features
+    df_reduce = dataframe.loc[:, ['ballchasing_id', 'color', 'team', 'platform_id', 'core_score']]
 
-    # Count games played by BO
-    game_count = match_results.groupby('bo_id', as_index=False) \
-        .count()[['bo_id', 'ballchasing_id']] \
-        .rename(columns={'ballchasing_id': 'n_game'})
+    bl_side = df_reduce.loc[df_reduce.color == 'blue'] \
+        .sort_values(['ballchasing_id', 'core_score'], ascending=False) \
+        .groupby(['ballchasing_id', 'color', 'team'])['platform_id'] \
+        .apply(list) \
+        .reset_index()
 
-    # Global merge / 'win' column put at the end
-    final_dataset = bo_results.merge(game_count).merge(match_results_sum).merge(match_results_mean)
-    wins_df = final_dataset[['bo_id', 'win']]
-    final_dataset = final_dataset.drop('win', axis=1).merge(wins_df)
+    bl_ops = bl_side.platform_id.apply(pd.Series)
 
-    return final_dataset
+    bl_side = bl_side \
+        .merge(bl_ops, left_index=True, right_index=True) \
+        .drop('platform_id', axis=1) \
+        .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
+        .replace({'color': {'blue': 'orange'}})
+
+    or_side = df_reduce.loc[df_reduce.color == 'orange'] \
+        .sort_values(['ballchasing_id', 'core_score'], ascending=False) \
+        .groupby(['ballchasing_id', 'color', 'team'])['platform_id'] \
+        .apply(list) \
+        .reset_index()
+
+    or_ops = or_side.platform_id.apply(pd.Series)
+
+    or_side = or_side \
+        .merge(or_ops, left_index=True, right_index=True) \
+        .drop('platform_id', axis=1) \
+        .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
+        .replace({'color': {'orange': 'blue'}})
+
+    opps = pd.concat([or_side, bl_side])
+
+    # Merge principal dataframe with opponents one
+    dataframe = dataframe.merge(opps, how='outer')
+
+    # Drop unnecessary features
+    dataframe = dataframe.drop(['ballchasing_id', 'name', 'color'], axis=1)
+
+    # Change overtime and MVP column to numeric (better format for further exploitation)
+    dataframe.overtime = np.where(dataframe.overtime, 1, 0)
+    dataframe.core_mvp = np.where(dataframe.core_mvp, 1, 0)
+
+    return dataframe, players_db
+
+
+if __name__ == '__main__':
+    REF_DATE_STR = '2021-10-08 06:00:00+00:00'  # Very first day of RLCS 2021-22
+    df, df2 = treatment_by_players(REF_DATE_STR)
+    print(df)
