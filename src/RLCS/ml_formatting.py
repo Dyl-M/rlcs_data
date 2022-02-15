@@ -77,8 +77,7 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
         .drop('since_ref_date', axis=1)
 
     # Add opponents and teammates as features
-    # # Create a reduced dataframe
-    df_reduced = dataframe.loc[:, ['ballchasing_id', 'color', 'team', 'platform_id', 'core_score']]
+    df_reduced = dataframe.loc[:, ['ballchasing_id', 'color', 'team', 'platform_id', 'core_score']]  # Create reduced DF
 
     # # Split blue and orange side and group players ID into list
     bl_side = df_reduced.loc[df_reduced.color == 'blue'] \
@@ -95,8 +94,7 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
         .apply(list) \
         .reset_index()
 
-    # # Teammates Dataframe
-    # # # Blue side
+    # # Teammates Dataframe - Blue side
     bl_teammates_list_v1 = df_reduced.loc[df_reduced.color == 'blue', ['ballchasing_id', 'platform_id']] \
         .merge(bl_side.drop('team', axis=1))
 
@@ -111,7 +109,7 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
                               bl_teammates_list_v2.id_list.apply(pd.Series)], axis=1) \
         .rename(columns={0: 'teammate_1', 1: 'teammate_2'})
 
-    # # # Orange side
+    # # Teammates Dataframe - Orange side
     or_teammates_list_v1 = df_reduced.loc[df_reduced.color == 'orange', ['ballchasing_id', 'platform_id']] \
         .merge(or_side.drop('team', axis=1))
 
@@ -126,11 +124,10 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
                               or_teammates_list_v2.id_list.apply(pd.Series)], axis=1) \
         .rename(columns={0: 'teammate_1', 1: 'teammate_2'})
 
-    # # # Merge both sides
+    # # Merge both sides
     teammates = pd.concat([or_teammates, bl_teammates])
 
-    # # Opposition Dataframe
-    # # # Blue side
+    # # Opposition Dataframe - Blue side
     bl_as_opponent_series = bl_side.id_list.apply(pd.Series)
 
     bl_as_opponent = bl_side \
@@ -139,7 +136,7 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
         .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
         .replace({'color': {'blue': 'orange'}})
 
-    # # # Orange side
+    # # Opposition Dataframe - Orange side
     or_as_opponent_series = or_side.id_list.apply(pd.Series)
 
     or_as_opponent = or_side \
@@ -148,7 +145,7 @@ def treatment_by_players(ref_date_str, export_players_db: bool = False):
         .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
         .replace({'color': {'orange': 'blue'}})
 
-    # # # Merge both sides
+    # # Merge both sides
     opps = pd.concat([or_as_opponent, bl_as_opponent])
 
     # Merge principal dataframe with teammates and opponents ones
