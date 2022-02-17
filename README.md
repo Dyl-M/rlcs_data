@@ -42,11 +42,16 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │       ├── by_teams.csv
 │       ├── general.csv
 │       ├── groups.csv
+│       ├── players_db.csv
 │       ├── pre_dataset.json
 │       └── raw.json
 │
-├── models (IGNORED, temporary)
-│   └── tuning_results
+├── models (IGNORED, temporarily?)
+│   ├── tuning_results
+│   │   └── evaluation.csv
+│   │
+│   ├── best_model.h5
+│   └── tmp_mdl.h5
 │
 ├── notebooks
 │   └── rlcs-2021-22-demo.ipynb
@@ -61,7 +66,8 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   ├── data_formatting.py
 │   │   ├── data_formatting_tools.py
 │   │   ├── ml_formatting.py
-│   │   └── ml_main.py
+│   │   ├── ml_predictions.py
+│   │   └── ml_training.py
 │   │
 │   └── test.py
 │
