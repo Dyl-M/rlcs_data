@@ -45,7 +45,7 @@ def pretreatment(original_data: pd.DataFrame, split_data: pd.DataFrame):
     num_cols = original_data.select_dtypes(include=np.number).columns.to_list()  # Getting numerical columns
     cat_cols = original_data.select_dtypes(exclude=np.number).columns.to_list()  # Getting categorical columns
 
-    split_data_cat = OneHotEncoder(drop='if_binary') \
+    split_data_cat = OneHotEncoder(drop='if_binary', handle_unknown='ignore') \
         .fit(original_data[cat_cols]) \
         .transform(split_data[cat_cols]) \
         .toarray()  # From Categorical to One Hot
