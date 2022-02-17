@@ -236,7 +236,11 @@ def game_prediction(sample: pd.DataFrame, ref_df: pd.DataFrame, model: tf.keras.
     if n_game_max not in {5, 7}:
         n_game_max = 5
 
-    def bo_score(probability):  # Compute score teams
+    def bo_score(probability):
+        """Compute score teams
+        :param probability: win probability
+        :return: team score.
+        """
         if probability < 0.5:
             return round(n_game_max * probability)
         return n_game_max // 2 + 1
@@ -255,7 +259,7 @@ def game_prediction(sample: pd.DataFrame, ref_df: pd.DataFrame, model: tf.keras.
 
     teams_prob = player_prob.loc[:, ['team', 'probabilities']].groupby('team').sum()
     teams_prob = (teams_prob / teams_prob.sum())
-    score = teams_prob.probabilities.apply(lambda p: bo_score(p)).to_dict()
+    score = teams_prob.probabilities.apply(bo_score).to_dict()
 
     return score, teams_prob.to_dict()['probabilities'], player_prob
 
