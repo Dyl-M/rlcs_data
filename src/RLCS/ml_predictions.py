@@ -3,6 +3,7 @@
 import ml_formatting
 import ml_training
 
+import numpy as np
 import pandas as pd
 import tensorflow as tf
 import warnings
@@ -56,11 +57,12 @@ def generate_match_df(region: str, split: str, event: str, phase: str, stage: st
     return match_df
 
 
-def generate_virtual_data(missing_ids: list, ref_df: pd.DataFrame, region: str):
-    """Generate fake data for missing players in retrieved data
+def generate_virtual_data(missing_ids: list, ref_df: pd.DataFrame, region: str, seed: int = 42069):
+    """Generate fake data for missing players in retrieved data (with regional quantile-0.25 by score)
     :param missing_ids: missing players ID
     :param ref_df: reference dataset generated with 'ml_formatting.treatment_by_players' function
     :param region: tournament region to filter ref_df
+    :param seed: random seed (and here tournament team seed)
     :return generated_data: generated dataframe.
     """
     n_missing = len(missing_ids)  # Number of line to keep == n missing players
@@ -71,19 +73,38 @@ def generate_virtual_data(missing_ids: list, ref_df: pd.DataFrame, region: str):
     most_used = ['car_name', 'camera_fov', 'camera_height', 'camera_pitch', 'camera_distance', 'camera_stiffness',
                  'camera_swivel_speed', 'camera_transition_speed', 'steering_sensitivity']
 
-    # Filter stats on the region
-    regional_data = ref_df.loc[ref_df.region == region].drop(to_drop, axis=1)
+    # Keep regional quantile-0.25 by score
+    regional_data = ref_df.loc[(ref_df.region == region) &
+                               (ref_df.core_score <= ref_df.core_score.quantile(0.25))].drop(to_drop, axis=1)
 
     # Retrieve the most used parameters
     most_used_data = pd.concat([regional_data.loc[:, most_used].mode()] * n_missing).reset_index(drop=True)
     most_used_data['platform_id'] = missing_ids
 
-    # Retrieve stats quantile-0.25
+    # Generate fake data based on quantile-0.25 by score
+    # # Get mean, standard deviation, median and quantile-0.75 for each statistic
     numeric_data = regional_data.drop(most_used, axis=1)
-    numeric_dis = pd.concat([pd.DataFrame(numeric_data.quantile(0.25)).set_axis([0], axis=1).T] * 3)
+    numeric_dis = pd.concat([pd.DataFrame(numeric_data.mean()),
+                             pd.DataFrame(numeric_data.std())], axis=1).set_axis(['mean_', 'std_'], axis=1)
+
+    # Simulations: Gaussian simulations or mean if simulation end up negative
+    np.random.seed(seed)
+    numeric_dis['simu_1'] = np.random.normal(numeric_dis.mean_, numeric_dis.std_)
+    numeric_dis.simu_1 = np.where(numeric_dis.simu_1 < 0, numeric_dis.mean_, numeric_dis.simu_1)
+    numeric_dis.simu_1 = np.where(numeric_dis.simu_1 > numeric_dis.mean_, numeric_dis.mean_, numeric_dis.simu_1)
+
+    np.random.seed(seed * seed)
+    numeric_dis['simu_2'] = np.random.normal(numeric_dis.mean_, numeric_dis.std_)
+    numeric_dis.simu_2 = np.where(numeric_dis.simu_2 < 0, numeric_dis.mean_, numeric_dis.simu_2)
+    numeric_dis.simu_2 = np.where(numeric_dis.simu_2 > numeric_dis.mean_, numeric_dis.mean_, numeric_dis.simu_2)
+
+    np.random.seed(seed * seed * seed)
+    numeric_dis['simu_3'] = np.random.normal(numeric_dis.mean_, numeric_dis.std_)
+    numeric_dis.simu_3 = np.where(numeric_dis.simu_3 < 0, numeric_dis.mean_, numeric_dis.simu_3)
+    numeric_dis.simu_3 = np.where(numeric_dis.simu_3 > numeric_dis.mean_, numeric_dis.mean_, numeric_dis.simu_3)
 
     # Change simulated stats dataframe format / Transposition and keep n_missing rows
-    numeric_dis = numeric_dis.reset_index(drop=True).iloc[0:n_missing, :]
+    numeric_dis = numeric_dis.drop(['mean_', 'std_'], axis=1).T.reset_index(drop=True).iloc[0:n_missing, :]
 
     # Concat everything
     generated_data = pd.concat([most_used_data, numeric_dis], axis=1)
@@ -160,7 +181,8 @@ def generate_team_sample(team_dict: dict, ref_df: pd.DataFrame, region: str):
     if ids_not_in_dataset:  # For unknown players
         player_missing = generate_virtual_data(missing_ids=ids_not_in_dataset,
                                                ref_df=ref_df,
-                                               region=region)
+                                               region=region,
+                                               seed=team_dict['seed'])
 
     team_df = pd.concat([players_present, player_missing]) \
         .sort_values('core_score', ascending=False) \
@@ -298,45 +320,34 @@ if __name__ == '__main__':
 
     # Set up the teams
     NRG = {'team': 'THE GENERAL NRG',
+           'seed': 1,
            'players': [{'player_name': 'GarrettG', 'platform_id': 'steam_76561198136523266'},
                        {'player_name': 'Squishy', 'platform_id': 'steam_76561198286759507'},
                        {'player_name': 'justin.', 'platform_id': 'steam_76561198299709908'}]}
 
-    FAZE = {'team': 'FAZE CLAN',
-            'players': [{'player_name': 'AYYJAYY', 'platform_id': 'steam_76561198105072499'},
-                        {'player_name': 'Firstkiller', 'platform_id': 'steam_76561198327846028'},
-                        {'player_name': 'Sypical', 'platform_id': 'steam_76561198323843523'}]}
-
     RAN = {'team': 'RANDOMS (NORTH AMERICA)',
+           'seed': 16,
            'players': [{'player_name': '2Piece', 'platform_id': 'steam_76561198802792967'},
                        {'player_name': 'Chronic', 'platform_id': 'steam_76561198799226283'},
                        {'player_name': 'Night', 'platform_id': 'steam_76561198873647443'}]}
-
-    V1 = {'team': 'VERSION1',
-          'players': [{'player_name': 'BeastMode', 'platform_id': 'steam_76561198284393407'},
-                      {'player_name': 'comm', 'platform_id': 'steam_76561198349297431'},
-                      {'player_name': 'torment', 'platform_id': 'steam_76561198097285289'}]}
 
     # Generate match basic information
     REGION = 'North America'
     SPLIT = 'WINTER'
     EVENT = 'Regional 3'
     PHASE = 'Main Event'
-    BESTOF5 = 5
-    BESTOF7 = 7
+    BESTOF5 = 5  # BESTOF7 = 7
 
-    TRN_DATE_STR = '2022-02-18 18:00:00+00:00'  # Tournament Date: Winter Split - North America Regional 3
+    MATCH_DATE = '2022-02-18 18:00:00+00:00'  # Winter Split - North America Regional 3 - First Group match
 
-    MATCH_DF = generate_match_df(region=REGION, split=SPLIT, event=EVENT, phase=PHASE, stage='Playoffs',
-                                 stage_round='Upper Semifinal', match_date_str=TRN_DATE_STR)
+    MATCH_DF = generate_match_df(region=REGION, split=SPLIT, event=EVENT, phase=PHASE, stage='Groups',
+                                 stage_round='Round 3', match_date_str=MATCH_DATE)
 
     # Generate match sample and then do prediction
     NRG_SAMPLE = generate_team_sample(team_dict=NRG, ref_df=DATA, region=REGION)
-    FAZE_SAMPLE = generate_team_sample(team_dict=FAZE, ref_df=DATA, region=REGION)
     RAN_SAMPLE = generate_team_sample(team_dict=RAN, ref_df=DATA, region=REGION)
-    V1_SAMPLE = generate_team_sample(team_dict=V1, ref_df=DATA, region=REGION)
 
-    TEAM_SCORE, _, _ = game_on(team_1=(NRG, NRG_SAMPLE), team_2=(RAN, RAN_SAMPLE), model=MY_MODEL, match_df=MATCH_DF,
-                               ref_df=DATA, n_game_max=BESTOF5)
+    SCORE, _, _ = game_on(team_1=(NRG, NRG_SAMPLE), team_2=(RAN, RAN_SAMPLE), model=MY_MODEL, match_df=MATCH_DF,
+                          ref_df=DATA, n_game_max=BESTOF5)
 
-    print(f'SCORE: {TEAM_SCORE}')
+    print(f'SCORE: {SCORE}')
