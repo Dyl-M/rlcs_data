@@ -808,7 +808,6 @@ def collect_ballchasing(game_df: pd.DataFrame, token: str = my_token, workers: i
             replay_tmp = p_tqdm.p_map(get_ballchasing, chunk, [token] * len(chunk), num_cpus=workers,
                                       desc=f'ballchasing.com requests chunk {idx + 1}/{n_chunk}')
             replay_list += [replay for replay in replay_tmp if 'id' in replay.keys()]  # Cover Error 429
-            del replay_tmp
 
             with open('../../data/retrieved/replays_tmp.json', 'w', encoding='utf-8') as replay_list_file:
                 json.dump(replay_list, replay_list_file, indent=1)  # Saving intermediate results
