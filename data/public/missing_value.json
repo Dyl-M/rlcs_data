@@ -1,2988 +1,361 @@
 {
-  "team_names": [
-    {
-      "ballchasing_id": [
-        "78b85e1a-c599-40da-9583-8fa3070d7c62",
-        "37b0f06a-1e10-4458-8368-5712a726df13",
-        "5fedc89e-2434-4c06-aa33-41cbad6d61c7",
-        "60cb49c0-de8f-40f5-b802-b1a03e505c41",
-        "92ca5ada-d65d-4d20-8004-732a5a6425be"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "WE OWN ALL"
-    },
-    {
-      "ballchasing_id": [
-        "6569f1b9-3437-46c1-b2b2-20d61e478c93",
-        "b45d2b86-bed6-4784-a530-460174a0e30e",
-        "279e37c9-3c29-4e23-935f-f2fe3005c725",
-        "18727c8e-a70c-4225-b253-7e14994b3314"
-      ],
-      "blue_name": "TEAM CELESTIAL",
-      "orange_name": "DISCONNECTED ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "a7604960-ee38-4dd0-8f4e-7e29f7f88bf7",
-        "b821c2e0-ce45-4739-a47c-7b92a80e00db",
-        "57cc46a7-3f25-4118-b3ac-2cd20a295f05"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "1NE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "fc1a0961-4990-47e7-9370-6e8959fe171b",
-        "f9b71def-e5fe-4df5-af6f-b8c0bfe87921",
-        "61e440d6-1841-4452-91d3-53ac99091f2b"
-      ],
-      "blue_name": "FLU ESPORTS",
-      "orange_name": "PUMPKINGS"
-    },
-    {
-      "ballchasing_id": [
-        "7a50d461-3c09-43f7-b85c-97e7a01e750b",
-        "2cf58298-e113-4ee5-b67c-5b1cf2245888",
-        "5349ace5-a4fa-4507-a9b1-9ada90df11cc"
-      ],
-      "blue_name": "BROERM",
-      "orange_name": "ATLASGAMING"
-    },
-    {
-      "ballchasing_id": [
-        "3e9ba69a-ae7c-4686-b64f-cb7542a4a416",
-        "96a3b0be-8114-4c6a-96c9-62cb2059f87d",
-        "57cbd37c-218d-49b1-9771-a376c644de2e",
-        "1ce6c22c-ee51-49a6-bfa1-9f88931376dc"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "ODYSSEY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "a823647d-7373-4bdf-a9f8-51f33179aa86",
-        "909f7e0c-590d-4d09-8d30-7cba77ef0738",
-        "7646d028-0059-47f6-a0b6-60198d903640",
-        "e547fad6-5268-400b-a9b5-41996b1bd8e8"
-      ],
-      "blue_name": "WE OWN ALL",
-      "orange_name": "TEAM CELESTIAL"
-    },
-    {
-      "ballchasing_id": [
-        "fdc6c3b4-d8bb-479a-bf8f-1c12a733825f",
-        "3839f3f6-17ee-41f3-9be8-99d340009524",
-        "3beaa382-6a44-40f1-bd92-539005600c64",
-        "1b3818a4-edc4-4e3b-9267-f48c3bfc244e"
-      ],
-      "blue_name": "AZURE ESPORTS",
-      "orange_name": "TRIPLEJAWA"
-    },
-    {
-      "ballchasing_id": [
-        "52e06715-5a62-4647-b720-8a894eea16a1",
-        "838ba038-f7d6-4ebc-b6f2-6f7b8c2f1d96"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "BROERM"
-    },
-    {
-      "ballchasing_id": [
-        "85f97288-7bf0-4e35-afc8-4691a9f0a55e"
-      ],
-      "blue_name": "BROERM",
-      "orange_name": "DELUXEDREAM"
-    },
-    {
-      "ballchasing_id": [
-        "10416adb-028e-47c7-b0fb-d3c281dade9c",
-        "f6be2404-5956-4375-a999-ba9cfae31ef6",
-        "7e63f276-6f4f-41dc-bc1e-c735559f7e98",
-        "a1a290de-b3db-4550-a604-58f7eabdbbd0",
-        "2c57f0ec-a2f0-41c6-87a5-387ea4db2bc2"
-      ],
-      "blue_name": "FRIENDLY FIRE ESPORTS",
-      "orange_name": "ATLASGAMING"
-    },
-    {
-      "ballchasing_id": [
-        "38742cfc-21ec-49b8-a38c-68c20f84d41c",
-        "c733b68f-669f-4729-8add-4a39a9cd23a8",
-        "009f7b49-fa04-4fc1-a1ad-601399f44d80",
-        "3d756ef6-7993-4f28-a863-06a8aa1057f0"
-      ],
-      "blue_name": "WE OWN ALL",
-      "orange_name": "PUMPKINGS"
-    },
-    {
-      "ballchasing_id": [
-        "01e94e8e-2d58-4a43-af39-225449c4432f",
-        "cd24f5e8-7925-4f41-bca5-c2f826b0aaeb",
-        "03b5b037-b29c-4fd8-ac56-a7bda88213a2",
-        "9429c7ba-4756-4da5-8565-032dbb0ea4c6",
-        "4b1c793f-95d7-4dd5-8f17-4b680a05ccf3"
-      ],
-      "blue_name": "TEAM CELESTIAL",
-      "orange_name": "AZURE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "6ea43d06-bf76-4278-96d9-2b695bfc97a8",
-        "9604e982-b4ec-45df-adbd-1abf05fb65c4",
-        "aa737ea0-13fb-446a-b7ab-9305c3ea460a",
-        "b41a31f3-84c7-4269-85c2-d74568c3db45"
-      ],
-      "blue_name": "ODYSSEY ESPORTS",
-      "orange_name": "PULSE"
-    },
-    {
-      "ballchasing_id": [
-        "c5b1db46-863f-43a7-912d-b45b769791b3",
-        "d0887238-eaf5-4d8a-a351-56258d0e98b4",
-        "899c1291-1ffc-4fa8-8712-061a514d843d",
-        "9f326949-48c0-42e8-81b8-5940f9029592"
-      ],
-      "blue_name": "ATLASGAMING",
-      "orange_name": "DISCONNECTED ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "91c9cd7e-724f-445f-b47a-e85adfd1d76e",
-        "2305cdcd-f2c5-4446-95d3-1f7b717c9ae2",
-        "ade26e8a-1f50-4715-935a-cbaba242a908",
-        "5f87f7a4-36b1-47c0-af45-f447952e0e34"
-      ],
-      "blue_name": "ODYSSEY ESPORTS",
-      "orange_name": "FROST ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "8231d847-4b2d-4a89-bb70-8106d1853cc3",
-        "aca1cff3-85fe-4e96-9ac1-890a2e9da0b5",
-        "3487f6a7-9398-4836-865e-1db621df3e3b"
-      ],
-      "blue_name": "WE OWN ALL",
-      "orange_name": "AZURE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "a5ec1e88-708b-4669-9822-cf5c9ce5bd2a",
-        "ac312921-d203-4016-a340-2ca2e15b7c62",
-        "0e956f6f-0618-43d3-ad22-eba114da19e5"
-      ],
-      "blue_name": "PULSE",
-      "orange_name": "FLU ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "d1cb3219-625e-49f1-8b4f-75181cc6afa5",
-        "4d579372-7313-4f0f-9e1c-b8e12fc8637f",
-        "36147084-d155-4e63-8f89-bb048a9edfe8"
-      ],
-      "blue_name": "PINEAPPLE CAKE",
-      "orange_name": "TRIPLE JAWA"
-    },
-    {
-      "ballchasing_id": [
-        "24f91180-3101-4593-8700-c01b0d3ef2c5",
-        "1e90c325-28f5-40c6-aec2-15623b7e958c",
-        "1dcc7ef4-8581-4321-b54f-8137e8821561",
-        "b30aee53-24d2-4827-93e2-5f63d6bfc25b",
-        "511eb55e-867d-44e8-8bcc-d7810bfaa471"
-      ],
-      "blue_name": "ETERN4L",
-      "orange_name": "DELUXEDREAM"
-    },
-    {
-      "ballchasing_id": [
-        "79592f4c-1dd4-4a3e-be30-f06032d6a48f",
-        "999f7cb4-9be4-4956-b35c-a1c8f7f1adae",
-        "64ff814d-dace-4765-bce4-5929146c1606",
-        "9db7d76e-58ef-4abd-bd03-87fe89ce1868",
-        "c0f41179-d747-4e31-be85-bc1519d2fd36"
-      ],
-      "blue_name": "EXODUS",
-      "orange_name": "PINEAPPLE CAKE"
-    },
-    {
-      "ballchasing_id": [
-        "0736586d-a2a1-4c92-ae88-d8198883946d",
-        "0921ae74-9f08-4085-b113-9d85706e07b4",
-        "0db451bf-9cf4-4375-9781-643d737ec718",
-        "95d19a33-e791-43b8-8459-df8807043ddb",
-        "56b5d8a9-e5ed-4e3c-b5f8-ce61206f21eb"
-      ],
-      "blue_name": "HIRAETH",
-      "orange_name": "ZNTRA"
-    },
-    {
-      "ballchasing_id": [
-        "2d89f8ec-acf1-4d14-8587-391adffe2eea",
-        "96fc776f-ea6d-4bae-bfff-cac229cab91d",
-        "66d6c777-f632-4c2e-8a42-73362eaaed50",
-        "48245909-ed81-4c3e-9059-63419e0b2b37",
-        "2ae3f33f-1bb5-4f88-aad9-1b84dfbb5c26"
-      ],
-      "blue_name": "HIRAETH",
-      "orange_name": "FLU ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "e1eb4536-b431-449f-b3e2-4f0efec83099",
-        "36e4d5ab-d0df-451b-bfa3-19478866dafe",
-        "c4b41c42-8278-4a65-ab29-5160c4c4243c"
-      ],
-      "blue_name": "SHOGUNS",
-      "orange_name": "EXODUS"
-    },
-    {
-      "ballchasing_id": [
-        "d699ffa2-2f27-497c-83a7-9f1ed73b98f4",
-        "424ae26c-9d96-49fd-beeb-563d32388c7a",
-        "00db0ab7-a742-406a-89ef-ce7b046b6fb4"
-      ],
-      "blue_name": "ETERN4L",
-      "orange_name": "TRIPLEJAWA"
-    },
-    {
-      "ballchasing_id": [
-        "531a8660-1af8-4fb9-a799-86beadb11a95",
-        "5a5a3484-e791-48c0-8e43-36ef9a59e39d",
-        "10b959ce-d9c1-4324-94f0-3047739e59f2",
-        "452a9eea-4c0f-4442-bcc3-042873feb22a",
-        "f5578c1b-ca72-4a1c-9b87-6172d369d88e"
-      ],
-      "blue_name": "PINEAPPLE CAKE",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "27203420-59ed-4dfa-980c-25f3ef938f1a",
-        "c0042468-80cf-4587-a9db-1433afd89306",
-        "f94206d6-4494-45ae-932f-29db5155348d",
-        "218205a5-6c5b-410a-b025-2b4cc22c0e64",
-        "1ab0529c-7aab-40bd-bf10-1e9267c840b3"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "ZNTRA"
-    },
-    {
-      "ballchasing_id": [
-        "768b3273-068c-4b89-b532-d65a1b3a6657",
-        "05e3c532-3d80-44de-a645-a48ed1e8c47c",
-        "8e551f23-11bd-4f42-a570-e3e578438462",
-        "da8dd0cf-89f9-4021-94bc-7f6cb7165785"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "ALKE"
-    },
-    {
-      "ballchasing_id": [
-        "0c9f23b6-9a51-494f-9ce7-e240099473e2",
-        "5a73af2f-578c-4493-92ee-e11a538d7384",
-        "64dd1204-a329-4953-b80f-fd4688d9e962",
-        "2e6c2323-9102-434f-889a-48d660a97184"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "HIRAETH"
-    },
-    {
-      "ballchasing_id": [
-        "e1d4756b-947b-4c46-b9ff-8d436f88cee2",
-        "154e0a77-cc4c-4a6c-b84c-64b852e75f3a",
-        "4204d4cf-29df-4990-a134-e21e6e828f08",
-        "91d0e28d-5ca5-4c9f-b5eb-38c9f6f55d4e"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "FLU ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "1dae31c6-fee3-45c1-b70e-65b2a5f4f5a2",
-        "bead8379-bc0a-4c16-9008-a8f694b1608e",
-        "42680617-e77e-41ec-9bb9-cbf340d18e73",
-        "7396991d-48ab-4a35-8a6c-7ee1b3979b7e",
-        "9fa4e6e1-ca90-462e-ae32-6353709e59f2"
-      ],
-      "blue_name": "EXODUS",
-      "orange_name": "ETERN4L"
-    },
-    {
-      "ballchasing_id": [
-        "c4ad18a2-9ef0-49e0-a1ef-024edefbb42a",
-        "e98192a9-4ea0-4141-9e37-5e4d85c78e89",
-        "bb0b5922-f89e-465b-8679-cca264a9e1ad"
-      ],
-      "blue_name": "SHOGUNS",
-      "orange_name": "PINEAPPLE CAKE"
-    },
-    {
-      "ballchasing_id": [
-        "f093ab83-6dec-4bf9-814d-0a54a2088e78",
-        "1d5340cd-8736-442b-94aa-96647f762d81",
-        "3425292c-7305-48e4-b8e1-d7858438be96",
-        "a5c47a32-76a1-48fc-aa60-ac7ff311350d"
-      ],
-      "blue_name": "AZURE ESPORTS",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "d7ce414f-8487-4716-ada7-e8850e06ef8d",
-        "b15b09ea-c0ca-4338-8050-acd29deed914",
-        "f8b33e26-8b11-4c34-9adb-a55c1ad2d610",
-        "6635f329-0cef-4aec-a33b-6b0c63d8597d",
-        "af604d96-db35-4dc8-80d3-edc63e415adc"
-      ],
-      "blue_name": "DISCONNECTED ESPORTS",
-      "orange_name": "ALKE"
-    },
-    {
-      "ballchasing_id": [
-        "0651ceeb-a824-4e4a-b88f-e89361b3f316",
-        "9d14d8f5-b8f2-4e94-b9b5-79db8e65cfc7",
-        "d88e5a8a-e845-43ed-997d-1df96a145624",
-        "b05063e8-4903-4ddb-b1f4-20ae50142007"
-      ],
-      "blue_name": "PINEAPPLE CAKE",
-      "orange_name": "DISCONNECTED ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "8f584489-9b37-4c41-b5c2-d355a59793b6",
-        "2187b3f9-ee50-4d45-98c4-1971c5fe3458",
-        "e905ac59-adce-4944-bdf8-ed813d90693b"
-      ],
-      "blue_name": "HIRAETH",
-      "orange_name": "TRIPLEJAWA"
-    },
-    {
-      "ballchasing_id": [
-        "0d714f61-376e-403a-8534-e9885bafbcfd",
-        "d71200e6-95ad-4385-b902-121c3f670cd0",
-        "95f9be85-74f1-4959-9174-259410c575e1",
-        "59d99a1d-624b-4f0c-bc00-bb9fb9c6828f"
-      ],
-      "blue_name": "ETERN4L",
-      "orange_name": "ZNTRA"
-    },
-    {
-      "ballchasing_id": [
-        "51ea4bcd-3768-4db2-8f7d-96d011d4e244",
-        "2d49f2e3-d8e6-4f55-b9da-95506f27b6b7",
-        "adee67ff-a063-40b1-8b4f-1722c580efb5",
-        "079f8019-bef7-4679-a102-e08f610a65e0"
-      ],
-      "blue_name": "FLU ESPORTS",
-      "orange_name": "AZURE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "9234590b-6660-4407-81f2-fbfdb175510f",
-        "93bbdc67-e3e6-40e9-a7d6-dc454252ef42",
-        "bc509799-6eda-434b-bc27-69035fe30d4b"
-      ],
-      "blue_name": "SHOGUNS",
-      "orange_name": "ALKE"
-    },
-    {
-      "ballchasing_id": [
-        "e98aea4f-7d6e-4bda-8f6e-41ccd24e62b4",
-        "77524c1e-ae72-4174-a0b7-2c21bbeb70c2",
-        "11349e4b-9f12-4df8-ad51-d03fe948c68f"
-      ],
-      "blue_name": "TEAM CELESTIAL",
-      "orange_name": "TEAM NAZGUL"
-    },
-    {
-      "ballchasing_id": [
-        "7ce657ea-0e58-48ef-9fe4-b99adf7b3116",
-        "74e65631-034d-4dcb-8cb8-21b1d46379e4",
-        "e945b903-e0e0-4ce6-b159-a0ed4ff04b7c"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "SCUBADRIVERS"
-    },
-    {
-      "ballchasing_id": [
-        "ab6bdc69-a182-4937-975d-ed92469cb840",
-        "38ce0410-51ae-4d14-86d9-966f662c6c99",
-        "6c54673f-76f4-45d2-b67d-a6f5409595f0"
-      ],
-      "blue_name": "TRIPLEJAWA",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "c4b990bf-2d46-4eb3-bd68-507f7529c086",
-        "7a1e9da6-7a01-4e74-ba3e-65e4b0791238",
-        "270fe221-64f6-48fb-8138-f5d7128f7670"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "SHOGUNS"
-    },
-    {
-      "ballchasing_id": [
-        "ff6896e4-c2f6-41cd-b272-cb1be569378f",
-        "061e3857-0812-421b-97cc-ae39bff3550a",
-        "1098e541-08f4-4f31-94d1-830b549a2c1b",
-        "dd6bab4c-c79e-40c0-ab9e-71963900740e"
-      ],
-      "blue_name": "ZNTRA",
-      "orange_name": "SCUBADRIVERS"
-    },
-    {
-      "ballchasing_id": [
-        "f98bdbe9-9b6f-465f-ae12-5cf93fb1b635",
-        "539ffebb-dd97-44c9-b710-21e82a7a08c4",
-        "3ccc308e-95c8-4a5a-8c87-f732cfe81702",
-        "315ac3d4-ecf3-40c9-b2d7-1f7d302fb14f",
-        "9407f3d6-1aba-4f29-b355-aa5ca6293832"
-      ],
-      "blue_name": "HALAL MEN",
-      "orange_name": "TEAM CELESTIAL"
-    },
-    {
-      "ballchasing_id": [
-        "b35387c3-218d-4274-9156-074805bfa1ed",
-        "65de8c57-8d8b-468c-98b1-2687187ce7a6",
-        "c5f283ca-3482-4f00-98de-585288841ec4"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "0f84a970-fe32-4ba2-bee9-399e0750305c",
-        "c75f892c-8dff-4d66-8b4c-ac41b6f472e3",
-        "6ad5f6a4-950f-4a34-a06c-8e4055b3c186",
-        "bb4c87a2-5c9c-4a5e-a15b-849cb74a15c9"
-      ],
-      "blue_name": "TEAM NAZGUL",
-      "orange_name": "ZNTRA"
-    },
-    {
-      "ballchasing_id": [
-        "e2a421c9-a723-4c3f-8d4a-6b786378c94e",
-        "2b17d0c7-2738-46a9-ada5-694063a040d4",
-        "494f407e-48f7-40e2-9463-7dd380a23421"
-      ],
-      "blue_name": "HIRAETH",
-      "orange_name": "SCUBADRIVERS"
-    },
-    {
-      "ballchasing_id": [
-        "44376330-375a-446c-8b2a-e4f088d6fe73"
-      ],
-      "blue_name": "SCUBADRIVERS",
-      "orange_name": "HIRAETH"
-    },
-    {
-      "ballchasing_id": [
-        "0618550c-e5f7-4d6f-add6-6b2717a60c90",
-        "01a01cbd-8e0e-4639-a1b8-5602130b4c03",
-        "f8bf6854-2db8-49ef-a369-1a49f08efb92"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "444c0920-d22a-4de3-811b-aa01f54c606d",
-        "31a33ba4-b249-4605-851e-5c4716bfcc67",
-        "c745d471-66e2-492a-80b8-d6029ab112c0",
-        "b60bba64-0fa6-4024-8f58-ec97ead50e8f"
-      ],
-      "blue_name": "AZURE ESPORTS",
-      "orange_name": "PINEAPPLE CAKE"
-    },
-    {
-      "ballchasing_id": [
-        "04a41dd8-78b2-419c-b039-d22876583b7c",
-        "b04fe595-9e7b-49e8-a659-3c3b3348468a",
-        "34fdefcb-3f65-4626-a5ac-5d92c3a033c4"
-      ],
-      "blue_name": "TEAM CELESTIAL",
-      "orange_name": "ALKE"
-    },
-    {
-      "ballchasing_id": [
-        "f20aad32-078a-4f34-b8b8-f3f9f6af1ad8",
-        "d41f1d2f-8968-4e03-bc6f-c41a6b7d6ea7",
-        "88fdaac4-da09-4260-8aac-6c78b85cf282",
-        "c136cbb4-6b3d-48fc-bb01-577f57d82752"
-      ],
-      "blue_name": "TRIPLEJAWA",
-      "orange_name": "SHOGUNS"
-    },
-    {
-      "ballchasing_id": [
-        "4c836b57-f86b-4712-bce3-553b2d01acb5",
-        "34f519d0-99af-4600-8e6b-d4e859e60d8c",
-        "8d342157-118a-4eb9-a514-11548ddd45f9",
-        "dd83dbc8-e42b-4947-b9ee-e1c51b42ee74",
-        "232dcc55-ed31-463c-9f93-549f5c0fe33b"
-      ],
-      "blue_name": "TEAM CELESTIAL",
-      "orange_name": "TEAM ATELIER"
-    },
-    {
-      "ballchasing_id": [
-        "0063dc7d-edc1-420b-8c02-8ce6107ace65",
-        "1597c072-ccab-4d72-8a0f-01fc1187ddbe",
-        "3b09d7ab-f079-4181-bb7d-d8c81ced7b5b",
-        "b9ea3f00-bc03-470e-b6fd-4cf447c7f80d"
-      ],
-      "blue_name": "ZNTRA",
-      "orange_name": "AZURE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "e57f682a-b4cf-48bb-a7ba-fe0c8ea073cf",
-        "bb28a8b3-5af4-4d07-b851-96107cd37b43",
-        "0bd17de6-9059-4c2c-9b92-b62c266e15dd"
-      ],
-      "blue_name": "TEAM NAZGUL",
-      "orange_name": "PINEAPPLE CAKE"
-    },
-    {
-      "ballchasing_id": [
-        "6b196031-b09d-4d12-8a7d-babc42a775d8",
-        "384ee3b7-96e7-46cf-bd30-ff8d2b3500cf",
-        "18750083-02c7-4994-be3b-1dc5469369a1"
-      ],
-      "blue_name": "DELUXEDREAM",
-      "orange_name": "ALKE"
-    },
-    {
-      "ballchasing_id": [
-        "48c1fc29-54a9-446b-a767-8a04131d3897",
-        "159412eb-6197-42e8-87ad-3d40ab38f40d",
-        "a8183fad-c78c-428f-ac86-90db02158186"
-      ],
-      "blue_name": "NOVEL FRONTIER",
-      "orange_name": "MOTI MOTI GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "5876314c-3646-440e-9ce1-ffc350fc7998",
-        "4763287c-a003-4d9e-a9ae-71c7b6ba98a5",
-        "0545f7d5-d9ae-4c67-bc06-4e412e0213e6",
-        "f158f59d-37c4-4bdf-b8fd-d8631d37732a"
-      ],
-      "blue_name": "KOKEKOKE KICKERS",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "e07c97b9-a499-42ec-8b97-9e779dec2031",
-        "d9adc6db-8691-442c-9fc3-9de83750cfb9",
-        "b2ba31be-df66-4a26-8989-c5bf2e639742",
-        "2b35431d-25bb-4a64-a031-bdf5a84b579a"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "b52c846d-b8dd-403d-8f61-1faf50f352b5",
-        "74a2b472-b4d5-4115-a675-8eb75235a8e6",
-        "c1488609-4084-412c-8542-9fe024288159"
-      ],
-      "blue_name": "KOKEKOKE KICKERS",
-      "orange_name": "METHOD2MADNESS"
-    },
-    {
-      "ballchasing_id": [
-        "e75cbeb2-237a-4389-bb70-b5173e270ff9",
-        "c8a5304f-97b9-45fc-acc9-b6bb68d81b2c",
-        "f4f14a53-b9ee-4487-bf52-0a644115f565",
-        "2be88b25-b316-43da-88e2-ee0ecb457a24",
-        "f2da1801-a491-48f6-9d00-53b48ec1f691"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "MOTI MOTI GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "8b769be9-e2b5-4a0d-bd41-a561c567d9a0",
-        "26131837-e8a0-4beb-8c8c-9bc61af67b06",
-        "5537985d-0c97-4891-a0ad-458c793abb82"
-      ],
-      "blue_name": "FALL MOUNTAIN",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "1fb53644-adfd-4976-b5ec-3d7dee5bb794",
-        "4aea25f9-eec9-43c4-be37-fccbc52aab19",
-        "2931697f-3984-47e8-8d5a-13cb37bda344",
-        "d74e44d8-20a0-46db-8484-43332355b583"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "39115c99-5f04-4484-9699-c8e219516005",
-        "f4cf893c-5707-4318-9d92-8573d3cf5395",
-        "29fc06cc-b1a1-432f-b8fe-8bee0f4e45e7",
-        "9306de67-2b56-44da-8825-1aee91f04379"
-      ],
-      "blue_name": "KOKEKOKE KICKERS",
-      "orange_name": "GRACESBLAZE ANIMA"
-    },
-    {
-      "ballchasing_id": [
-        "cf06f314-2695-4be6-9167-3377360da279",
-        "b5fc0756-9c25-4db9-8e60-7a97e24670ad",
-        "98f6ce05-0624-4e53-ba5a-2c3fe09469fb",
-        "c110f65a-be08-47cf-8377-e8f991688103",
-        "b265db59-0bee-4c28-811c-a32e500ad5ed"
-      ],
-      "blue_name": "NOVEL FRONTIER",
-      "orange_name": "NOR"
-    },
-    {
-      "ballchasing_id": [
-        "f17e3eba-59b7-4d9b-b33c-7cbe3d636252",
-        "6fa37360-912e-4c5d-bbee-b963b23247b4",
-        "1da2c35c-550b-4419-b0f8-b90f95768980"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "c4261b74-a9be-4952-90ee-533f6f91efc8",
-        "06839df3-e5fb-4c54-916f-c1a31a5d67fc",
-        "ee57ee9a-6182-4b33-8352-5eea9e60655d"
-      ],
-      "blue_name": "BLAST",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "e8a8fb6d-de20-4328-a859-50c80496e0d4",
-        "f8c57f52-6120-426a-86b5-eb08ec25f621",
-        "bcdd8af1-4ee5-4e79-b3fc-c8abe4fa536a"
-      ],
-      "blue_name": "FALL MOUNTAIN",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "6eda2d77-485d-4872-a9cf-1b0571a6663b",
-        "b737f4dc-cf46-4628-a301-5bed9604e51c",
-        "0c3469e4-fc15-43eb-9678-99ff01de8df0",
-        "b7cacac5-216b-4d0c-9a17-cd1283f0b9a7"
-      ],
-      "blue_name": "GRACESBLAZE ANIMA",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "b40df387-7493-4abb-8903-d04313214991",
-        "0d8efca2-4598-4147-a214-55228669185d",
-        "6cc97671-5dfc-48b1-b253-ffb5e9f16209",
-        "f26555f4-e3ab-4526-8878-32c814601e97",
-        "0e5f4861-8404-41c0-b9f0-ea5ec8dd64ff"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "6d24d1c4-edb0-46bf-a5eb-70cf55bb316a",
-        "f25da812-441f-4267-9fad-e9329d44a217",
-        "f61ca035-2591-4306-b6b7-d06fa52511ed",
-        "3d78ddc4-72d0-4df1-acba-7355e6f2cfb3"
-      ],
-      "blue_name": "N CHIKI",
-      "orange_name": "NOVEL FRONTIER"
-    },
-    {
-      "ballchasing_id": [
-        "0e504c8c-40af-4a76-840f-c01cf360016d",
-        "24b0b148-f2a9-4b9a-b470-23eefa1d29ba",
-        "e5924ce7-40a3-40df-89a8-214861f5f309",
-        "c34be7a8-654f-4c40-aac7-62f74fe2028b",
-        "4f60c0a0-f149-43e6-837a-983886575b8f"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "GRACESBLAZE ANIMA"
-    },
-    {
-      "ballchasing_id": [
-        "a7c06bf9-76ca-4e9c-9a86-63b73e73f92d",
-        "486557a1-2dc1-4b12-a42c-2bb2cf9fcf06",
-        "af97192d-0729-4793-a5e5-0586e1ec33e8",
-        "e1aeaa7d-32c3-4ac3-98fc-d515f4ca1b8a"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "DETONATOR"
-    },
-    {
-      "ballchasing_id": [
-        "5c9dda56-6abd-4ca1-b382-651f901d9c77",
-        "eb18a020-3ec0-4cb5-a799-7dc9dd43cead",
-        "43ab8818-600d-42f5-aa05-456dd854c881"
-      ],
-      "blue_name": "NIMMT55",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "65879d39-a461-4f5d-a4e1-be8356494e69",
-        "6d593300-527d-4759-8e58-c43726585efd",
-        "bb0145de-be30-4559-a387-cbcb7ff52bcd"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "SYLPHIDE"
-    },
-    {
-      "ballchasing_id": [
-        "dbc631ec-3481-462d-9099-a45c9daba5f9",
-        "091091e2-1f77-4bf8-811a-ddc7ad52bc13",
-        "2825366c-dfb8-4491-85ee-2ec9fffd2420"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "04b23838-f901-4694-86bc-033c0434ceec",
-        "19f0e410-be2e-468a-b3b7-bd652f5a0b6b",
-        "ee78adc4-b2f9-4a7f-aeab-6ed0365b5971",
-        "02b9a786-b2f1-4664-915c-e1a57202aec9"
-      ],
-      "blue_name": "WIZARD LIZARD",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "6dadd874-897e-447e-ae75-1c0c41c72d3c",
-        "e49ca2bb-e471-4122-b3bc-77fd32d17480",
-        "0da0d377-bbe6-41e9-984f-a66bb22b0b87",
-        "ed6faa5b-cab8-47c9-b35a-39f513f5c4f7",
-        "93d20cf6-c35c-41b5-a4d8-ec31e0a0bcef"
-      ],
-      "blue_name": "ALOHA",
-      "orange_name": "GRACESBLAZE ANIMA"
-    },
-    {
-      "ballchasing_id": [
-        "e6e56b5d-2de3-4601-80c5-5f1246f8034c",
-        "07b6a9ca-a711-49ad-878c-0c156c23255b",
-        "726a28f9-e5da-4475-852b-bdbb5e2f887c"
-      ],
-      "blue_name": "NOVEL FRONTIER",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "5d3a0012-7eaf-4d5f-ba48-0018eaa762f5",
-        "57e7adb8-4b10-4166-8394-b052d39c6688",
-        "ee7906a8-41d9-416b-b016-0de7e7f2c5f0",
-        "effc6c52-550b-4b74-ba28-0130642cb2ca",
-        "7cd1c396-2f8a-4ec7-af45-bc9de69aae53"
-      ],
-      "blue_name": "SYLPHIDE",
-      "orange_name": "NOVEL FRONTIER"
-    },
-    {
-      "ballchasing_id": [
-        "acbc26a2-1b3d-4d39-84a1-615edb997d8f",
-        "a499dff7-fac7-40fe-92ab-cf4889c89909",
-        "cba2ae45-aca4-4656-bd41-a70e42cd1b30"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "WIZARD LIZARD"
-    },
-    {
-      "ballchasing_id": [
-        "5cfea5af-87d3-4c04-8e38-9eef9ab7589d",
-        "5b5b68ff-163d-4954-9cc9-5ca0b034aacd",
-        "151abc17-c241-4491-bc86-2bfe5a319751",
-        "3d552f3a-5e13-4915-a942-9e887450797d"
-      ],
-      "blue_name": "N CHIKI",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "5d3267f3-49d6-4e61-b3a9-479281e9d295",
-        "cf7a242b-1791-4893-94b9-50ba7000c41a",
-        "97503539-2849-49f5-b748-89d0fb282d80"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "ALOHA"
-    },
-    {
-      "ballchasing_id": [
-        "639eb7c0-bfed-4c90-8f67-009ad7d4caef",
-        "58ac017f-5995-40fc-8bfb-45ed3a88b35d",
-        "8f4b49fc-44b4-410b-a78d-bd46053fba29"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "TEAM GANDERS"
-    },
-    {
-      "ballchasing_id": [
-        "4c6de3ae-77ba-442a-ace8-f829c4dcf7ac",
-        "902dc427-c650-4c25-8c9d-11fb5ba79608",
-        "9b5ccdde-138c-4dd3-aecc-6af788ac81fe",
-        "8d008aa2-9df8-470c-9f73-9f10e13495cf"
-      ],
-      "blue_name": "GRACESBLAZE ANIMA",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "0f4bcec5-d93a-4e62-95f8-39340fce89d3",
-        "0659086c-a5a9-484f-9dad-baf7dd511e62",
-        "f75afa06-5e8a-43a1-8dce-8e1df761cfb4"
-      ],
-      "blue_name": "NIMMT55",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "359ae621-a8ee-4626-ac42-a2e7f8884192",
-        "4a5718c9-8f1b-4298-8a4a-9c3a40953ea5",
-        "a5e9a932-14db-4aa6-b826-85ec06559d09",
-        "c3069d2f-a0d1-4fe4-8182-6e58a108bb76",
-        "46f9b7a9-7208-4448-90e2-1914a732bfe6"
-      ],
-      "blue_name": "ALOHA",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "20d91ac1-3a87-4b23-b9f4-302736ba8a57",
-        "71c14bbe-a562-40cd-ac9a-29df6b6fe570",
-        "d7de4738-a550-4bcb-9a29-471ee717e93f",
-        "91316296-e2b6-452e-848c-62ce2103a127",
-        "f8b62319-ba42-4a28-bbf5-e7dd027be618"
-      ],
-      "blue_name": "BLAST",
-      "orange_name": "GRACESBLAZE ANIMA"
-    },
-    {
-      "ballchasing_id": [
-        "a126051e-0988-4403-8214-039e23f88a95",
-        "1436fd79-ed90-48cc-a273-d1d6d489ec23",
-        "cbc81f18-933d-4fcc-b719-6638e550eba7"
-      ],
-      "blue_name": "N CHIKI",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "3135a9af-f0ba-4089-b10a-9c283e6bfee2",
-        "f521ddb0-174f-454f-8ade-399b037797a6",
-        "9638c913-dd75-4c80-8784-1e21904e18b7",
-        "f22dfe13-3fc7-4aab-8b9a-5d088f666986",
-        "08558009-a9b7-4990-8cdc-1f0ab529eeac"
-      ],
-      "blue_name": "WIZARD LIZARD",
-      "orange_name": "TEAM GANDERS"
-    },
-    {
-      "ballchasing_id": [
-        "21e4fed2-fd31-45bd-8cb3-0b578d43c33b",
-        "c2d9f5e3-2c52-4e21-b1cc-26d59d897ac4",
-        "fffe9bd5-0b6b-4148-96c0-64704a7c0b10"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "7102358b-1806-4c36-a581-13a6872d938a",
-        "a5934a71-df58-4752-be19-6e7edaf0ec2a",
-        "a8bd8dbd-4e1f-4a88-9766-56b07badc15e"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "0b515595-659e-408e-9b7d-94b56e8c648d",
-        "82413957-b89e-4407-8fc5-57983962a5fb",
-        "523aa710-8c3b-4b9d-ba6f-0d8519a9614f"
-      ],
-      "blue_name": "BENIZAKURA",
-      "orange_name": "GRACESBLAZE ANIMA"
-    },
-    {
-      "ballchasing_id": [
-        "e6e27944-97c5-4e4a-8c44-b0f9a32003c6",
-        "36ba737e-a1fc-4a76-b7b1-1b2c877f8b61",
-        "b080a1ab-1967-4b1d-ac9b-7f1cd1b76f66",
-        "8196cb9c-287e-4004-b229-d28ca43d165f",
-        "abad7431-fc09-4ac0-8e08-d1f21005ee50"
-      ],
-      "blue_name": "BENIZAKURA",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "650a7ba3-898e-498a-887a-1b464f9791a0",
-        "d145b76c-b5c4-474f-8e76-a01ac6df1093",
-        "49b5599e-ae5c-4b2e-a9c7-d49d348208a3"
-      ],
-      "blue_name": "KACHIAGE ISLAND",
-      "orange_name": "NOR"
-    },
-    {
-      "ballchasing_id": [
-        "d4798534-f8d0-433e-80a8-55fb60cd5cff",
-        "076cc633-4b77-4c77-812c-d262d90f22ac",
-        "0eb69d88-c57c-4044-9633-9f32b802f7b1",
-        "8d577fe0-3dfc-4cf8-a926-00fa96d5074b"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "SCREAAAM!"
-    },
-    {
-      "ballchasing_id": [
-        "5ca1634e-932d-4ab9-9dcc-4647f8ab0156",
-        "35ad720b-f8e5-42d4-adaa-87c9abaf0a4f",
-        "b174c999-f010-4432-b2b0-2c1d17efac18",
-        "60611f2c-006c-42ae-ab26-4070508c7ad1"
-      ],
-      "blue_name": "HILLTOP PICNIC",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "e984bdcd-af4f-43ff-8304-081e8bfc2280",
-        "34e71f25-d052-455f-b65f-a749d391b717",
-        "03ffb350-b5bb-444f-8a8d-c23dde08b91f",
-        "c63c0680-3878-47be-8148-fcc5d6d6fac1"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "DETONATOR"
-    },
-    {
-      "ballchasing_id": [
-        "d26a27ea-9f91-4c5b-8df2-ca6e2ca21491",
-        "0e04a61c-f5f1-493c-84f3-1f23f5eb6a6b",
-        "6638dddd-f691-494d-9581-ade2c9ca35a8",
-        "3a00b68d-4b3f-44c3-b18f-b7b0efe6738b",
-        "3d2230ec-432e-4118-a392-41efb492e062"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "7ce1c0ac-445b-4138-a349-5d1f1b65b394",
-        "1f42cb17-07ec-4648-80ea-af47bafab985",
-        "8d3f4a45-1438-42de-9441-cd5590ea66b1"
-      ],
-      "blue_name": "GRACESBLAZE ANIMA",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "30fedb12-d7ef-4bc9-867a-123b250c9246",
-        "c0560b95-2915-4087-b20d-084b7ad3a47a",
-        "bedc1293-a90e-4cbd-b535-0136316c0fbe",
-        "5d92c949-5fd6-48ab-b34b-9832b7f0d7fd"
-      ],
-      "blue_name": "SCREAAAM!",
-      "orange_name": "HILLTOP PICNIC"
-    },
-    {
-      "ballchasing_id": [
-        "c5317914-ef02-419f-8b34-658c43908c66",
-        "d91936b0-ad0b-44c4-89b0-233a720e234c",
-        "07b4a617-69f3-4da1-8bd3-fadf6b8a1427"
-      ],
-      "blue_name": "BENIZAKURA",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "4618339a-ef75-4a1a-be47-b1ce27807a11",
-        "1f9bf72d-464e-4386-9809-a6ccca13d2d6",
-        "18550bdf-7d3d-4766-b1e7-7824d6524a60"
-      ],
-      "blue_name": "DETONATOR",
-      "orange_name": "TEAM GANDERS"
-    },
-    {
-      "ballchasing_id": [
-        "7e57fd21-55d4-40bc-a6bd-6dbd19404025",
-        "4066bf79-c57e-41e2-ac22-f80282382656",
-        "7a2a234b-5929-421d-9d26-351079fba2cd",
-        "4ef975e5-3cd4-4c84-b990-5ca6136cd88d"
-      ],
-      "blue_name": "SCREAAAM!",
-      "orange_name": "KACHIAGE ISLAND"
-    },
-    {
-      "ballchasing_id": [
-        "ada8b0bf-4685-4836-859a-0d66b1aa78da",
-        "44314b7f-edbf-49d5-a93d-20dee64cfbab",
-        "f378cf40-d564-4552-b839-47f721c089fc",
-        "28a619e4-ad7e-410f-92b4-37297d58c68b",
-        "f1c97697-5ca5-403f-a6c5-e87bc7027774"
-      ],
-      "blue_name": "TEAM INHERITS MICRO",
-      "orange_name": "NOR"
-    },
-    {
-      "ballchasing_id": [
-        "1c552449-bf0f-4b69-8d1e-d0ca6118f900",
-        "94df358a-19bb-4c81-9b79-32476bcf0742",
-        "64081ddb-dbad-4d05-b7fd-b8e161f61863",
-        "8a27afc1-a30a-4088-b0f9-0bffcb5a4acf",
-        "f950adc2-70c7-4fdf-a811-abaa078b9f01"
-      ],
-      "blue_name": "NIMMT55",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "bb1e1045-d3a0-45fc-9ccf-2674acf52fd1",
-        "d2215392-63ce-489a-b2cd-8a8a2487982f",
-        "4fd9f80e-e9ac-4383-a171-8781b1c2eb9b"
-      ],
-      "blue_name": "BLAST",
-      "orange_name": "TEAM GANDERS"
-    },
-    {
-      "ballchasing_id": [
-        "5bbd0787-0900-444b-8fef-8a982e6c5885",
-        "21ad4cae-068b-497d-9e5d-4b3bf7c99bd4",
-        "1604b9de-6d8e-4978-b815-951dac2938d8"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "9e1f6090-ca4a-4d43-9ad0-71795612acdf",
-        "d3b44ff6-69e5-4f63-8bfc-973d8890dbab",
-        "af888c7f-9d39-4a8c-92a9-ac8c45eab47e"
-      ],
-      "blue_name": "SCREAAAM!",
-      "orange_name": "CVENT"
-    },
-    {
-      "ballchasing_id": [
-        "d1c506c2-a714-4a1b-9803-9de4ad0d082c",
-        "8fcd3ddd-2275-4fc5-8aae-1d76b183a5d7",
-        "b2a7c0c5-8d2b-4d6d-8c95-d74dc853ec7c",
-        "91162c85-ccb2-4ff9-8a3e-49546ff49820",
-        "a4f15ec5-1101-4e2b-b039-e951de709347"
-      ],
-      "blue_name": "NOR",
-      "orange_name": "HILLTOP PICNIC"
-    },
-    {
-      "ballchasing_id": [
-        "509ee15d-d83d-4d57-a478-0ba82ba3de02",
-        "385478e3-5a35-4dc2-9bf2-7a38f704c4d1",
-        "f6412136-242f-4ebd-9cb3-4f77bd28e7f8",
-        "482cb2a6-c6f1-4203-89e7-a800cd11e82e"
-      ],
-      "blue_name": "KACHIAGE ISLAND",
-      "orange_name": "NIMMT55"
-    },
-    {
-      "ballchasing_id": [
-        "134f1423-f1b7-4d26-8041-df152b3bdab2",
-        "1ce1da2e-bff4-4628-92a7-fac7777ca3fb",
-        "78c5167e-a36a-444c-a522-bd6f3375dd88"
-      ],
-      "blue_name": "GRACESBLAZE ANIMA",
-      "orange_name": "TEAM GANDERS"
-    },
-    {
-      "ballchasing_id": [
-        "e0573b74-96ef-47bb-9536-343fb9553b87",
-        "faee7311-5947-43d8-8eda-fe84fe82e77e",
-        "bb05d0d8-5963-47a3-9b5d-edca199da84c"
-      ],
-      "blue_name": "BENIZAKURA",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "0e03bc92-5bc9-4100-8811-53aacc5f6084",
-        "5934534b-6da4-42f5-b132-c7ce987e56ef"
-      ],
-      "blue_name": "ANKAA ESPORTS",
-      "orange_name": "THE ULTIMATES"
-    },
-    {
-      "ballchasing_id": [
-        "1d331f2f-de96-4ec0-964c-5b002116e513",
-        "25ed56c0-9757-4682-af1d-fca1e34e37fd",
-        "aa5d3d08-1170-45da-bf65-a7336da8c8ef",
-        "35244584-2be7-4517-8958-9a4d68902efe"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "THE GROGANS"
-    },
-    {
-      "ballchasing_id": [
-        "af8acb0c-665d-4ef7-be38-0cd428b88873",
-        "f75eb2ed-ec73-4f37-b9d9-43a4fcda4336",
-        "f0d43eca-1737-4d4d-8db5-cbc23ac95007",
-        "4ca6adc5-4880-4f21-af5d-7528ff98a2de",
-        "3da5b17e-d794-4799-a2ea-2e003dab042e"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "TEAM EROS"
-    },
-    {
-      "ballchasing_id": [
-        "4eb907ef-f54e-4ced-a101-50ebfad3c604",
-        "9c826dc6-9186-443d-aa32-75c799293c4d",
-        "c43da666-cc31-43cc-afea-54785c436935",
-        "0c14b145-f433-4a4a-93b1-2099a422bb38"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "f765ec6c-2c89-4488-a037-a0bce9242c71",
-        "2df9c4e3-f805-4643-bdf4-471116e975e4",
-        "ded268de-64c1-434c-91ba-30021e9980a6"
-      ],
-      "blue_name": "TISI",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "dd1218a9-453f-4a3f-8b29-f2e0d7146054",
-        "831491e5-2263-4ef1-9f0d-c9ae70a5d8b3",
-        "fdf5391b-a99f-4e1f-8984-6a9b26874f2d"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "5f7dfa66-df1a-4b6b-b033-72db87fef945",
-        "00003f2d-37ed-457b-aac8-df08d34a2a16",
-        "2f53662b-1cb9-4a5d-ae7d-354d7317a1b9",
-        "568835b2-626b-47b1-8b4b-f165ecf6197f"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "cb9a869d-184d-4e4f-8152-ece3f00aa96e",
-        "8f8aedac-0743-4120-8170-4dae8935176f",
-        "1aef7242-de42-4688-bfe3-ff36b7b02d61",
-        "9358a1ab-b02f-4cc7-9939-7bc10b1071fa",
-        "0857099c-5490-4fab-877d-43f41113f14d"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "TRIDENT ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "bece7671-082b-474e-a4b3-772264851d11",
-        "c1a75dd8-0d45-436c-837b-a982839eec49",
-        "e5900777-3639-4e8e-958e-176f823bf600"
-      ],
-      "blue_name": "TISI",
-      "orange_name": "GAMING UNITED ESPORTS CLUB ACADEMY WHITE"
-    },
-    {
-      "ballchasing_id": [
-        "69bb28c1-0a5f-49ba-81a2-59d38e303f9f",
-        "c023ec56-10ff-476f-bbe1-978eefe44f31",
-        "c785185c-efeb-4bea-adc0-00f1ec0a7f25"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "FIRE BREATHING RUBBER DUCKIES"
-    },
-    {
-      "ballchasing_id": [
-        "44d816b0-2150-498f-990d-8396f892bd9e",
-        "b87e692b-1098-41b6-b8d2-b7f5b2257b55",
-        "eb911bcd-a1fb-4d94-ab9d-2809c43517ae",
-        "6928b0fc-3292-4d73-9394-1317d811cd54",
-        "7a9331be-5296-49da-8a5c-b79e96e4ae7f"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "60837503-5ebb-4b56-9147-5e672444cbcd",
-        "8c18cc0a-01c1-4bb4-a288-77f393b7d6bd",
-        "6de7648c-2b91-4fff-be97-ac75ff4eac3d"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "d9ee2c08-69cc-4f77-8305-35ca0de80afa",
-        "7e3d4f4a-aa9c-418c-965f-a2d7cbfaa2b6",
-        "60184c98-18f3-4d56-8908-fbf3362690af",
-        "e2fa9d64-320e-423d-9f63-c1c54d911932"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "TRIDENT ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "7bde6c2a-d475-42cb-b127-647a984708f4",
-        "635b9c7a-0aee-400a-9adc-ece769698ffd",
-        "ddaf888f-3d28-4a7e-86ec-a04c64c48370"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "THE GROGANS"
-    },
-    {
-      "ballchasing_id": [
-        "f9f12ea5-7440-4df7-b4d9-677d47a68731",
-        "6fc7ba69-6618-4832-ac2c-6254b39b91eb",
-        "52dfaf80-e06b-4881-9fc6-0c27ef1554ff"
-      ],
-      "blue_name": "TISI",
-      "orange_name": "TEAM EROS"
-    },
-    {
-      "ballchasing_id": [
-        "511680c5-a3c9-4c57-bcd2-138d0aab1444",
-        "79930e30-b589-45fb-b3e1-2043c394174e",
-        "3fd06391-ea92-498e-873e-5a4ebd746108"
-      ],
-      "blue_name": "R!OT GAMING",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "19c85af8-75d6-4fbd-89f7-e918c31b5b33",
-        "6c032912-88df-410e-911e-6567343ee979",
-        "9b24f663-d372-49bd-a841-20689440fbdb",
-        "9a5bacfd-c706-49df-bbdb-fc13f8d829e4"
-      ],
-      "blue_name": "DIRE WOLVES",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "b681fe49-a2a6-47ab-96a2-158c2d095c72",
-        "fac5e0f7-ac1c-4620-a797-ce82dea86353",
-        "7f4cafbc-94b3-421b-89be-a8bb15236038",
-        "8aaf673f-b3e1-48ec-845a-7c11ab5793cd",
-        "7b051d43-e4b4-4848-b5df-bc24367ea63c"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "b3cde639-f6bc-4c99-a0e3-9f028b9afc91",
-        "a58a6a17-18ea-430c-8f93-c8a72e66173a",
-        "ef447ba7-d357-4e20-b93a-d9ce33bf14c2"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "d7410938-84e7-4d90-807f-bca37ac7631c",
-        "2f7d9865-50e5-4bd5-bd94-0e66ab19b605",
-        "16ef884c-3704-4ad6-9217-9e265660af67",
-        "817330be-b6db-4653-9bec-73178bf69f83"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "8053e39d-76db-4556-883d-7ae5ba8df77e",
-        "e5b58820-ee47-482b-9459-cd7dcaf76a8c",
-        "d965eece-5b01-43e5-aff7-9baf836ed63e",
-        "3a9a30a7-1e5c-40bc-b373-62823fbe15ec",
-        "3a59327e-a3e7-4910-aa1b-382a75fb497b"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "e4878af6-06b2-415d-bb71-2fbdaa93169a",
-        "6522937d-149f-49f2-8109-ba50bfa45f3a",
-        "efa8829b-dc7b-4572-946e-3b8356ebebd5"
-      ],
-      "blue_name": "GAMING UNITED ESPORTS CLUB ACADEMY WHITE",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "90c7a86a-b6ba-4b4a-9097-84398b9f19ab",
-        "260e4802-1c4b-4f77-88b6-692b239f44b0",
-        "b1929946-ca97-4f53-97f6-aeee98bd8c31"
-      ],
-      "blue_name": "TISI",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "94ce3e94-0384-420b-9663-cd439127a6e4",
-        "1876a297-beff-4028-bac8-342f34b552e9",
-        "b7050fe9-e1ad-43d5-ada2-8b9b120287d3",
-        "342e729b-9903-492b-8088-b42c6ec438e3",
-        "165ec192-0ca8-4278-90fb-00897e71532d"
-      ],
-      "blue_name": "BROS ON THEIR TOES",
-      "orange_name": "RED CROWN ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "d451fb2f-53f7-45a3-a96e-e355d6fd9f19",
-        "ff77ff38-5a98-4ff4-a689-92fc1c0c754c",
-        "3c69a2ba-c376-47ee-88a1-8534a0247b9c"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "d20ad927-51d2-4977-b49f-55f0d3791b2d",
-        "35237afb-6a2e-40e8-bdaf-ec595b82ffbf",
-        "4d14bfbc-7056-40e0-b1b7-89d30645caf5",
-        "6b123fec-e6a7-443c-9843-cd4a8aab1ca0",
-        "cf28a575-4de8-40bf-95f0-492c02963be6"
-      ],
-      "blue_name": "DEFT",
-      "orange_name": "FIRE BREATHING RUBBER DUCKIES"
-    },
-    {
-      "ballchasing_id": [
-        "2813d6d5-c5f3-400e-aeeb-895ad3ddb28e",
-        "2a84249e-1eb8-4080-baf1-69b6eb5a9c06",
-        "254a88db-dbbf-4c7f-90e9-b4574f5ffeed",
-        "0df4b347-b3cd-4968-89a3-2775d05d157d",
-        "7fcbefcb-1242-4850-9e68-78fc7f700562"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "BROS ON THEIR TOES"
-    },
-    {
-      "ballchasing_id": [
-        "b6d7e5c8-156b-4abf-a46b-bcc1dd83f3d5",
-        "4315609e-1204-4cab-a25a-399a7d8c66c8",
-        "b86b1af8-dba1-47ad-915c-0cd92568d780",
-        "7749157f-dc95-40ec-ae6d-e8f3f99c25d9",
-        "8debb7bc-5eb2-4e46-b756-e18c1c7b1369"
-      ],
-      "blue_name": "RANCID RATS REBORN",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "6edb275b-4237-493b-8303-ef26e6bb9813",
-        "8579505e-0178-48e1-a3b6-424aeda0d9c6",
-        "8be17156-3e49-44b2-95e6-6043a756fa45",
-        "192ee6f9-3673-457d-801a-99a4e667d167"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "5b457a3f-9a79-4778-9fb4-8a2f28c6da23",
-        "56c4d254-cb25-4878-baa1-2cc08d2f99bc",
-        "9de2d763-7f9e-43b7-b040-f41f6662f110",
-        "98eb429d-b279-4ef9-b13d-5bf05540797e",
-        "cadd0233-7e61-459d-ae80-8b9a89b2a9d9"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "TEAM EROS"
-    },
-    {
-      "ballchasing_id": [
-        "3753aafd-93eb-4ef4-9cf0-52e0f68433aa",
-        "c7e60fde-c769-4630-8596-f76d45a73e6c",
-        "cd4cf1eb-2672-461e-b333-ca94e2e134a1"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "THE GROGANS"
-    },
-    {
-      "ballchasing_id": [
-        "4ada408d-4a27-45a6-ba4f-c677fa38fc9b",
-        "3af35e13-b07d-465b-9b60-6f28cce176e2",
-        "a4f95565-5827-4940-b2a9-eab763043a11"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "3c58dfb3-8136-446b-a3e0-d8a30a176461",
-        "3a913de1-8b73-4de5-abe4-7dd4691b93a9",
-        "32a6052d-e72f-4c7f-ba1c-f25b86ae4ff0"
-      ],
-      "blue_name": "DEFT",
-      "orange_name": "RED CROWN ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "4c1175e9-b466-45e7-8a2d-d39a0d03ba40",
-        "cd843d96-b861-4471-ae33-9f99f1305fd7",
-        "97272753-f071-47a6-97bf-7d3da2b82f4b",
-        "80ed8359-4fa0-4d4a-b034-3af88631d176"
-      ],
-      "blue_name": "BROS ON THEIR TOES",
-      "orange_name": "RANCID RATS REBORN"
-    },
-    {
-      "ballchasing_id": [
-        "be471390-d628-45c9-a9b9-bdbb954e649a",
-        "a41a9562-c114-452b-b2ae-d392e5779d36",
-        "a4a219f9-ef93-4646-adad-a3d1c77bf29b",
-        "2665efcd-d545-47d9-870c-b60bdb86e9e3",
-        "f9fd74ae-6f62-45e3-b3a4-4c55a46324c5"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "84f02005-d9e5-4ea1-b80e-1f95642a1a2f",
-        "b1f5d12c-a1b9-413b-83bf-08507ea8c802",
-        "563d8e9a-e37e-4083-9300-2f9a4f1cc487",
-        "e6e21f1a-e46f-4a49-8661-259d217cfee4",
-        "f82599e3-d381-4c57-bdb9-9b108149e77b"
-      ],
-      "blue_name": "R!OT GAMING",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "aff93936-59a5-40cd-bd0f-9bcf29700273",
-        "d235c4d6-546d-4cf2-ae34-bc8ff2853c61",
-        "77017784-942f-4196-a98b-41c91d76eb0d",
-        "0b38b56a-3acf-4e96-a7eb-cfb6acec5008"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "BROS ON THEIR TOES"
-    },
-    {
-      "ballchasing_id": [
-        "30a8509f-8e4b-45f6-aec5-a830960697b1",
-        "d32c1bce-58f5-48a7-bb7a-144b3e6f926c",
-        "6d0d52f4-39a5-468b-99f5-87635619cbbb",
-        "5a4f31f9-b49d-4f92-812a-81b87efb71ee",
-        "b11a444f-a718-4c06-a441-b4688513ee7c"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "THE GROGANS"
-    },
-    {
-      "ballchasing_id": [
-        "28169153-84a1-4cdb-8d2f-6d6cacc4148a",
-        "d36e1c84-c5d8-4793-8160-bcb8b2f83467",
-        "1b7e5f5f-abde-4975-b842-774341e7cad4"
-      ],
-      "blue_name": "DEFT",
-      "orange_name": "TEAM EROS"
-    },
-    {
-      "ballchasing_id": [
-        "84c66bc2-1bc3-4672-aeb8-97ebfb30dda8",
-        "d0422076-62ca-4c36-a87b-d40b5ba17bee",
-        "bcfc4b6b-f2eb-4609-96ff-e793b00c986c"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "049a1d39-3137-4d21-bcda-9921a624bc93",
-        "e00bffc5-e759-4263-afdc-8326dc119f8a",
-        "66b31f48-ae94-47fa-821e-288f9c04d186"
-      ],
-      "blue_name": "FORKIDDEN",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "15852807-64dd-4549-8a2b-7cabdab3ab8b",
-        "58c6ad10-9056-4d6d-b8b8-620bfdde67b9",
-        "d021dfae-c003-4b2e-adc3-6fe2b8eb9028"
-      ],
-      "blue_name": "GROUND ZERO GAMING",
-      "orange_name": "RANCID RATS REBORN"
-    },
-    {
-      "ballchasing_id": [
-        "74efdbb1-a26b-4fe5-a564-0ec6047f0390",
-        "97eeab34-e102-41fd-be9d-e2931f05c742",
-        "dfb636f5-fced-4721-bd72-0bb88e6b0ebe"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "50a673a6-05b3-446e-ad00-a147ce6c389c",
-        "249e6e9e-3092-4f63-82c8-bd31e19c5677",
-        "80c00f8a-bcde-4640-98f0-5633471deab4",
-        "b865f9c7-e4e3-4169-8956-1d256ae19280",
-        "ea5be15f-3e8c-4ca7-9464-3e0de393f7e1"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "9c95e1da-8e0a-4e48-8864-b98b73aea55b",
-        "6a5095ae-e124-4188-98c7-957b0c2bc7f2",
-        "f5bd2b89-a4dc-4009-8f40-1431c807f555",
-        "db36ed83-7088-4850-88e4-a16b1c563e9c",
-        "b76e0725-b628-4525-bbab-d5a4b55bba1a"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "d0e9aa22-636a-4cb2-8d13-22f423bf271e",
-        "966939a2-bdaa-4fde-9001-4bf24513d0b9",
-        "9f19376f-90da-42a9-a141-66a8fa287f4b"
-      ],
-      "blue_name": "DEFT",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "99450923-8669-40f1-aa21-be6f9dd88dcd",
-        "2d30b5cc-ae60-4417-9065-a123f1f18616",
-        "218c895c-1de8-418c-b930-b9b93136d2d0",
-        "557a9e18-19f9-40b1-bacf-44015f8e53fe"
-      ],
-      "blue_name": "BROS ON THEIR TOES",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "139bba0f-698e-42de-b07d-b0acca81715e",
-        "6480c244-17cc-4879-a0c8-fa4494d7595b",
-        "69320d29-6011-468b-855d-84b6b8af6222",
-        "5f02046e-743e-409f-a795-2a7f94f3581f",
-        "de0714fa-b958-4c08-b1c1-5deac160208c"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "eefcadc4-ae0b-4111-a23a-7f2284f9070f",
-        "33fe713e-4acb-4cbb-a5bf-f25888ae2636",
-        "94cff227-1fb2-4697-b202-0582a6af2ecd"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "8c156929-6efb-4fcd-8488-54658aeb83fb",
-        "a8e80707-021e-4033-8377-10ee31399133",
-        "db0bd062-c836-4921-a6b4-7e8156183b89"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "60101a58-c4e2-4542-abe9-7f35dea5eef9",
-        "0a36f74a-b6bd-4bb4-a846-1330c404720c",
-        "0b6c946d-0661-4451-ab72-6b61207361b2",
-        "fc872a7e-babe-42a2-b7c3-559a53253364"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "cb8f637c-a865-4a87-b71f-675120d20bd2",
-        "600be050-8439-49a4-8254-c666539c43f3",
-        "a2c37a86-2cd1-47f5-946e-3840871cd059"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "HMS ENDEAVOR"
-    },
-    {
-      "ballchasing_id": [
-        "ec893af7-9496-4564-a055-0ab52dc49c7b",
-        "d36e3990-cbe3-46a2-84cd-9fd96bc6a7b9",
-        "e91689ee-395b-4c95-ab8d-4872913f649a",
-        "7aa23738-5c99-4d0a-b11c-fe1c48692127"
-      ],
-      "blue_name": "DIRE WOLVES",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "f01e1371-1898-4bec-ac01-e35af8da3257",
-        "2e867f68-c566-45bc-bafd-2a00b4a5f5f9",
-        "ab534d45-13b4-4feb-a59e-116515d1d88e",
-        "3ee08704-0a2b-4835-9195-153686dac864"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "RANCID RATS REBORN"
-    },
-    {
-      "ballchasing_id": [
-        "abe0e886-2493-4cbf-bf4c-1d569855bc00",
-        "f0929764-c5be-4fc5-94e8-6dfc5262218f",
-        "998d784d-7227-48df-a0b5-1efe2b7faef8",
-        "9250e6bd-2003-4763-9255-6e9e4e4b7a59",
-        "ba3b8ae0-0a8b-4c60-a1ff-e532f2eacb11"
-      ],
-      "blue_name": "RUST-EZE",
-      "orange_name": "BIG GOOSE"
-    },
-    {
-      "ballchasing_id": [
-        "0b3adc7e-3399-44ac-b6fc-76bdea7ac33a",
-        "337b3e2e-303f-4031-abfd-f50459dd098b",
-        "d5cae7f5-8d7d-45de-a51b-22861d0c540a"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "THE GROGANS"
-    },
-    {
-      "ballchasing_id": [
-        "50254531-5a79-4d0b-835c-25c89c372e2c",
-        "d530d964-9bb8-44c7-9acb-4d255157a3da",
-        "39382458-c69b-4253-8e0e-3c99e14c2598"
-      ],
-      "blue_name": "FORKIDDEN",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "cd75900c-7fe9-4c34-a4ea-fec17127e414",
-        "2b3b96f8-b82d-4909-8739-91cd673148a7",
-        "921bab10-0804-41ab-b884-9083d0bf3145",
-        "6fa5a6e8-4497-4f81-b1bb-22481ce7e89f"
-      ],
-      "blue_name": "HMS ENDEAVOR",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "3461ae08-9af7-4182-9e8b-25188fd68398",
-        "b67e258e-b6be-4890-9ae1-df2c10016076",
-        "fb1d1503-84ba-4fad-83e1-136c16e4cf10",
-        "0e7697fb-409d-403c-bb80-502522b2fbdd"
-      ],
-      "blue_name": "RANCID RATS REBORN",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "558ec9ad-a068-4c47-a16a-3c79426b70a9",
-        "7dbc2f3f-af2b-4328-b95c-acc1073a4796",
-        "27c4d16e-fdc0-430f-8501-62b37d8994a4",
-        "2d0f621e-5365-4dc9-98f9-acdd626ea60a",
-        "4800fef9-9353-424a-aca2-e0071e10a597"
-      ],
-      "blue_name": "HMS ENDEAVOR",
-      "orange_name": "BIG GOOSE"
-    },
-    {
-      "ballchasing_id": [
-        "22321e51-c7a7-4dd8-8ff3-5e5790ed72a8",
-        "cb900eaf-5f55-47b3-a4c6-f3a7638ee40c",
-        "b6fc7b9d-fe21-4598-b529-e1238f1d54df",
-        "02fe9e31-9664-4a07-8584-602ebf852fee",
-        "51dc2593-9bda-4caf-b6f1-85919739a778"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "38a77902-6c0f-4986-ba10-f6f7d91cc408",
-        "c71f0407-1d2a-4c09-b160-7e771183441c",
-        "e33c04fe-b4a5-4875-b8ed-a83f176b3267",
-        "05fea1b1-67c1-4153-b2d6-e88cf91ad1c1"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "TEAM BLISS"
-    },
-    {
-      "ballchasing_id": [
-        "e5307c3c-a88d-4cff-b695-e5a5883026f1",
-        "a683bee2-53a3-40f8-b525-7e6ab2edefc8",
-        "293e1898-6fc2-45ef-8adc-c7b037bdcc07",
-        "984d073b-8c0d-4a41-8b15-4ef480b9e93c",
-        "ac6079f2-0980-474a-b9eb-5433955c73b8"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "edc836f3-b307-4e22-8bac-cce342ccb71e",
-        "3e04274f-0b0f-4b44-9743-b06d25ca687a",
-        "a3276632-860d-444e-97be-43478c215379"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "53272c72-36a6-4771-bb6b-780ed1718446",
-        "1b44dde6-8670-4cae-b38f-2208be808b41",
-        "6ba3fe29-0171-47be-bfdd-afbabfe5c03a",
-        "8e0fd3a7-e757-4be2-9715-900a4ae3434a"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "18d4225e-50b3-4734-a7f7-9c895a7224d6",
-        "5efd2c64-b296-4b7c-89ea-4d1d37534f92",
-        "f5a5236b-aeb0-49eb-a6f8-131d06aa5f62"
-      ],
-      "blue_name": "HMS ENDEAVOR",
-      "orange_name": "RANCID RATS REBORN"
-    },
-    {
-      "ballchasing_id": [
-        "3ac52a71-7433-4524-9038-1c8cdfcfdbad",
-        "3024537e-01e7-46db-894a-bbf6ad85bd03",
-        "e0b4b66b-f37a-44bd-95a2-e02144d3a311",
-        "cbbc9bee-afbe-47b0-88b6-2224156ac072",
-        "ff49c734-d3ad-44ee-8883-53083c53a7bb"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "TEAM BLISS"
-    },
-    {
-      "ballchasing_id": [
-        "16a40439-853c-4f21-9c1e-68f8fd0b70ae",
-        "c283b352-1d38-4592-b063-fb4dcd2e76a0",
-        "5f9e8f02-1921-4a7b-8df5-206dce95cff7",
-        "71d308bb-adf4-468c-b5a3-2cd1fe766eb0"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "01c5628c-8788-4d6a-8576-5ccd4cdbfe05",
-        "217f99ac-6a3e-4279-882a-37b7780fd05c",
-        "a47a1f7c-a2e4-4e06-b772-7a89997837fb"
-      ],
-      "blue_name": "FIRE BREATHING RUBBER DUCKIES",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "c4adee6a-bda7-4cf5-9f28-2ef100b6a753",
-        "39733d06-b52b-4b35-bab4-d40b462514ae",
-        "e324772e-40da-4830-b573-6aa5d3ca4dfe"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "688d4aef-e32f-4180-9f7b-655136b52340",
-        "bfd02cd6-6ac4-4025-bbea-d10ee8065a48",
-        "a709df62-310c-4882-bd5d-017bbc6c53bd",
-        "ddf6a3d8-474c-48d1-b47f-8705a4f93c3b",
-        "8528ded8-6011-4f40-9751-9af1f899ab01"
-      ],
-      "blue_name": "THE GROGANS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "bf2a281b-ff66-44b5-ae3f-b67312d0b6b4",
-        "9437bd65-d866-4886-ab1b-ed9e05a09649",
-        "94ceecd9-6555-4fb9-90b4-4fb91548f87e"
-      ],
-      "blue_name": "RUST-EZE",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "0dea215b-e276-4306-a9e2-1fabdbdfbace",
-        "2b707c7f-6d8b-498a-bd9d-b9b8bac45bbf",
-        "5e80a25b-3b95-419f-a690-4ad8f3b0bff2",
-        "8748e869-c18b-4baa-9aa4-be388d0544ae"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "DISCONNECTED ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "fe3cadf2-460b-4893-b2a9-63a1e2dc3bbd",
-        "c4f75351-1dac-42bb-a71f-4984f5e5c936",
-        "c49369f0-da1d-4642-844c-4917a28463a4"
-      ],
-      "blue_name": "ANARCHY GAMING",
-      "orange_name": "DIGITAL DEVILS"
-    },
-    {
-      "ballchasing_id": [
-        "aa44890e-1b37-40c9-b904-26e60ae4f386",
-        "65673161-c716-4be0-82c6-87a1b17d9cef",
-        "c6e438ca-35ab-49a6-8443-27ce31be8196",
-        "f94db2c8-d6a0-4b0f-936c-726a0bd9d7be",
-        "3d3ac33c-2b95-4940-9ef8-17c0064cdb63"
-      ],
-      "blue_name": "DAPPER DOGS",
-      "orange_name": "FREESTYLE NOOBS"
-    },
-    {
-      "ballchasing_id": [
-        "54906b03-db79-47a1-b6bf-a41355532494",
-        "ae1432e3-4dd4-49ab-82e2-16efc7e788c7",
-        "eef10194-9532-4fad-be83-79037497c09e"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "1620 KINGS"
-    },
-    {
-      "ballchasing_id": [
-        "eb7f9f58-ff8c-4a3a-8731-5b485c3f21e2",
-        "1485447d-549b-49e1-90e6-b01df5624c4a",
-        "857e210f-aa37-4ff2-a8b4-0ba8366ef8cd",
-        "854c2926-4345-4d22-b304-d7a3b1a07f21"
-      ],
-      "blue_name": "GAMING UNITED ESPORTS CLUB ACADEMY WHITE",
-      "orange_name": "1620 KINGS"
-    },
-    {
-      "ballchasing_id": [
-        "ef36caec-a635-40d3-8b45-a852c6b15e61",
-        "9dede76d-3465-4457-a7a5-2d72cd1c93f7",
-        "6c4b3e13-73b9-4717-acde-6d13d062692b",
-        "604011ba-ae8b-4c4e-9d6a-18afd4258102"
-      ],
-      "blue_name": "TEAM EROS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "4d0d0b00-1ab5-4d65-bf30-540c9e8dc074",
-        "e60d1a37-4c45-4c26-b86a-9026d14c37a8",
-        "ea6cb314-8a27-4e8c-b64c-bcdcfbfdfd21",
-        "b8eea4e4-91d9-4919-ba9b-175271fff9ea",
-        "22f9ce6b-f67b-487c-aa82-435be2768152"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "1a7607a2-92f6-41b0-b6f9-f59f654a6222",
-        "98352f05-0ce5-41ad-b495-44affc27d957",
-        "a1e48c00-d8e8-4fb8-95bc-5defaf09380b"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "043c9121-8cf4-47b1-aba7-7ae2447c443a",
-        "8fb58946-2ffa-4596-a5fd-37527af8ef60",
-        "3fdabe9a-9c1c-43e3-9b65-a3b61d042074"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "FIRE BREATHING RUBBER DUCKIES"
-    },
-    {
-      "ballchasing_id": [
-        "efc929d9-be6e-4557-8218-4bf83c479a3b",
-        "56b9ca8a-190d-451d-857f-0f4d6f960810",
-        "395dc2d4-7a17-496f-99b3-b0d244a17ab9"
-      ],
-      "blue_name": "R!OT GAMING",
-      "orange_name": "TEAM EROS"
-    },
-    {
-      "ballchasing_id": [
-        "04bd6b23-92d8-46cd-a5ae-64a70365a925",
-        "f358849d-fa60-4697-afc5-39b344a5eb50",
-        "8b83955f-7bb6-4de0-a849-c32de2c37a73"
-      ],
-      "blue_name": "RUST-EZE",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "c8ef3b06-524e-422c-b6f8-6e7320e032d4",
-        "4e7adaaa-682e-402d-a58e-0440db0edff8",
-        "557cef62-f57b-4fd9-a743-150d84fe76d1",
-        "b5cd4ef8-fc90-4efd-abc7-734d1798b376",
-        "c9c85b89-f453-41e7-a079-642c3dc24ab3"
-      ],
-      "blue_name": "FALL MOUNTAIN",
-      "orange_name": "DOGMA"
-    },
-    {
-      "ballchasing_id": [
-        "c40f7d29-d6ad-4d70-8e4d-27c153036ca8",
-        "81de45fb-609d-4af8-a6fc-ebcab6295f4a",
-        "50a7873c-5711-4533-9f6d-d518464d0f5c",
-        "63404b12-3ef8-40f9-b1a4-44cb6d70a14a",
-        "6454fda7-d665-4361-935a-ab7c8fa9d176"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "TEAM BLISS"
-    },
-    {
-      "ballchasing_id": [
-        "0e08fc91-876b-454f-8388-5133dc1d7e24",
-        "311a179d-87a2-4026-98cc-ce060656223b",
-        "8eedd6c9-096c-4e19-b145-ed20c646d18b",
-        "d4c26108-06cb-48cc-b7e1-1de0df21ff0c"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "edfedacf-1a35-4d49-9fc2-cd2355f7284c",
-        "4a276cab-baf5-4730-8944-de3302c8936f",
-        "5e135d4a-d712-4ae2-8191-6e1f911a2c51",
-        "2798aaaf-e4d2-4f8c-8d78-1d29dce1b213"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "2ab183f3-55d2-4815-97ee-5ce1eaec444b",
-        "a5314132-ea16-401b-a06c-de94059fee95",
-        "0bc0e59b-15c7-41bb-bdde-c89bd0e39b8b"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "TEAM BLISS"
-    },
-    {
-      "ballchasing_id": [
-        "220585fd-6c6b-4b46-a8a3-ebb9570885b2",
-        "a533b487-4880-4e07-97f9-137fc53f97cd",
-        "5985c652-5066-4c4c-8bae-8d1908b544bf",
-        "19f2cfce-dab6-4d5c-b24a-eddc6ed42cd7"
-      ],
-      "blue_name": "FROST ESPORTS",
-      "orange_name": "UHUH"
-    },
-    {
-      "ballchasing_id": [
-        "5fbf2a5a-f16c-4410-bfee-839f8feed1c5",
-        "5fa0f701-512c-4d9f-92d6-b74cb993e24b",
-        "3f09ea76-582c-4c43-8b9b-d6a2390d71ab"
-      ],
-      "blue_name": "NOT JUST ASSOCIATES",
-      "orange_name": "UHUH"
-    },
-    {
-      "ballchasing_id": [
-        "15d2ba83-9320-4245-bf92-16687b39c334"
-      ],
-      "blue_name": "TEAM INDIA",
-      "orange_name": "SLOT MACHINE"
-    },
-    {
-      "ballchasing_id": [
-        "f2f6ee6a-9399-4916-9ee9-1eccb5990fe6",
-        "60aa401f-eb80-4be9-974d-aeccfd98c8ee",
-        "a3cfec46-82e8-4e4e-aa56-0e1e84bd20d1"
-      ],
-      "blue_name": "SLOT MACHINE",
-      "orange_name": "TEAM INDIA"
-    },
-    {
-      "ballchasing_id": [
-        "f234a726-f078-4893-b25b-3d0937f5815c",
-        "b1d8ec75-1985-41b7-acc9-8e660e30b799",
-        "f44480f9-b1ed-48ad-a3a5-b664f1aa9a1b"
-      ],
-      "blue_name": "3RATS",
-      "orange_name": "SLOT MACHINE"
-    },
-    {
-      "ballchasing_id": [
-        "68e69369-0c74-4e6c-8fd2-bf65941b7acc",
-        "c5152ebc-6551-44e0-a394-483f4fb937f3",
-        "26b9e3ae-bf49-4c52-bd8d-8addb143f325"
-      ],
-      "blue_name": "TEAM INDIA",
-      "orange_name": "3RATS"
-    },
-    {
-      "ballchasing_id": [
-        "be642e13-1cb5-490f-bb81-365dea896260",
-        "56c3abe8-797a-49b2-aff4-0c299d79bbc8",
-        "4d81617e-6eb9-45c4-8f75-4c35462d2f3b",
-        "e22b107e-b8bb-4afb-9a76-1f8ef40ed9df",
-        "5aa15f1f-b3c7-46a2-a51a-b3017b8430c2"
-      ],
-      "blue_name": "BLAST",
-      "orange_name": "MOTI MOTI GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "19440517-81a9-4621-9c05-099b50723d0d"
-      ],
-      "blue_name": "AQUA",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "bbee7acc-064c-4571-a70c-d5e1d3aa1a37",
-        "84c79bce-663a-45a2-b950-513d4510a434",
-        "b5f4c8fc-eedb-41df-bf1f-a89185609d25"
-      ],
-      "blue_name": "GOKKIES",
-      "orange_name": "MOTI MOTI GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "816166e4-6b0f-40d5-b32e-c6cd5f6bd1ba",
-        "dcd977d7-30ad-42bc-8c78-2053e39ad85d",
-        "53075f74-8986-4013-89e1-953f784a1fda"
-      ],
-      "blue_name": "TEAM INHERITS",
-      "orange_name": "DETONATOR"
-    },
-    {
-      "ballchasing_id": [
-        "7d3cb3ac-44bf-4391-8fc0-7747f98df2b9",
-        "14ef52be-0c47-4bcd-86cc-055ba4fafa6c",
-        "5b93b9dd-84d2-41cf-a1ec-727f086a25e6"
-      ],
-      "blue_name": "GOKKIES",
-      "orange_name": "TEAM INHERITS"
-    },
-    {
-      "ballchasing_id": [
-        "261974a9-6155-414a-be64-bbb7af86d46b",
-        "3d3690f6-1716-47b2-ad0d-5c7149d3f9f3",
-        "3ae1b3d2-ecc4-4d03-b11e-29f83c2b3883"
-      ],
-      "blue_name": "MOTI MOTI GAMING",
-      "orange_name": "DETONATOR"
-    },
-    {
-      "ballchasing_id": [
-        "8c4346dd-5a17-452a-9cb3-e77f35dbd65a",
-        "b03ac554-e2f9-4bd8-98b3-84f8d01236e6",
-        "b5733475-cbf8-49dc-b976-bd67dd6e05dc",
-        "c61079e1-49f5-470a-9cd1-515060567afd"
-      ],
-      "blue_name": "MOTI MOTI GAMING",
-      "orange_name": "TEAM INHERITS"
-    },
-    {
-      "ballchasing_id": [
-        "a601df2b-f0b1-411f-a8e4-65a5d094b752",
-        "c36c615a-c391-4003-89bc-dcf0b10d7891",
-        "6f5519e3-0798-46e8-ad34-ce5d806b19af"
-      ],
-      "blue_name": "GOKKIES",
-      "orange_name": "DETONATOR"
-    },
-    {
-      "ballchasing_id": [
-        "c99bcef3-759a-4c00-a603-c56208cbd804",
-        "1433fc8b-0559-4e5f-90f6-6036072d2908",
-        "723305c7-b094-496a-99c6-47738285df4f",
-        "33767151-b29c-437e-857d-9de8a2080656",
-        "a5b89a1d-7a9b-4146-9340-8be296b698f9"
-      ],
-      "blue_name": "BLAST",
-      "orange_name": "GRACESBLAZE REFINE"
-    },
-    {
-      "ballchasing_id": [
-        "505baecd-6ac7-4935-bf81-244c9d55abe6",
-        "a961e151-2c17-497b-90e8-773023589363",
-        "6413ef07-4385-4c11-b8fc-0a3d2aa495a3"
-      ],
-      "blue_name": "TOKYO VERDY ESPORTS",
-      "orange_name": "ALOHA"
-    },
-    {
-      "ballchasing_id": [
-        "29e578c7-96f9-4307-a885-40181784d1be",
-        "a988a743-444a-4346-a43f-732c87cfd9b8",
-        "183abdd5-c654-4334-a1c6-9b431020cbc6",
-        "77080dc1-fdc2-472d-9322-09773ef13036"
-      ],
-      "blue_name": "ALOHA",
-      "orange_name": "GRACESBLAZE REFINE"
-    },
-    {
-      "ballchasing_id": [
-        "db92c489-03ef-414f-9462-7872d0e7b40f",
-        "5ae3b4fa-4a5f-4f85-8805-f7da8cd9fd54",
-        "4edd19bd-6eae-4672-a7e4-3b9f6244c26b"
-      ],
-      "blue_name": "TOKYO VERDY ESPORTS",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "a963e6d9-41a4-4148-a588-6226f5827440",
-        "c8388bde-7c63-4b61-8e60-0fb232a3b2ac",
-        "c3e9f525-3032-4653-af12-48936dc8eca5"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "INTEGRITY"
-    },
-    {
-      "ballchasing_id": [
-        "a407f957-7646-4807-911a-834027e2b1f6",
-        "9903bfa5-0765-451c-8101-0b0c628007e9",
-        "27a26ac9-9729-44d3-a61e-7d2547366410",
-        "b8268d19-9610-4dab-9b21-1a14f76c8305"
-      ],
-      "blue_name": "TOKYO VERDY ESPORTS",
-      "orange_name": "GRACESBLAZE REFINE"
-    },
-    {
-      "ballchasing_id": [
-        "e0453166-b03e-418a-9f37-03fa2f336ea5",
-        "a3ce9255-b8be-4a9f-93ea-a45d9bff06da"
-      ],
-      "blue_name": "SCYTES",
-      "orange_name": "SAUDI HURRICANE"
-    },
-    {
-      "ballchasing_id": [
-        "1f78df77-56c2-4b0b-b256-5ac7b28301f9",
-        "ea8dd2c4-c3dd-4d34-ac7e-8567f896fa7c",
-        "11ffdfeb-aed0-4cac-a439-c89c195d1aca",
-        "7de05741-bf1f-4364-8682-28a4e71d41b9",
-        "f3fefa5c-00fe-410c-bf5c-97d8bed176fc"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "1620 KINGS"
-    },
-    {
-      "ballchasing_id": [
-        "750d7ffc-b74f-4af6-9021-16b5eae92969",
-        "46982c1e-7e55-4b6a-9dd8-28c76d2f1dda",
-        "d23a2fa1-5217-4fa4-af72-ed658058c511"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "4d0ae54a-22ab-49fd-b934-52de13917490",
-        "a15195dd-fe05-4d4a-8bf7-0b5ae8be8af5",
-        "1f257b35-1bae-44f8-989b-add4148a77fb",
-        "a0a8412a-2561-4328-b22c-8516d14d17a5"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "bcdc4087-4698-4eb1-877f-b5d155dee577",
-        "30f68153-ea42-4f4f-948a-b2ab48f38c4a",
-        "7b945f68-6090-4309-8e7b-aa12d9a2c0fe",
-        "2880b711-7ca5-42c5-ae39-a7357fdbd6ea",
-        "d039f498-ae9f-4fc1-a8e0-51d319f73354"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "a87d0ebf-5d26-473f-a609-a24f100111ed",
-        "ef3a5ddd-c146-4e00-8788-3b602e60da9e",
-        "44d640c1-776e-4b57-9fd8-692e5806976e",
-        "d466d4be-37db-4c8f-a645-b8792644ae4e",
-        "7232ea44-a4e9-4005-9ce5-5ab66c161b2d"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "cb768c03-0518-4ece-b683-49aa1e8a493b",
-        "cf0bd28c-2626-40ba-8c0c-6778c0d19749",
-        "f77af472-f393-4c7d-aad5-a396bc61233f"
-      ],
-      "blue_name": "COLLATERAL ESPORTS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "dee7b69a-ffaf-469a-970b-2501fe1b0f66",
-        "287372af-0895-41f2-a8f4-2cf1c1eab566",
-        "3cb2fccc-59e2-4e05-819d-967a26611909",
-        "c82b8658-b826-4515-bfb4-a5a2c790d56f"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "RED CROWN ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "4f2d29fc-3af6-4532-969a-9cf708435cdc",
-        "0d01ff54-80cf-437b-9852-ebd5c2817744",
-        "98b53c32-a229-4507-aa70-d1db6f6c5453"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "c01797b0-c5d0-4ebf-b871-911880a30eaa",
-        "9021332a-5e4c-4c8b-925e-67714455469c",
-        "970b2803-7dc2-4ddf-8176-fc3b5d26aea9",
-        "08eadbe9-04ff-4892-8a09-c81c1a7129e6"
-      ],
-      "blue_name": "RED CROWN ESPORTS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "878d73ef-475c-4fde-ae7b-1ad4428660aa",
-        "f6ad5ef9-5e29-46fc-9b1c-1b5070b31186",
-        "3a25fa84-84da-4afb-bbca-5b6ac0ceb78e"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "802ac1b6-6fc2-4a7a-923e-b80382ad02b4",
-        "fe13f45e-a5f7-4c04-b474-950db8a8c2cf",
-        "39d30f35-95c6-428a-a4e7-dc54ab8d7fcd",
-        "100e5ea8-187f-4e0b-9242-13f4894d3d2c",
-        "1682a540-3676-4486-8a9c-04276a0433ca"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "TRIDENT ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "a9e6572e-45d9-42c2-987a-4376fcdbdd40",
-        "100d5217-4a3c-460f-b131-a43ec780a454",
-        "283985ba-2602-489b-b9f5-1999e92dfc71",
-        "aed22fa2-bf2d-4b72-8f18-92e1983745b7"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "607b9bd0-5869-4413-94fd-f49c2871fd5e",
-        "a5243a3e-cdf7-49b8-814e-f51b5846885a",
-        "d681d4c2-32f6-48d3-902f-14f9c44afd98"
-      ],
-      "blue_name": "THE SUSSMEN",
-      "orange_name": "ANTIC ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "323dc860-7b9c-40be-b2b8-2bf03873aa2f",
-        "d8f33324-db04-4500-bce2-f1dd4dde7403",
-        "a69bca04-29e0-4a8d-b9b4-dfa55ad84c74",
-        "62a8346b-688d-45f4-bb49-65b603bfa074",
-        "753f1ea1-2c23-467d-9287-cf5a80eca6a4"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "ff06e3f0-f631-4d51-b8da-2859e90aee23",
-        "093614a3-4535-4322-aae2-c63bec222e04",
-        "fc541d67-4d3f-4fa1-9a21-75a4cbd352cf"
-      ],
-      "blue_name": "ANTIC ESPORTS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "d4cd558b-9248-4791-b840-f3b16df3a1d8",
-        "d02f6e06-e0b5-4ca6-8704-1e87838c803c",
-        "01df0175-ca71-4691-8cfe-a4f0c06ac1ec"
-      ],
-      "blue_name": "THE SUSSMEN",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "458ffe79-4314-497b-82c8-cf8ea5d5bdef",
-        "80c1ca45-b948-4058-8a74-4ccb8efc0f70",
-        "23742193-d3f5-4974-b788-324f0f0e5a0a",
-        "217f633f-aebd-4db2-b27b-f298d3c07c2c"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "817ef464-384f-4fda-b396-26684d85d5a9",
-        "48cd19e7-6992-4c9f-8718-1eb9b3907d68",
-        "1b793e9e-8d0d-40c4-8b48-86ef6ceb2797",
-        "c01b07fc-2b12-48c0-b7ce-1c05170095b6"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "1d4f1f9a-8cf0-4256-ac26-045c8f6b1379",
-        "52db5f62-bdd1-4295-840a-838a229e0996",
-        "d2c98a32-cbc5-4344-81ae-df0b2a6085f1"
-      ],
-      "blue_name": "TRUE PARROTS",
-      "orange_name": "HILLTOP PICNIC"
-    },
-    {
-      "ballchasing_id": [
-        "18c9dd2c-2668-4076-8062-a09e00237e09",
-        "d4e4c9a6-29df-4bca-9f14-9d9521ac89c6",
-        "619e1aea-20d1-4503-a20e-4ed708a36cff",
-        "34fb31d7-4657-43c4-8406-f521fcb2177e",
-        "5c38df0a-4dc4-40a3-b299-78e3b1953481"
-      ],
-      "blue_name": "JUICD BANDITS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "b6bbe23a-5525-44c9-ba31-62547f68054d",
-        "a24afafb-ff51-40e7-b670-4db385ff1beb",
-        "322fb7e6-fec8-4c58-bc83-eeea3e18633b"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "290aadad-26af-4496-a50b-41b4a066a167",
-        "6a18ce0e-fdae-4eca-a677-9aa18eccb40e",
-        "a11a180a-2ca8-4a53-98d8-21802e90dbe5",
-        "04edd18e-2367-4f20-bd82-1650c8e20050"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "6d02aa8c-38c6-4552-831c-d138811fc23a",
-        "37f0606a-aac7-44de-8bc8-15f2a1f2170f",
-        "2aaa0158-4d85-4a7f-bd54-c4aa63d3e68b",
-        "14fb611e-454b-4a7b-97cf-80f5895e7bb6",
-        "275f0160-2c7b-4a10-8e08-dc9af8bebe64"
-      ],
-      "blue_name": "LOST LEGION GIANTS",
-      "orange_name": "EVOLVED GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "4ae84966-542e-451f-a5e5-654ac73827a9",
-        "d8396a0c-ee24-4774-920d-3d27552b08bb",
-        "eca1f592-8af4-4e6c-a63a-acce7cbeb34d"
-      ],
-      "blue_name": "EVOLVED GAMING",
-      "orange_name": "OFA"
-    },
-    {
-      "ballchasing_id": [
-        "68ce4a79-1a25-4f8c-9f1f-addc4582db25",
-        "5d26a8aa-07b8-4661-9c7a-19775a6a253d",
-        "f149a8f6-71bb-4dc4-acae-54c0f7e593a2"
-      ],
-      "blue_name": "THE SUSSMEN",
-      "orange_name": "TEAM BLISS"
-    },
-    {
-      "ballchasing_id": [
-        "35663cb7-ec4d-41f9-856a-49a388d12ed0",
-        "cd9d9dbb-8fd5-45c9-bfd1-ad521d7aaec8",
-        "44431a0e-d08a-4596-bc15-5dd6cfa9e98f"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "cb39ae87-ea73-4e08-bc05-a76f92d6f50b",
-        "2f664852-e209-421e-b509-8cb61e864a61",
-        "33b04ed7-b91d-4abc-8465-a85ea7878f48"
-      ],
-      "blue_name": "CLARITY ESPORTS",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "76b45f0c-244e-4983-8316-414d0341da3e",
-        "69fe84b6-1b6b-4f75-936c-d622f9e53c69",
-        "f1540630-8001-4c51-89e8-caee2dae0291",
-        "37f95711-6b07-4965-b16c-fd6b0a0f6b40"
-      ],
-      "blue_name": "THE CEOS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "1831a3cd-02d2-4825-9606-178809afb3a0",
-        "1e3732b6-f523-4b2c-8ff4-b05b1df6f060",
-        "668493ed-1a3e-49e2-907f-a095dfaf6a4a"
-      ],
-      "blue_name": "1620 KINGS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "bd737cc3-7f3a-452f-a441-7b17699b9b6a",
-        "3e55d8ca-86ea-43d5-8853-51984fa15cfa",
-        "de18aa7a-c065-4c51-af5c-ce3348f8456b",
-        "ed9f915f-b8af-44e6-89e6-e6906c4f9b56"
-      ],
-      "blue_name": "CLARITY ESPORTS",
-      "orange_name": "WILDCARD GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "4d3c9183-204f-485c-ad3d-e30497c34ff1",
-        "1287f206-0d56-4d65-af64-a4d8370b6e4f",
-        "92f1c496-8399-42c1-8e19-7ef00b800c43",
-        "7c08ed4e-1da1-43f9-96eb-aa3f231ef13b"
-      ],
-      "blue_name": "ANTIC ESPORTS",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "33a9d544-3d15-449e-a44a-40cee502acf4",
-        "8f1abefc-c139-48fb-bad8-f498a8cf026c",
-        "1b6d067b-9649-43c5-b63d-2a5147688179"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "b570ca97-9281-4f70-aaab-b833165a64d8",
-        "a4bc5ab3-7ee2-4ace-be05-dd3d1cdc5d9e",
-        "e586fcba-99f9-4875-8a80-a19f6645a92d",
-        "778bce7e-bc3c-436c-9842-a32fec02f537",
-        "f1b4fb5f-e85a-4b43-8a22-1184ab0a1b69"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "JUICD BANDITS"
-    },
-    {
-      "ballchasing_id": [
-        "61240a8d-7a12-423c-af4c-ec116d760e58",
-        "de9e18fc-539d-43a4-bee4-1a4145bf9ed0",
-        "489e6c41-8ed2-40d5-b08d-82b7e6c71105",
-        "30f0d074-a0f5-499e-a6e4-a42d68dd78a7"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "b7e73531-dee9-4200-b471-548d8cbe4287",
-        "70c1e2c9-e3e0-47df-8335-b7977b8eed86",
-        "dfbfcf24-e600-4f7e-ae47-1faea0121ac4",
-        "eaeb9364-005f-4c1a-8b03-eaa290b3145e",
-        "ee2576b9-610e-4573-b866-6ebaaeffab3c"
-      ],
-      "blue_name": "ECLIPSE ESPORTS",
-      "orange_name": "BIG GOOSE"
-    },
-    {
-      "ballchasing_id": [
-        "311734de-efb6-442b-8470-4227e71bc5a5",
-        "3c7c851d-ab4f-4005-949c-ce3737c0e32c",
-        "d90d75db-e472-47b3-a6f4-203c74467a10",
-        "6b93ce7e-8d8f-4e43-8074-8603151ec4cb"
-      ],
-      "blue_name": "THE CEOS",
-      "orange_name": "1620 KINGS"
-    },
-    {
-      "ballchasing_id": [
-        "5624f4b1-6533-4889-ae0b-cfb54337edd5",
-        "fd201720-a6df-4638-98ff-9851fd7a4903",
-        "8460ad17-6c14-412a-b357-bfb541bdc368",
-        "e1e1ff04-558d-4029-940b-e545414763e2"
-      ],
-      "blue_name": "WILDCARD GAMING",
-      "orange_name": "GROUND ZERO GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "bf99f578-f5b6-43a0-95c0-998461485ba4",
-        "4bbd10e4-660e-4ce9-ac4c-1c1cd2bc174d",
-        "f1c0d329-c0d7-4e45-b04d-449c83d929d8",
-        "8380417d-d10d-42bf-88a8-c5c5d7873d64",
-        "2be7f09b-d85e-461d-90e5-5615dcd410f3"
-      ],
-      "blue_name": "TEAM BLISS",
-      "orange_name": "RENEGADES"
-    },
-    {
-      "ballchasing_id": [
-        "adf8c083-0725-478a-bf78-6994843704cb",
-        "ff31f5e1-50be-4a12-a854-480045ebeaeb",
-        "49ec3350-c75b-4271-8506-b2ca92a52b16"
-      ],
-      "blue_name": "JUICD BANDITS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "6bb8d98b-af82-4e83-b13a-d64d45b8b95a",
-        "cd643a95-2064-43c8-83b2-75711f4577ac",
-        "66d5f765-ff48-49b0-b28f-185056f65c79"
-      ],
-      "blue_name": "BIG GOOSE",
-      "orange_name": "DIRE WOLVES"
-    },
-    {
-      "ballchasing_id": [
-        "f036c138-c5c3-4882-be99-115f5d98cd83",
-        "598e71e2-4bbb-45db-a3f7-e0eff3506d56",
-        "54c58a5d-c587-4252-b1b1-dff3a9666839"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "FORKIDDEN"
-    },
-    {
-      "ballchasing_id": [
-        "e7e8454f-b7a1-4579-8a63-fe33231cb20c",
-        "9c4d941b-e741-40ed-af8a-17d57e055fc5",
-        "201ad876-0f67-4826-a981-df11362ffddd",
-        "aebc0125-a4f1-4fe7-982d-4eeaa1d24a41"
-      ],
-      "blue_name": "CLARITY ESPORTS",
-      "orange_name": "1620 KINGS"
-    },
-    {
-      "ballchasing_id": [
-        "b4f1b648-f7bf-4b91-8d51-b43f1e401edd",
-        "d54c8297-d4bf-491b-a9ab-f108a14d42fe",
-        "52f5a988-6c16-446d-9f95-b38f0acad8c8",
-        "d4c1e4f9-2127-4103-9e61-865eee734c20",
-        "1131f817-da94-4ade-ab34-2fcf2942fd86"
-      ],
-      "blue_name": "TRUE PARROTS",
-      "orange_name": "TEAM INHERITS"
-    },
-    {
-      "ballchasing_id": [
-        "36788910-beea-4db4-83c9-942ff2b9c694",
-        "91022305-f1e2-4d80-9071-84d2d20939ec",
-        "96b7e168-2c7c-4546-a718-937e5ef0eb00",
-        "ddede547-b5f0-4259-a652-2c605c7a9e07"
-      ],
-      "blue_name": "XAYFHERS",
-      "orange_name": "ALOHA"
-    },
-    {
-      "ballchasing_id": [
-        "4d403967-6a71-434d-b30a-2a022597227c",
-        "513583d5-4c22-470c-980a-852acfe3ab13",
-        "8e4d8137-f717-4bfb-8ccd-ec53b5760865"
-      ],
-      "blue_name": "SPIDER",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "7f240deb-87fd-4d89-a8ad-7131d95ba6b3",
-        "f1b6d485-d1e0-45e3-b7c9-c173286011de",
-        "838dffbb-e65f-400e-a72c-efe39292bda1",
-        "d469a3d6-dc13-4afe-a110-aff542b47a86",
-        "03e0820d-64eb-4273-b118-7b255f0fb82b"
-      ],
-      "blue_name": "TEAM GANDERS",
-      "orange_name": "XAYFHERS"
-    },
-    {
-      "ballchasing_id": [
-        "ef73f356-364d-4574-a0ad-de4a287cb67b",
-        "61daf8a9-37bf-4b25-8587-636686850873",
-        "f8355625-d504-4424-9e0c-2171fdac8287"
-      ],
-      "blue_name": "RESOLUTE",
-      "orange_name": "BLAST"
-    },
-    {
-      "ballchasing_id": [
-        "cdc345cc-6c62-4cd9-97e7-9dc5853abd71",
-        "b2808dad-87a1-4f25-92f6-5e490be33670",
-        "292de0c8-fb7a-4c61-94c5-d4931cc045ba"
-      ],
-      "blue_name": "METHOD2MADNESS",
-      "orange_name": "TOKYO VERDY ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "17f0ff5e-0b7e-4126-b68d-7d7d31757f79",
-        "06a99c7a-c6fb-48f7-9c80-693b1788ad0e",
-        "37bc3d77-446a-41ae-88ec-b695cca37340"
-      ],
-      "blue_name": "RESOLUTE",
-      "orange_name": "MOTI MOTI GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "8609129f-ac33-494f-bec1-0734431eaaf1",
-        "8ea01a4f-5c48-4b2e-beff-3faea65a99ac",
-        "e05e63ca-41bc-4079-b26c-ed2f57ed759e"
-      ],
-      "blue_name": "GRACESBLAZE REFINE",
-      "orange_name": "TRUE PARROTS"
-    },
-    {
-      "ballchasing_id": [
-        "6f9186d6-fd69-4b56-b70c-9c38919fda5e",
-        "21a783af-fe62-4305-9381-1cefc9479aac",
-        "6f9d0c76-b6a7-4a7f-95f9-6c2e8726d8d5",
-        "6f532b0d-a079-44fe-a979-4c3656cc5203"
-      ],
-      "blue_name": "TEAM GANDERS",
-      "orange_name": "ALOHA"
-    },
-    {
-      "ballchasing_id": [
-        "8cebb7ec-0d08-4f33-91dc-d912a81d14c3",
-        "07ed72ba-c3a8-4100-803e-99c55dfb2c26",
-        "9d87361b-cdd0-462d-a33d-67447ab1d318"
-      ],
-      "blue_name": "MOTI MOTI GAMING",
-      "orange_name": "SHIROGANE"
-    },
-    {
-      "ballchasing_id": [
-        "f97b784c-8a2e-4ce1-b4de-9a09a1dfcf0c",
-        "2f40a004-9ca1-4827-b002-d9f5d4652b3f",
-        "3c9c4150-7064-4a76-bbf3-9b180f25d0c6"
-      ],
-      "blue_name": "RANDOMS",
-      "orange_name": "3RATS"
-    },
-    {
-      "ballchasing_id": [
-        "47865a19-bbd2-42b7-9077-cf872f1c53c7",
-        "c56f7b1b-800e-4c92-b611-6390d51a39a8",
-        "8d6b1ec2-2e73-476a-b754-81aafad66968"
-      ],
-      "blue_name": "ASIA MANJI",
-      "orange_name": "FRIENDLY FIRE ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "e3b01e26-880c-499e-9223-bffe28259ed6",
-        "434dac3c-fae2-4587-a2ef-17a7d78d493f",
-        "4c508f1c-374c-4201-a2bb-ff2c91738e52",
-        "2508ea47-9e37-464c-83d4-4d3e30a53c00",
-        "4c48d23e-2796-4b24-b467-38d6f9bdfed3"
-      ],
-      "blue_name": "DARK RIFT ESPORTS",
-      "orange_name": "3RATS"
-    },
-    {
-      "ballchasing_id": [
-        "c396548c-90fd-4f02-beef-7cd8f68689e1",
-        "e540f202-8cbb-4c6c-bf07-ee38658a0c6c",
-        "cd7dd77e-ae27-4694-8105-cf833c6e2082"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "d5b17b51-1480-4004-8832-f35d64b17313",
-        "f3a8378c-bd95-40d2-a2d1-c961e6fc9fdb",
-        "ea3106da-c8e4-42ef-ae14-77686a45d2b6",
-        "5c26dedf-09f0-43d5-bb3f-e1b92d450ebc"
-      ],
-      "blue_name": "ANTIC ESPORTS",
-      "orange_name": "R!OT GAMING"
-    },
-    {
-      "ballchasing_id": [
-        "78ed4238-21b6-45b9-a45c-21e9233cbd7f",
-        "6dfb96c6-8a97-4fce-9f34-ec67ff7aa970",
-        "728c4389-72cb-4dea-8b00-2bf1bb5c8d98",
-        "07729e59-3a1e-4609-b255-9039a98e2f86",
-        "e30523d7-9f57-4815-b2cc-e24075b85c45"
-      ],
-      "blue_name": "TRIDENT ESPORTS",
-      "orange_name": "ANTIC ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "7bc2b0dc-c812-454d-900a-e00cd83e4b15",
-        "ffc2d2f3-1409-472b-b983-49f33909446a",
-        "02794f4a-43f9-4466-a4af-44ea743be5f5",
-        "cbd4a248-5ed4-490d-8d98-a9f35a1d9e67",
-        "b1d9b5f5-24a0-415a-8593-34c1d3caa751",
-        "cef0121e-e9c1-46c8-9022-c0c9b2c7e713",
-        "8f4086da-6542-4de7-8bb8-8d2bf562ddb6"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "ATOMIC"
-    },
-    {
-      "ballchasing_id": [
-        "57d7736c-c6cf-4c0f-8275-822a7e0e0a24",
-        "c0a4c559-277d-4a52-b09d-6ddb7cf05d67",
-        "44512d10-01b4-49dd-9d78-2113f7ea97a3",
-        "ace69b25-b264-49b8-9145-90350a158a9f",
-        "da86e6e7-bb7a-459f-8e20-a0e629bdf93f",
-        "55598765-3430-4ab5-8d39-65c0fe067076"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "ATK"
-    },
-    {
-      "ballchasing_id": [
-        "4e439791-1d8e-469f-a70f-a4890915f8a6",
-        "f53ae624-98ce-4775-9b46-5c6969cad7dd",
-        "fee7bc0b-a2a1-4375-8f89-5bdae6520063"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "NSF"
-    },
-    {
-      "ballchasing_id": [
-        "03bbccf3-d5a4-43a1-9b96-d10d80f4f23b",
-        "9c2fbb2e-fecc-463f-9d68-921d5741d77a",
-        "5a76938e-aedc-42e7-bc13-a60f929e7efa"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "DANQUO"
-    },
-    {
-      "ballchasing_id": [
-        "3bd3996f-4153-4182-a162-f02c7375980c",
-        "514bb26d-ea1d-4a14-a752-db42d6244fe4",
-        "f3e099ff-da35-45fe-8663-edff97e22893",
-        "b725daa9-325e-4a07-8f2e-daeab0bd6a71"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "ASIA MANJI"
-    },
-    {
-      "ballchasing_id": [
-        "b26385ff-329b-4274-b357-1f1d78c760d7",
-        "bba79e61-6179-45ac-9cf9-aed137c46695",
-        "70c40d0b-acb4-4caa-9135-893a60125b64"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "DARK RIFT ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "b26385ff-329b-4274-b357-1f1d78c760d7",
-        "bba79e61-6179-45ac-9cf9-aed137c46695",
-        "70c40d0b-acb4-4caa-9135-893a60125b64"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "DARK RIFT ESPORTS"
-    },
-    {
-      "ballchasing_id": [
-        "486958af-bfec-4cc4-abce-dbc5bc445dec",
-        "a626de40-3d8e-4049-b2cb-7a9d77a76409",
-        "b2af4b61-adbf-4dea-8fea-e876b8b14dbe"
-      ],
-      "blue_name": "FRIENDLY FIRE ESPORTS",
-      "orange_name": "ORGLESS (ASIA)"
-    },
-    {
-      "ballchasing_id": [
-        "2bd3e46d-0063-4e08-93cd-7b1439618664",
-        "cfff15ef-c1cd-4955-bf64-b169795243d7",
-        "b7b7e1a0-93b4-4b3e-b952-4ae6974295c6"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "GOD SPEED"
-    },
-    {
-      "ballchasing_id": [
-        "c0b6a281-5e06-48a5-820d-0d358a3226d5",
-        "5fc38880-050e-4f80-9e86-f82c6cc78f51",
-        "72d27cf0-63f1-4931-808a-6282fc689cf0"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "ATLASGAMING"
-    },
-    {
-      "ballchasing_id": [
-        "a4866709-66f2-42bb-b854-af3628a4f8ad",
-        "f61824a7-3d2a-44cb-9999-64b5f25895aa",
-        "b61b4cf7-b48c-4be8-ba49-ba8fcd85ea21",
-        "ab0e5b5f-38b9-4542-bc3a-2774c3d5a2b0"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "TEAM INDIA"
-    },
-    {
-      "ballchasing_id": [
-        "36304fdb-f144-42de-b4fa-a255bba9dabb",
-        "9e3b925f-74e3-4678-a26a-208f3b60a3a7",
-        "2507b28d-4445-47a7-bbae-5f528c97005d",
-        "0d75f81b-e101-4c3b-b539-24b858abc071",
-        "f4a05161-eb63-47dc-b403-87a33113e718"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "INFERNO"
-    },
-    {
-      "ballchasing_id": [
-        "24bbd6c7-b5da-4218-a627-d7b2c724ac8e",
-        "4d07d94f-0538-477a-a8a3-1407cb06e939",
-        "97d9f0d6-2eca-4b7f-ba07-0a04c79620ea"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "ATOMIC"
-    },
-    {
-      "ballchasing_id": [
-        "c330bacb-abc4-452a-8d95-08cc9f2f0567",
-        "58776a2b-4276-4881-b42b-3e5985f2f3b0",
-        "22c997f7-5a01-48d0-8c2d-f60fafd53338",
-        "af267c25-6c03-424a-9aad-097c21798610",
-        "55f73e4e-6f5d-4fd0-b143-ca00d02e9bfb"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "OUT OF RETIREMENT"
-    },
-    {
-      "ballchasing_id": [
-        "f38b09de-24ee-4ef2-9ed9-719f0feade7c",
-        "b128a7c9-853b-479a-b130-52f4b73f3f56",
-        "783479c1-b1b2-488f-aca8-afd915ab93f0"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "DALA WHAT YOU MUST"
-    },
-    {
-      "ballchasing_id": [
-        "8a365691-15d5-4add-ad00-2ae26dd6c918",
-        "c858ea6b-f586-43c3-8319-f91d587f58f6",
-        "b4fddde5-d8bb-4012-af71-ba40fd8d0dd0",
-        "a7a7ffc9-96e2-476f-a3fe-d9a19c15770d",
-        "9673eb10-44d8-4878-93bd-c8b828343a8a"
-      ],
-      "blue_name": "ORGLESS (SOUTH AFRICA)",
-      "orange_name": "ATOMIC"
-    },
-    {
-      "ballchasing_id": [
-        "abb75563-851a-4ebc-a986-39cd44d102ed",
-        "cfd501be-be42-447b-9773-701e7e24a4d2",
-        "34f87614-ba41-40e7-8a0d-b4d1c050e0f8",
-        "d651f465-0046-4c5f-969b-42602c7ae28a"
-      ],
-      "blue_name": "ORGLESS (ASIA)",
-      "orange_name": "MOONBOOTS"
-    },
-    {
-      "ballchasing_id": [
-        "8525090e-891e-4e0f-ae57-c6e02d0bc174",
-        "7f472266-ec32-4395-9301-701995f01526",
-        "c9c7a4e0-5d71-448a-8b06-017c034d0146"
-      ],
-      "blue_name": "ORLANDO PIRATES EXDEE",
-      "orange_name": "ORGLESS (SOUTH AFRICA)"
-    },
-    {
-      "ballchasing_id": [
-        "aef53dbf-d52d-44f3-b11c-3afa1201553c",
-        "6d512204-4483-4a9a-a285-68cd118addb1",
-        "e71dce38-e9c8-4c9e-8598-e698fd856027",
-        "de7ff363-e1dc-4531-8f87-aa7c88404eea",
-        "2dc59597-9c72-4b3b-86d8-067b8610857d"
-      ],
-      "blue_name": "ATK",
-      "orange_name": "ORGLESS (SOUTH AFRICA)"
-    },
-    {
-      "ballchasing_id": [
-        "0c5f99c7-437f-429e-b530-6f55d9248378",
-        "5819b53d-96fc-465e-9bc4-e7a5bd30ec6a",
-        "299ae655-2c3b-4976-ba5f-6e1724b4d2f7",
-        "104fa0a1-5f60-42b6-b294-e0e8aa352372",
-        "4d781798-16b5-475f-9f94-ae761130218e",
-        "554caf3c-0e6f-4fd5-9fd9-3630a2886ddc",
-        "a43b22e0-7b64-40a0-8b72-69c50354cc57"
-      ],
-      "blue_name": "ATOMIC",
-      "orange_name": "ORGLESS (SOUTH AFRICA)"
-    }
-  ],
   "car_names": [
     {
-      "car_id": 5020,
+      "car_id": "5020",
       "car_name": "Outlaw"
     },
     {
-      "car_id": 5265,
+      "car_id": "5265",
       "car_name": "Formula 1"
     },
     {
-      "car_id": 5361,
+      "car_id": "5361",
       "car_name": "Dingo"
     },
     {
-      "car_id": 5547,
+      "car_id": "5547",
       "car_name": "007's Aston Martin DB5"
     },
     {
-      "car_id": 5709,
+      "car_id": "5709",
       "car_name": "NASCAR Ford Mustang"
     },
     {
-      "car_id": 5773,
+      "car_id": "5773",
       "car_name": "NASCAR Toyota Camry"
     },
     {
-      "car_id": 5823,
+      "car_id": "5823",
       "car_name": "NASCAR Chevrolet Camaro"
     },
     {
-      "car_id": 5951,
+      "car_id": "5951",
       "car_name": "Jackal"
     },
     {
-      "car_id": 6244,
+      "car_id": "6244",
       "car_name": "BMW M240i"
     },
     {
-      "car_id": 6247,
+      "car_id": "6247",
       "car_name": "McLaren 570S"
     },
     {
-      "car_id": 6939,
+      "car_id": "6939",
       "car_name": "Ford Mustang Mach-E RLE"
+    }
+  ],
+  "map_names": [
+    {
+      "map_id": "outlaw_p",
+      "map_name": "Deadeye Canyon"
+    }
+  ],
+  "players_country": [
+    {
+      "player_id": "61794c34f8090ec7452894a1",
+      "player_tag": "acefryst",
+      "player_country": "my"
+    },
+    {
+      "player_id": "6180103ff8090ec74528a600",
+      "player_tag": "aljezz",
+      "player_country": "re"
+    },
+    {
+      "player_id": "619e616e143c37878b23f033",
+      "player_tag": "billyy",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61e56630da9d7ca1c7ba5006",
+      "player_tag": "blazer",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61800faa143c37878b23bd14",
+      "player_tag": "bluedragonn",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61ebd951da9d7ca1c7ba5777",
+      "player_tag": "boy974s",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61e56630da9d7ca1c7ba5007",
+      "player_tag": "bunchee",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6163206ef8090ec745287461",
+      "player_tag": "bustanji",
+      "player_country": "jo"
+    },
+    {
+      "player_id": "5f77ad09a0cb87e0663bc1bf",
+      "player_tag": "buzayed",
+      "player_country": "om"
+    },
+    {
+      "player_id": "6162f9d9f8090ec74528737d",
+      "player_tag": "ch\/&k$\"!",
+      "player_country": "sg"
+    },
+    {
+      "player_id": "61e56690da9d7ca1c7ba501e",
+      "player_tag": "claude974",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61800faa143c37878b23bd12",
+      "player_tag": "creativix4",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6163206ef8090ec745287460",
+      "player_tag": "cyan.",
+      "player_country": "jo"
+    },
+    {
+      "player_id": "61795310f8090ec7452895bf",
+      "player_tag": "distrion",
+      "player_country": "qa"
+    },
+    {
+      "player_id": "6193d275143c37878b23dc1f",
+      "player_tag": "f2hadiv",
+      "player_country": "om"
+    },
+    {
+      "player_id": "616da9ecf8090ec7452886b7",
+      "player_tag": "fettic",
+      "player_country": "kr"
+    },
+    {
+      "player_id": "619e612ff8090ec74528dbc9",
+      "player_tag": "flem de joue",
+      "player_country": "re"
+    },
+    {
+      "player_id": "617953b7143c37878b23aeb5",
+      "player_tag": "hamadi",
+      "player_country": "ly"
+    },
+    {
+      "player_id": "619e612ff8090ec74528dbca",
+      "player_tag": "hekslyx",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61daf533da9d7ca1c7ba3e00",
+      "player_tag": "hexa is tired",
+      "player_country": "bd"
+    },
+    {
+      "player_id": "617953b7143c37878b23aeb7",
+      "player_tag": "islamdr03",
+      "player_country": "ly"
+    },
+    {
+      "player_id": "61f9164eda9d7ca1c7ba756f",
+      "player_tag": "iver",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61794c34f8090ec7452894a3",
+      "player_tag": "jamity.",
+      "player_country": "mv"
+    },
+    {
+      "player_id": "620a7c2fc437fde7e02cff2b",
+      "player_tag": "jinn",
+      "player_country": "jo"
+    },
+    {
+      "player_id": "5f3d8fdd95f40596eae2445e",
+      "player_tag": "jushu",
+      "player_country": "ae"
+    },
+    {
+      "player_id": "61ebd821c437fde7e02cd256",
+      "player_tag": "kasumi_momoshiro",
+      "player_country": "re"
+    },
+    {
+      "player_id": "616da9ecf8090ec7452886b6",
+      "player_tag": "kor_la",
+      "player_country": "kr"
+    },
+    {
+      "player_id": "620a7f4ada9d7ca1c7ba84b8",
+      "player_tag": "kylo",
+      "player_country": "th"
+    },
+    {
+      "player_id": "620a7c85da9d7ca1c7ba841a",
+      "player_tag": "light",
+      "player_country": "dz"
+    },
+    {
+      "player_id": "6169e634f8090ec745287cb0",
+      "player_tag": "lightning !",
+      "player_country": "kw"
+    },
+    {
+      "player_id": "5f3d8fdd95f40596eae241b4",
+      "player_tag": "lumberj4ck",
+      "player_country": "om"
+    },
+    {
+      "player_id": "61800ef7f8090ec74528a5c0",
+      "player_tag": "luthzhone",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61896ba2143c37878b23d12b",
+      "player_tag": "lynx",
+      "player_country": "kw"
+    },
+    {
+      "player_id": "61daef2cc437fde7e02cb80c",
+      "player_tag": "mentus",
+      "player_country": "tn"
+    },
+    {
+      "player_id": "619e616e143c37878b23f032",
+      "player_tag": "n0xygenz",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61e566f6c437fde7e02ccb9e",
+      "player_tag": "nayr",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61800faa143c37878b23bd13",
+      "player_tag": "neroxk92",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6169e189f8090ec745287c6e",
+      "player_tag": "night.",
+      "player_country": "kw"
+    },
+    {
+      "player_id": "61e56630da9d7ca1c7ba5008",
+      "player_tag": "nuaj.",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6163206ef8090ec74528745f",
+      "player_tag": "onyx",
+      "player_country": "jo"
+    },
+    {
+      "player_id": "61800ef7f8090ec74528a5c1",
+      "player_tag": "plisfos",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61ebd950da9d7ca1c7ba5776",
+      "player_tag": "pnda.",
+      "player_country": "re"
+    },
+    {
+      "player_id": "619e616e143c37878b23f031",
+      "player_tag": "pole emploi 974",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61731b9b143c37878b23a1d1",
+      "player_tag": "porra07",
+      "player_country": "na"
+    },
+    {
+      "player_id": "61daf24fda9d7ca1c7ba3d87",
+      "player_tag": "saber",
+      "player_country": "gb"
+    },
+    {
+      "player_id": "620a7c85da9d7ca1c7ba841b",
+      "player_tag": "saikym",
+      "player_country": "dz"
+    },
+    {
+      "player_id": "61800ef7f8090ec74528a5c2",
+      "player_tag": "saino",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6169e722143c37878b2393bd",
+      "player_tag": "scob",
+      "player_country": "kw"
+    },
+    {
+      "player_id": "6162facf143c37878b238ac7",
+      "player_tag": "seb_1143",
+      "player_country": "kh"
+    },
+    {
+      "player_id": "61e54e0bc437fde7e02cc98b",
+      "player_tag": "sh0cksie",
+      "player_country": "mn"
+    },
+    {
+      "player_id": "61e56690da9d7ca1c7ba501f",
+      "player_tag": "skygetsu",
+      "player_country": "re"
+    },
+    {
+      "player_id": "617953b7143c37878b23aeb6",
+      "player_tag": "taker",
+      "player_country": "ly"
+    },
+    {
+      "player_id": "620a8160c437fde7e02cfff3",
+      "player_tag": "tonie",
+      "player_country": "kr"
+    },
+    {
+      "player_id": "616da9ecf8090ec7452886b8",
+      "player_tag": "vital",
+      "player_country": "kr"
+    },
+    {
+      "player_id": "61ebd951da9d7ca1c7ba5778",
+      "player_tag": "wiiloo",
+      "player_country": "re"
+    },
+    {
+      "player_id": "61ee7a38da9d7ca1c7ba5e67",
+      "player_tag": "wingspot",
+      "player_country": "id"
+    },
+    {
+      "player_id": "6180103ff8090ec74528a5ff",
+      "player_tag": "wodenn",
+      "player_country": "re"
+    },
+    {
+      "player_id": "60a5409ea7f8a4ef11c8c5bc",
+      "player_tag": "wondercake",
+      "player_country": "qa"
+    },
+    {
+      "player_id": "619e612ff8090ec74528dbc8",
+      "player_tag": "yuzo",
+      "player_country": "re"
+    },
+    {
+      "player_id": "6180103ff8090ec74528a5fe",
+      "player_tag": "z27vib",
+      "player_country": "re"
+    },
+    {
+      "player_id": "619e6058f8090ec74528db90",
+      "player_tag": "zen",
+      "player_country": "re"
     }
   ]
 }

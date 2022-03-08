@@ -13,7 +13,7 @@ import tqdm
 
 """File Information
 
-@file_name: octane_zsr.py
+@file_name: data_collection.py
 @author: Dylan "dyl-m" Monfret
 """
 

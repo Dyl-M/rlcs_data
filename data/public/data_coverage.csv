@@ -1,0 +1,105 @@
+event_id,event_split,event,event_region,event_phase
+614b7046f8090ec74528642d,Fall,Regional 1,Oceania,Invitational Qualifier
+614b7046f8090ec74528642d,Fall,Regional 1,Oceania,Closed Qualifier
+614b7046f8090ec74528642d,Fall,Regional 1,Oceania,Main Event
+614b6e37f8090ec74528642a,Fall,Regional 1,North America,Invitational Qualifier
+614b6e37f8090ec74528642a,Fall,Regional 1,North America,Closed Qualifier
+614b6e37f8090ec74528642a,Fall,Regional 1,North America,Main Event
+614b7564f8090ec745286437,Fall,Regional 1,Asia-Pacific South,Closed Qualifier
+614b72c1f8090ec745286431,Fall,Regional 1,Middle East & North Africa,Closed Qualifier
+614b7564f8090ec745286437,Fall,Regional 1,Asia-Pacific South,Main Event
+614b72c1f8090ec745286431,Fall,Regional 1,Middle East & North Africa,Main Event
+614b6ac2143c37878b237b37,Fall,Regional 1,Europe,Invitational Qualifier
+614b718af8090ec74528642f,Fall,Regional 1,South America,Invitational Qualifier
+614b6ac2143c37878b237b37,Fall,Regional 1,Europe,Closed Qualifier
+614b718af8090ec74528642f,Fall,Regional 1,South America,Closed Qualifier
+614b6ac2143c37878b237b37,Fall,Regional 1,Europe,Main Event
+614b718af8090ec74528642f,Fall,Regional 1,South America,Main Event
+614b7457f8090ec745286434,Fall,Regional 1,Asia-Pacific North,Closed Qualifier
+614b7679f8090ec745286439,Fall,Regional 1,Sub-Saharan Africa,Closed Qualifier
+614b7457f8090ec745286434,Fall,Regional 1,Asia-Pacific North,Main Event
+614b7679f8090ec745286439,Fall,Regional 1,Sub-Saharan Africa,Main Event
+614b70b5f8090ec74528642e,Fall,Regional 2,Oceania,Closed Qualifier
+614b75cdf8090ec745286438,Fall,Regional 2,Asia-Pacific South,Closed Qualifier
+614b7393f8090ec745286432,Fall,Regional 2,Middle East & North Africa,Closed Qualifier
+614b70b5f8090ec74528642e,Fall,Regional 2,Oceania,Main Event
+614b75cdf8090ec745286438,Fall,Regional 2,Asia-Pacific South,Main Event
+614b7393f8090ec745286432,Fall,Regional 2,Middle East & North Africa,Main Event
+614b6eddf8090ec74528642b,Fall,Regional 2,North America,Closed Qualifier
+614b6eddf8090ec74528642b,Fall,Regional 2,North America,Main Event
+614b6c36f8090ec745286428,Fall,Regional 2,Europe,Closed Qualifier
+614b74a7f8090ec745286435,Fall,Regional 2,Asia-Pacific North,Closed Qualifier
+614b71f4143c37878b237b39,Fall,Regional 2,South America,Closed Qualifier
+614b74a7f8090ec745286435,Fall,Regional 2,Asia-Pacific North,Main Event
+614b6c36f8090ec745286428,Fall,Regional 2,Europe,Main Event
+614b71f4143c37878b237b39,Fall,Regional 2,South America,Main Event
+614b76d3f8090ec74528643a,Fall,Regional 2,Sub-Saharan Africa,Closed Qualifier
+614b76d3f8090ec74528643a,Fall,Regional 2,Sub-Saharan Africa,Main Event
+614b711d143c37878b237b38,Fall,Regional 3,Oceania,Closed Qualifier
+614b7616143c37878b237b3a,Fall,Regional 3,Asia-Pacific South,Closed Qualifier
+614b73ecf8090ec745286433,Fall,Regional 3,Middle East & North Africa,Closed Qualifier
+614b6f9cf8090ec74528642c,Fall,Regional 3,North America,Closed Qualifier
+614b711d143c37878b237b38,Fall,Regional 3,Oceania,Main Event
+614b7616143c37878b237b3a,Fall,Regional 3,Asia-Pacific South,Main Event
+614b73ecf8090ec745286433,Fall,Regional 3,Middle East & North Africa,Main Event
+614b6f9cf8090ec74528642c,Fall,Regional 3,North America,Main Event
+614b7501f8090ec745286436,Fall,Regional 3,Asia-Pacific North,Closed Qualifier
+614b6dbbf8090ec745286429,Fall,Regional 3,Europe,Closed Qualifier
+614b724af8090ec745286430,Fall,Regional 3,South America,Closed Qualifier
+614b7501f8090ec745286436,Fall,Regional 3,Asia-Pacific North,Main Event
+614b6dbbf8090ec745286429,Fall,Regional 3,Europe,Main Event
+614b724af8090ec745286430,Fall,Regional 3,South America,Main Event
+614b7721143c37878b237b3b,Fall,Regional 3,Sub-Saharan Africa,Closed Qualifier
+614b7721143c37878b237b3b,Fall,Regional 3,Sub-Saharan Africa,Main Event
+61912154143c37878b23d438,Fall,APAC Qualifier,Asia-Pacific,Main Event
+619120e3143c37878b23d436,Fall,Major Tiebreaker,North America,Main Event
+614b6589f8090ec745286426,Fall,Major,World,Main Event
+6153529c143c37878b2380a3,Winter,Regional 1,Middle East & North Africa,Closed Qualifier
+6153529c143c37878b2380a3,Winter,Regional 1,Middle East & North Africa,Main Event
+61534817143c37878b237fd6,Winter,Regional 1,Oceania,Closed Qualifier
+6153502df8090ec745286978,Winter,Regional 1,Asia-Pacific South,Closed Qualifier
+615344fe143c37878b237fd5,Winter,Regional 1,North America,Closed Qualifier
+61534817143c37878b237fd6,Winter,Regional 1,Oceania,Main Event
+6153502df8090ec745286978,Winter,Regional 1,Asia-Pacific South,Main Event
+615344fe143c37878b237fd5,Winter,Regional 1,North America,Main Event
+61534dc7f8090ec745286961,Winter,Regional 1,Asia-Pacific North,Closed Qualifier
+615355a0f8090ec745286982,Winter,Regional 1,Sub-Saharan Africa,Closed Qualifier
+61533e99143c37878b237fa8,Winter,Regional 1,Europe,Closed Qualifier
+61534c85143c37878b238052,Winter,Regional 1,South America,Closed Qualifier
+61534dc7f8090ec745286961,Winter,Regional 1,Asia-Pacific North,Main Event
+615355a0f8090ec745286982,Winter,Regional 1,Sub-Saharan Africa,Main Event
+61533e99143c37878b237fa8,Winter,Regional 1,Europe,Main Event
+61534c85143c37878b238052,Winter,Regional 1,South America,Main Event
+61535418f8090ec745286980,Winter,Regional 2,Middle East & North Africa,Closed Qualifier
+61535418f8090ec745286980,Winter,Regional 2,Middle East & North Africa,Main Event
+615348f9f8090ec7452868f6,Winter,Regional 2,Oceania,Closed Qualifier
+615350ea143c37878b2380a1,Winter,Regional 2,Asia-Pacific South,Closed Qualifier
+615345bdf8090ec7452868f4,Winter,Regional 2,North America,Closed Qualifier
+615348f9f8090ec7452868f6,Winter,Regional 2,Oceania,Main Event
+615350ea143c37878b2380a1,Winter,Regional 2,Asia-Pacific South,Main Event
+615345bdf8090ec7452868f4,Winter,Regional 2,North America,Main Event
+61534e47f8090ec745286962,Winter,Regional 2,Asia-Pacific North,Closed Qualifier
+61535641f8090ec745286983,Winter,Regional 2,Sub-Saharan Africa,Closed Qualifier
+615340a6143c37878b237fd3,Winter,Regional 2,Europe,Closed Qualifier
+61534d16143c37878b238053,Winter,Regional 2,South America,Closed Qualifier
+61534e47f8090ec745286962,Winter,Regional 2,Asia-Pacific North,Main Event
+61535641f8090ec745286983,Winter,Regional 2,Sub-Saharan Africa,Main Event
+615340a6143c37878b237fd3,Winter,Regional 2,Europe,Main Event
+61534d16143c37878b238053,Winter,Regional 2,South America,Main Event
+615354d5f8090ec745286981,Winter,Regional 3,Middle East & North Africa,Closed Qualifier
+615354d5f8090ec745286981,Winter,Regional 3,Middle East & North Africa,Main Event
+615349d7143c37878b237fd7,Winter,Regional 3,Oceania,Closed Qualifier
+615351d2143c37878b2380a2,Winter,Regional 3,Asia-Pacific South,Closed Qualifier
+615346e4f8090ec7452868f5,Winter,Regional 3,North America,Closed Qualifier
+615349d7143c37878b237fd7,Winter,Regional 3,Oceania,Main Event
+615351d2143c37878b2380a2,Winter,Regional 3,Asia-Pacific South,Main Event
+615346e4f8090ec7452868f5,Winter,Regional 3,North America,Main Event
+61534ae3143c37878b237fe1,Winter,Regional 3,South America,Closed Qualifier
+61534ef7f8090ec745286963,Winter,Regional 3,Asia-Pacific North,Closed Qualifier
+615356c9143c37878b2380a4,Winter,Regional 3,Sub-Saharan Africa,Closed Qualifier
+615342b3143c37878b237fd4,Winter,Regional 3,Europe,Closed Qualifier
+61534ef7f8090ec745286963,Winter,Regional 3,Asia-Pacific North,Main Event
+615356c9143c37878b2380a4,Winter,Regional 3,Sub-Saharan Africa,Main Event
+615342b3143c37878b237fd4,Winter,Regional 3,Europe,Main Event
+61534ae3143c37878b237fe1,Winter,Regional 3,South America,Main Event
+620bf77fda9d7ca1c7ba8719,Winter,APAC Qualifier,Asia-Pacific,Main Event
