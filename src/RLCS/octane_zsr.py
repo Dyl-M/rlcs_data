@@ -229,6 +229,7 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
     if status_code == 429:
         time.sleep(1)
         return {'error': ballchasing_id}
+
     print(f'UNKNOWN ERROR: {status_code} / {ballchasing_id}')
     sys.exit()
 
@@ -402,7 +403,7 @@ def parse_events(events_group: str, event_id_list: list = None, csv_export: bool
     events_df.loc[events_df.stage == 'North America', ['event_region', 'stage']] = ['North America', 'Playoffs']
 
     # Create 'event_phase' from 'stage_is_qualifier' and patch specific rows (event_phase and stage)
-    events_df['event_phase'] = np.where(events_df.stage_is_qualifier == True, events_df.stage, 'Main Event')
+    events_df['event_phase'] = np.where(events_df.stage_is_qualifier.isin([True]), events_df.stage, 'Main Event')
     events_df.loc[(events_df.event_phase == 'Playoffs') |
                   (events_df.event_phase == 'Tiebreaker Match'), 'event_phase'] = 'Main Event'
     events_df.loc[events_df.event_phase != 'Main Event', 'stage'] = 'Swiss Stage'
@@ -854,12 +855,12 @@ def complete_player_df(main: pd.DataFrame, game_player: pd.DataFrame, workers_oc
         :param game_player_df: game by players dataframe
         :return: fixed dataframe.
         """
-        game_player_reduced = game_player_df.loc[game_player_df.winner == True,
+        game_player_reduced = game_player_df.loc[game_player_df.winner.isin([True]),
                                                  ['game_id', 'player_id', 'core_score', 'advanced_mvp']] \
             .sort_values(['game_id', 'core_score'], ascending=False) \
             .drop_duplicates(subset=['game_id'])
 
-        missing_mvp = game_player_reduced.loc[game_player_reduced.advanced_mvp == False] \
+        missing_mvp = game_player_reduced.loc[game_player_reduced.advanced_mvp.isin([False])] \
             .drop(['core_score', 'advanced_mvp'], axis=1) \
             .to_dict('records')
 
