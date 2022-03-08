@@ -34,7 +34,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   ├── missing_values.json
 │   │   ├── note.txt
 │   │   ├── seasons.json
-│   │   └── tru_cols.json
+│   │   └── true_cols.json
 │   │
 │   └── retrieved (IGNORED)
 │       ├── games_by_players.csv 
@@ -59,10 +59,6 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │
 ├── src
 │   ├── RLCS
-│   │   ├── data_collection.py
-│   │   ├── data_collection_tools.py
-│   │   ├── data_formatting.py
-│   │   ├── data_formatting_tools.py
 │   │   ├── ml_formatting.py
 │   │   ├── ml_predictions.py
 │   │   ├── ml_training.py
