@@ -812,8 +812,6 @@ def collect_ballchasing(game_df: pd.DataFrame, token: str = my_token, workers: i
             with open('../../data/retrieved/replays_tmp.json', 'w', encoding='utf-8') as replay_list_file:
                 json.dump(replay_list, replay_list_file, indent=1)  # Saving intermediate results
 
-        return replay_list
-
     elif to_treat:
         for ballchasing_id in tqdm.tqdm(to_treat, desc='ballchasing.com requests'):
             replay_list += get_ballchasing(ballchasing_id)
@@ -821,11 +819,10 @@ def collect_ballchasing(game_df: pd.DataFrame, token: str = my_token, workers: i
             with open('../../data/retrieved/replays_tmp.json', 'w', encoding='utf-8') as replay_list_file:
                 json.dump(replay_list, replay_list_file, indent=1)  # Saving intermediate results
 
-        return replay_list
-
     else:
         print('All replays already retrieved!')
-        return replay_list
+
+    return replay_list
 
 
 def parse_ballchasing(ballchasing_list: list):
