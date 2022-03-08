@@ -809,7 +809,7 @@ def collect_ballchasing(game_df: pd.DataFrame, token: str = my_token, workers: i
         return replay_list
 
     elif to_treat:
-        for ballchasing_id in tqdm.tqdm(to_treat, desc=f'ballchasing.com requests)'):
+        for ballchasing_id in tqdm.tqdm(to_treat, desc='ballchasing.com requests'):
             replay_list += get_ballchasing(ballchasing_id)
 
             with open('../../data/retrieved/replays_tmp.json', 'w', encoding='utf-8') as replay_list_file:
