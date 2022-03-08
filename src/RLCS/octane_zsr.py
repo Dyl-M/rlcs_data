@@ -223,16 +223,14 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
     if status_code == 200:
         return perform_request(request=ballchasing_request)
 
-    elif status_code == 404:
+    if status_code == 404:
         return {'id': ballchasing_id}
 
-    elif status_code == 429:
+    if status_code == 429:
         time.sleep(1)
         return {'error': ballchasing_id}
-
-    else:
-        print(f'UNKNOWN ERROR: {status_code} / {ballchasing_id}')
-        sys.exit()
+    print(f'UNKNOWN ERROR: {status_code} / {ballchasing_id}')
+    sys.exit()
 
 
 def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Championship (Wildcard, Groups and Playoffs)
