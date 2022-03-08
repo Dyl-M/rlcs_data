@@ -190,7 +190,7 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
     status_code = ballchasing_request.status_code
 
     def perform_request(request):
-        """ Extract required information from a ballchasing.com API call
+        """Extract required information from a ballchasing.com API call
         :param request: request results (response is valid / 200)
         :return replay: dictionary with required information (settings, car, platform information).
         """
