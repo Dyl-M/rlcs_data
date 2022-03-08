@@ -7,6 +7,7 @@ import p_tqdm
 import pandas as pd
 import re
 import requests
+import sys
 import time
 import tqdm
 
@@ -225,7 +226,7 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
 
     else:
         print(f'UNKNOWN ERROR: {status_code} / {ballchasing_id}')
-        exit()
+        sys.exit()
 
 
 def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Championship (Wildcard, Groups and Playoffs)
