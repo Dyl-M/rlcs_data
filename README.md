@@ -17,7 +17,7 @@ The **`ballchasing_ML`** project aims to pursue the opening of analytical possib
 * To collect all the data available on the website and trying to structure them as well as possible as first short term goal.
 * Then, to create machine learning models able to predict games' outcomes.
 
-First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are available on Kaggle to the following link: [Rocket League Championship Series 2021-2022 on Kaggle](https://www.kaggle.com/dylanmonfret/rlcs-202122).
+First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are available on Kaggle to the following link: [Rocket League Championship Series 2021-2022 on Kaggle](https://www.kaggle.com/dylanmonfret/rlcs-202122), using both [octane.gg](https://octane.gg/) and [ballchasing.com](https://ballchasing.com/) APIs.
 
 Repository structure
 -------------
@@ -30,21 +30,19 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   └── my_token.txt
 │   │
 │   ├── public
-│   │   ├── alias.json
+│   │   ├── data_coverage.csv
 │   │   ├── missing_values.json
 │   │   ├── note.txt
-│   │   ├── patch.json
-│   │   ├── pre_patch.json
-│   │   └── seasons.json
+│   │   ├── seasons.json
+│   │   └── tru_cols.json
 │   │
 │   └── retrieved (IGNORED)
-│       ├── by_players.csv 
-│       ├── by_teams.csv
-│       ├── general.csv
-│       ├── groups.csv
-│       ├── players_db.csv
-│       ├── pre_dataset.json
-│       └── raw.json
+│       ├── games_by_players.csv 
+│       ├── games_by_teams.csv
+│       ├── main.csv
+│       ├── matches_by_players.csv
+│       ├── matches_by_teams.csv
+│       └── replays_tmp.json
 │
 ├── models (IGNORED, temporarily?)
 │   ├── tuning_results
@@ -67,7 +65,8 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   ├── data_formatting_tools.py
 │   │   ├── ml_formatting.py
 │   │   ├── ml_predictions.py
-│   │   └── ml_training.py
+│   │   ├── ml_training.py
+│   │   └── octane_zsr.py
 │   │
 │   └── test.py
 │
@@ -82,6 +81,7 @@ Regarding `my_token.txt`:
 
 * You can generate your personal token on [ballchasing.com](https://ballchasing.com/) by connecting to your Steam account.
 * Then write this token into a text file like I did, it will be read to run API calls.
+* No token is required to use the octane.gg API.
 
 External information
 -------------
