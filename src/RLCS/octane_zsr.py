@@ -116,7 +116,8 @@ def get_an_event(events_id: str):
         return events_list
 
     except json.decoder.JSONDecodeError:
-        raise
+        print('json.decoder.JSONDecodeError')
+        sys.exit()
 
 
 def get_events(events_group: str):
@@ -131,7 +132,8 @@ def get_events(events_group: str):
         return events_list
 
     except json.decoder.JSONDecodeError:
-        raise
+        print('json.decoder.JSONDecodeError')
+        sys.exit()
 
 
 def get_event_matches(event_id: str):
@@ -146,7 +148,8 @@ def get_event_matches(event_id: str):
         return matches_list
 
     except json.decoder.JSONDecodeError:
-        raise
+        print('json.decoder.JSONDecodeError')
+        sys.exit()
 
 
 def get_game_details(game_id: str):
@@ -161,7 +164,8 @@ def get_game_details(game_id: str):
         return matches_list
 
     except json.decoder.JSONDecodeError:
-        raise
+        print('json.decoder.JSONDecodeError')
+        sys.exit()
 
 
 def get_player(player_id: str):
@@ -176,7 +180,8 @@ def get_player(player_id: str):
         return player_info
 
     except json.decoder.JSONDecodeError:
-        raise
+        print('json.decoder.JSONDecodeError')
+        sys.exit()
 
 
 def get_ballchasing(ballchasing_id: str, token: str = my_token):
@@ -212,7 +217,8 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
             return replay
 
         except json.decoder.JSONDecodeError:
-            raise
+            print('json.decoder.JSONDecodeError')
+            sys.exit()
 
     if status_code == 200:
         return perform_request(request=ballchasing_request)
