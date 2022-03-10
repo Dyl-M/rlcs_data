@@ -940,4 +940,4 @@ if __name__ == '__main__':
 
     # Add missing information (platform identifiers, settings and cars)
     MATCH_PLAYER, GAME_PLAYER = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER, game_player=GAME_PLAYER,
-                                                   workers_octanegg=15, export_data=False)
+                                                   workers_octanegg=15)
