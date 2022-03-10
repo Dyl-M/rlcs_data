@@ -74,8 +74,7 @@
       "map_id",
       "map_name",
       "overtime",
-      "ballchasing_id",
-      "flip_ballchasing"
+      "ballchasing_id"
     ],
     "matches_by_players": [
       "match_id",

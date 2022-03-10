@@ -515,7 +515,7 @@ def parse_matches(events_dataframe: pd.DataFrame, matches_export: bool = False, 
 
     # Drop irrelevant columns
     to_drop = ['player_team__id', 'player_team_slug', 'player_team_name', 'player_team_region', 'player_team_image',
-               'player_accounts', 'player_team_relevant', 'player_relevant']
+               'player_accounts', 'player_team_relevant', 'player_name', 'player_relevant']
     matches_players_df.drop(to_drop, axis=1, inplace=True)
 
     matches_players_df.columns = matches_players_df.columns.str.replace('player_team_', 'team_')  # Change team prefix
@@ -565,11 +565,8 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
     games_list = p_tqdm.p_map(get_game_details, init_games_df.game_id, num_cpus=workers, desc='Games requests')
 
     # Flat the list of dict. as pandas dataframe
-    games_df = pd.json_normalize(games_list, sep='_') \
-        .dropna(axis=1, how='all')
-
+    games_df = pd.json_normalize(games_list, sep='_').dropna(axis=1, how='all')
     games_df = missing_map_name(dataframe=games_df)  # Fill missing map_name
-
     games_df.loc[:, 'date'] = games_df.loc[:, 'date'].apply(pd.to_datetime)  # Date column to datetime
     games_df.number = games_df.number.astype('int64')  # Game number to integer
 
@@ -603,7 +600,9 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
     oran_team_df.columns = oran_team_df.columns.str.replace('orange_', '')
 
     # Concat both sides
-    games_teams = pd.concat([blue_team_df, oran_team_df]).drop(['team_image', 'team_relevant'], axis=1)
+    games_teams = pd.concat([blue_team_df, oran_team_df]) \
+        .drop(['team_image', 'team_relevant', 'flipBallchasing'], axis=1)
+
     games_teams.columns = games_teams.columns.str.replace('stats_', '')  # Delete prefix for stats columns
 
     # Format columns names in lower case with underscore as separator and rename some of them
@@ -641,7 +640,7 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
 
     # Drop irrelevant columns
     to_drop = ['player_team__id', 'player_team_slug', 'player_team_name', 'player_team_region', 'player_team_image',
-               'player_accounts', 'player_team_relevant', 'player_relevant']
+               'player_accounts', 'player_team_relevant', 'player_name', 'player_relevant', 'flipBallchasing']
 
     games_players.drop(to_drop, axis=1, inplace=True)
     games_players.columns = games_players.columns.str.replace('player_team_', 'team_')  # Change team prefix
@@ -651,7 +650,7 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
     games_players.rename(columns=true_cols['renaming']['games'], inplace=True)
 
     # Fill NaN
-    fill_na = {'winner': False, 'overtime': False, 'flip_ballchasing': False, 'advanced_mvp': False}
+    fill_na = {'winner': False, 'overtime': False, 'advanced_mvp': False}
     games_teams.fillna(value=fill_na, inplace=True)
     games_players.fillna(value=fill_na, inplace=True)
     games_players = missing_player_country(dataframe=games_players)
@@ -671,8 +670,9 @@ def parse_players(game_df: pd.DataFrame, workers: int = 8):
     """
     # Retrieving players details / Set columns to drop and rename
     players_list = p_tqdm.p_map(get_player, game_df.player_id.unique(), num_cpus=workers, desc='Players requests')
-    to_drop = ['slug', 'name', 'country', 'team', 'relevant', 'substitute', 'coach']
-    to_rename = {'_id': 'player_id', 'tag': 'player_tag', 'accounts_platform': 'platform', 'accounts_id': 'platform_id'}
+    to_drop = ['slug', 'country', 'team', 'relevant', 'substitute', 'coach']
+    to_rename = {'_id': 'player_id', 'tag': 'player_tag', 'accounts_platform': 'platform',
+                 'accounts_id': 'platform_id', 'name': 'player_name'}
 
     # Convert list to dataframe
     players_db = pd.json_normalize(pd.DataFrame(players_list).drop(to_drop, axis=1).explode('accounts')
@@ -722,7 +722,7 @@ def reduce_dataframes(event_df: pd.DataFrame, match_team: pd.DataFrame, match_pl
                                          'reverse_sweep']].drop_duplicates()
 
     games_reduced = game_team.loc[:, ['event_id', 'match_id', 'game_id', 'game_number', 'game_date', 'ballchasing_id',
-                                      'flip_ballchasing', 'game_duration', 'map_id', 'map_name', 'overtime']] \
+                                      'game_duration', 'map_id', 'map_name', 'overtime']] \
         .drop_duplicates()
 
     main_df = event_df.merge(matches_reduced).merge(games_reduced, how='outer')
@@ -756,18 +756,23 @@ def reduce_dataframes(event_df: pd.DataFrame, match_team: pd.DataFrame, match_pl
                'prize_money', 'stage_step', 'stage', 'stage_start_date', 'stage_end_date', 'liquipedia_link',
                'stage_is_lan', 'location_venue', 'location_city', 'location_country', 'stage_is_qualifier',
                'event', 'event_split', 'event_phase', 'match_number', 'match_round', 'match_date', 'match_format',
-               'game_number', 'game_date', 'ballchasing_id', 'flip_ballchasing', 'match_slug', 'reverse_sweep_attempt',
-               'reverse_sweep', 'game_duration', 'map_id', 'map_name', 'overtime']
+               'game_number', 'game_date', 'ballchasing_id', 'match_slug', 'reverse_sweep_attempt', 'reverse_sweep',
+               'game_duration', 'map_id', 'map_name', 'overtime']
 
     match_team = match_team.drop(to_drop + ['game_id'], axis=1).drop_duplicates()
     match_player = match_player.drop(to_drop + ['game_id'], axis=1).drop_duplicates()
     game_team = game_team.drop(to_drop + ['match_id'], axis=1).drop_duplicates()
     game_player = game_player.drop(to_drop + ['match_id'], axis=1).drop_duplicates()
 
-    # Order columns (unnecessary for match_team & game_team)
+    # Order main_df columns
     main_df = main_df.reindex(columns=true_cols['ordering']['main'])
-    match_player = match_player.reindex(columns=true_cols['ordering']['matches_by_players'])
-    game_player = game_player.reindex(columns=true_cols['ordering']['games_by_players'])
+
+    # Reset indexes
+    main_df.reset_index(drop=True, inplace=True)
+    match_team.reset_index(drop=True, inplace=True)
+    match_player.reset_index(drop=True, inplace=True)
+    game_team.reset_index(drop=True, inplace=True)
+    game_player.reset_index(drop=True, inplace=True)
 
     if export_data:  # Export dataframes as CSV files
         main_df.to_csv('../../data/retrieved/main.csv', encoding='utf8', index=False)
@@ -839,10 +844,11 @@ def parse_ballchasing(ballchasing_list: list):
     return ballchasing_df
 
 
-def complete_player_df(main: pd.DataFrame, game_player: pd.DataFrame, workers_octanegg: int = 8,
-                       workers_ballchasing: int = 8, export_data: bool = True):
+def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_player: pd.DataFrame,
+                       workers_octanegg: int = 8, workers_ballchasing: int = 8, export_data: bool = True):
     """Add platform information, settings and cars used to game by players dataframe
     :param main: main dataframe with events, matches and games information
+    :param match_player: match by players dataframe
     :param game_player: game by players dataframe
     :param workers_octanegg: CPU ressources used for multiprocessing tasks with octane.gg API
     :param workers_ballchasing: CPU ressources used for multiprocessing tasks with ballchasing.com API
@@ -870,6 +876,10 @@ def complete_player_df(main: pd.DataFrame, game_player: pd.DataFrame, workers_oc
 
         return game_player_df
 
+    # Save row order
+    match_player['row_order'] = match_player.index
+    game_player['row_order'] = game_player.index
+
     # Reduced input dataframes and merge
     main_reduced = main.loc[:, ['game_id', 'ballchasing_id']]
     game_reduced = game_player.loc[:, ['game_id', 'player_id']]
@@ -880,17 +890,28 @@ def complete_player_df(main: pd.DataFrame, game_player: pd.DataFrame, workers_oc
     ballchasing_list = collect_ballchasing(game_df=reduced_df, workers=workers_ballchasing)
     ballchasing_df = parse_ballchasing(ballchasing_list=ballchasing_list)
 
-    # Merge successively to complete input game_player (drop redundant ballchasing_id)
+    # Merge successively to complete input game_player (drop redundant ballchasing_id) & match_player
     players_augmented = game_player.merge(game_reduced.merge(player_db).merge(main_reduced).merge(ballchasing_df),
                                           how='outer').drop('ballchasing_id', axis=1)
+
+    match_augmented = player_db.loc[:, ['player_id', 'player_name']].drop_duplicates().merge(match_player)
 
     players_augmented = missing_car_name(dataframe=players_augmented)  # Fix missing car name
     players_augmented = fix_mvp(game_player_df=players_augmented)  # Fix missing MVP attribution
 
+    # Sort rows, order columns & reset indexes
+    match_augmented.sort_values('row_order', inplace=True)
+    players_augmented.sort_values('row_order', inplace=True)
+    match_augmented = match_augmented.reindex(columns=true_cols['ordering']['matches_by_players'])
+    players_augmented = players_augmented.reindex(columns=true_cols['ordering']['games_by_players'])
+    match_augmented.reset_index(drop=True, inplace=True)
+    players_augmented.reset_index(drop=True, inplace=True)
+
     if export_data:
+        match_augmented.to_csv('../../data/retrieved/matches_by_players.csv', encoding='utf8', index=False)
         players_augmented.to_csv('../../data/retrieved/games_by_players.csv', encoding='utf8', index=False)
 
-    return players_augmented
+    return match_augmented, players_augmented
 
 
 "MAIN"
@@ -914,4 +935,5 @@ if __name__ == '__main__':
                                                                                   game_player=GAMES_PLAYERS_TMP)
 
     # Add missing information (platform identifiers, settings and cars)
-    GAME_PLAYER = complete_player_df(main=MAIN_DF, game_player=GAME_PLAYER, workers_octanegg=15)
+    MATCH_PLAYER, GAME_PLAYER = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER, game_player=GAME_PLAYER,
+                                                   workers_octanegg=15)
