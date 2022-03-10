@@ -5,7 +5,7 @@
 [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=active+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=resolved+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/dyl_m_tweets?label=%40dyl_m_twees&style=social)](https://twitter.com/dyl_m_tweets)
+[![Twitter Follow](https://img.shields.io/twitter/follow/dyl_m_tweets?label=%40dyl_m_tweets&style=social)](https://twitter.com/dyl_m_tweets)
 [![Reddit User Karma](https://img.shields.io/reddit/user-karma/link/dyl_m?label=u%2Fdyl_m&style=social)](https://www.reddit.com/user/Dyl_M)
 
 Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship Series.
