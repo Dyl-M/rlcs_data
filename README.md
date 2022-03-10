@@ -1,12 +1,12 @@
 # ballchasing_ML
 
-![GitHub last commit](https://img.shields.io/github/last-commit/Dyl-M/ballchasing_ML?label=Last%20commit&style=flat-square)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Dyl-M/ballchasing_ML?label=Commit%20activity&style=flat-square)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Dyl-M/ballchasing_ML?label=Last%20commit&style=flat-square)](https://github.com/Dyl-M/ballchasing_ML/commits/main)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Dyl-M/ballchasing_ML?label=Commit%20activity&style=flat-square)](https://github.com/Dyl-M/ballchasing_ML/commits/main)
 [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=active+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/Dyl-M/ballchasing_ML.svg/?label=resolved+issues&token=w_aZJJfhd5HPPLyXnDJkstmn)](https://deepsource.io/gh/Dyl-M/ballchasing_ML/?ref=repository-badge)
 
-![Twitter Follow](https://img.shields.io/twitter/follow/dyl_m_tweets?label=%40dyl_m_twees&style=social)
-![Reddit User Karma](https://img.shields.io/reddit/user-karma/link/dyl_m?label=u%2Fdyl_m&style=social)
+[![Twitter Follow](https://img.shields.io/twitter/follow/dyl_m_tweets?label=%40dyl_m_twees&style=social)](https://twitter.com/dyl_m_tweets)
+[![Reddit User Karma](https://img.shields.io/reddit/user-karma/link/dyl_m?label=u%2Fdyl_m&style=social)](https://www.reddit.com/user/Dyl_M)
 
 Machine Learning around replays uploaded on [ballchasing.com](https://ballchasing.com/) and Rocket League Championship Series.
 
