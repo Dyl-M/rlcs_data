@@ -357,5 +357,22 @@
       "player_tag": "zen",
       "player_country": "re"
     }
+  ],
+  "teams_region": [
+    {
+      "team_name": "SANDROCK GAMING",
+      "team_id": "6020bfd8f1e4807cc701ad54",
+      "team_region": "Middle East & North Africa"
+    },
+    {
+      "team_name": "TEAM BDS",
+      "team_id": "6020bd98f1e4807cc700dc74",
+      "team_region": "Europe"
+    },
+    {
+      "team_name": "COMPLEXITY GAMING",
+      "team_id": "6020bc96f1e4807cc7003e29",
+      "team_region": "North America"
+    }
   ]
 }

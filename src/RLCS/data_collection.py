@@ -704,11 +704,15 @@ def reduce_dataframes(event_df: pd.DataFrame, match_team: pd.DataFrame, match_pl
                       (dataframe.event_region != 'Asia-Pacific'), 'team_region'] = dataframe.event_region
 
         apac_qualifiers = true_cols['apac_qualifiers']
+        missing_region = missing_value['teams_region']
 
         for split, teams_list in apac_qualifiers.items():
             for team in teams_list:
                 dataframe.loc[(dataframe.team_id == team['team_id']) &
                               (dataframe.event_split == split), 'team_region'] = team['team_region']
+
+        for team in missing_region:
+            dataframe.loc[dataframe.team_id == team['team_id'], 'team_region'] = team['team_region']
 
         world_events = {'EU': 'Europe', 'NA': 'North America', 'OCE': 'Oceania', 'SAM': 'South America',
                         'ME': 'Middle East & North Africa', 'AF': 'Sub-Saharan Africa', 'ASIA': 'Asia-Pacific North'}
@@ -936,4 +940,4 @@ if __name__ == '__main__':
 
     # Add missing information (platform identifiers, settings and cars)
     MATCH_PLAYER, GAME_PLAYER = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER, game_player=GAME_PLAYER,
-                                                   workers_octanegg=15)
+                                                   workers_octanegg=15, export_data=False)
