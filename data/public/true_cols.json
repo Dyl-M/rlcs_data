@@ -265,7 +265,19 @@
       "advanced_goal_participation",
       "advanced_rating",
       "advanced_mvp",
-      "winner"
+      "winner",
+      "platform",
+      "platform_id",
+      "car_id",
+      "car_name",
+      "steering_sensitivity",
+      "camera_fov",
+      "camera_height",
+      "camera_pitch",
+      "camera_distance",
+      "camera_stiffness",
+      "camera_swivel_speed",
+      "camera_transition_speed"
     ],
     "ballchasing_calls": [
       "ballchasing_id",
