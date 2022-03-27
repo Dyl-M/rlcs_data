@@ -35,6 +35,9 @@ with open('../../data/public/true_cols.json', 'r', encoding='utf8') as true_cols
 with open('../../data/public/missing_value.json', 'r', encoding='utf8') as missing_value_file:
     missing_value = json.load(missing_value_file)
 
+with open('../../data/public/winter_major_patch.json', 'r', encoding='utf8') as winter_major_patch_file:
+    winter_major_patch = json.load(winter_major_patch_file)
+
 try:
     with open('../../data/retrieved/replays_tmp.json', 'r', encoding='utf8') as replays_tmp_file:
         replays_tmp = json.load(replays_tmp_file)
@@ -249,13 +252,13 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     cond_swiss_round_5 = (rounds_df.stage == 'Swiss Stage') & (rounds_df.match_number > 30)
 
     cond_winter_group_round_1 = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Group Stage') & \
-                                (rounds_df.match_number.between(1, 8))
+                                (rounds_df.match_number.isin([1, 2, 7, 8, 13, 14, 19, 20]))
 
     cond_winter_group_round_2 = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Group Stage') & \
-                                (rounds_df.match_number.between(9, 16))
+                                (rounds_df.match_number.isin([3, 4, 9, 10, 15, 16, 21, 22]))
 
     cond_winter_group_round_3 = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Group Stage') & \
-                                (rounds_df.match_number.between(17, 24))
+                                (rounds_df.match_number.isin([5, 6, 11, 12, 17, 18, 23, 24]))
 
     cond_winter_group_tb = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Group Stage') & \
                            (rounds_df.match_number > 24)
@@ -270,19 +273,19 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
                            (rounds_df.match_number > 6)
 
     cond_winter_playoff_lr1 = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(1, 4))
+                              (rounds_df.match_number.between(4, 7))
 
     cond_winter_playoff_lr2 = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(5, 6))
+                              (rounds_df.match_number.between(8, 9))
 
     cond_winter_playoff_usf = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(7, 8))
+                              (rounds_df.match_number.between(1, 2))
 
     cond_winter_playoff_lqf = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(9, 10))
+                              (rounds_df.match_number.between(10, 11))
 
     cond_winter_playoff_ufn = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number == 11)
+                              (rounds_df.match_number == 3)
 
     cond_winter_playoff_lsf = (rounds_df.event_split == 'Winter') & (rounds_df.stage == 'Playoffs') & \
                               (rounds_df.match_number == 12)
@@ -355,6 +358,10 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     rounds_df.loc[cond_winter_playoff_gfn | cond_spring_playoff_gfn | cond_apac_gfn, 'match_round'] = 'Grand Final'
 
     matches_df = rounds_df.merge(matches_df)
+
+    for a_match_round, match_id_list in winter_major_patch.items():  # Apply Winter Major patch, follow SRG withdraw
+        for a_match_id in match_id_list:
+            matches_df.loc[matches_df.match_id == a_match_id, 'match_round'] = a_match_round
 
     return matches_df
 
