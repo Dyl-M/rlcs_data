@@ -359,7 +359,7 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
 
     matches_df = rounds_df.merge(matches_df)
 
-    for a_match_round, match_id_list in winter_major_patch.items():  # Apply Winter Major patch, follow SRG withdraw
+    for a_match_round, match_id_list in winter_major_patch.items():  # Apply Winter Major patch, following SRG withdraw
         for a_match_id in match_id_list:
             matches_df.loc[matches_df.match_id == a_match_id, 'match_round'] = a_match_round
 

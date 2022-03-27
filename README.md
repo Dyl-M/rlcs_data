@@ -22,7 +22,7 @@ The **`ballchasing_ML`** project aims to pursue the opening of analytical possib
 * To collect all the data available on the website and trying to structure them as well as possible as first short term goal.
 * Then, to create machine learning models able to predict games' outcomes.
 
-First tries will be processed on RLCS 2021 - 2022 games, subject to games' availability. Entire datasets are available on Kaggle to the following link: [Rocket League Championship Series 2021-2022 on Kaggle](https://www.kaggle.com/dylanmonfret/rlcs-202122), using both [octane.gg](https://octane.gg/) and [ballchasing.com](https://ballchasing.com/) APIs.
+First tries will be processed on RLCS 2021 - 2022 games, subject to game' availability. Entire datasets are available on Kaggle to the following link: [Rocket League Championship Series 2021-2022 on Kaggle](https://www.kaggle.com/dylanmonfret/rlcs-202122), using both [octane.gg](https://octane.gg/) and [ballchasing.com](https://ballchasing.com/) APIs.
 
 Repository structure
 -------------
@@ -30,6 +30,10 @@ Repository structure
 Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy purpose or due to their size.
 
 ```
+├── .github
+│   └── ISSUE_TEMPLATE
+│       └── feature_request.md
+│   
 ├── data
 │   ├── private (IGNORED)
 │   │   └── my_token.txt
@@ -39,7 +43,8 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   ├── missing_values.json
 │   │   ├── note.txt
 │   │   ├── seasons.json
-│   │   └── true_cols.json
+│   │   ├── true_cols.json
+│   │   └── winter_major_patch.json
 │   │
 │   └── retrieved (IGNORED)
 │       ├── games_by_players.csv 
