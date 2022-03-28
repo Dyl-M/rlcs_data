@@ -52,6 +52,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │       ├── main.csv
 │       ├── matches_by_players.csv
 │       ├── matches_by_teams.csv
+│       ├── players_db.csv
 │       └── replays_tmp.json
 │
 ├── models (IGNORED, temporarily?)

@@ -785,6 +785,12 @@ def reduce_dataframes(event_df: pd.DataFrame, match_team: pd.DataFrame, match_pl
     game_team.reset_index(drop=True, inplace=True)
     game_player.reset_index(drop=True, inplace=True)
 
+    # Set URLs
+    main_df.event_slug = 'https://octane.gg/events/' + main_df.event_slug.map(str)
+    main_df.match_slug = 'https://octane.gg/matches/' + main_df.match_slug.map(str)
+    game_team.team_slug = 'https://octane.gg/teams/' + game_team.team_slug.map(str)
+    match_team.team_slug = 'https://octane.gg/teams/' + match_team.team_slug.map(str)
+
     if export_data:  # Export dataframes as CSV files
         main_df.to_csv('../../data/retrieved/main.csv', encoding='utf8', index=False)
         match_team.to_csv('../../data/retrieved/matches_by_teams.csv', encoding='utf8', index=False)
@@ -864,7 +870,7 @@ def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_play
     :param workers_octanegg: CPU ressources used for multiprocessing tasks with octane.gg API
     :param workers_ballchasing: CPU ressources used for multiprocessing tasks with ballchasing.com API
     :param export_data: to export dataframes as .csv files or not
-    :return players_augmented: game_player dataframe enhanced with new information.
+    :return: players DB, matches & games dataframes enhanced with new information.
     """
 
     def fix_mvp(game_player_df: pd.DataFrame):
@@ -897,15 +903,15 @@ def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_play
     reduced_df = main_reduced.merge(game_reduced).dropna(subset=['ballchasing_id'])
 
     # Retrieve missing data
-    player_db = parse_players(game_df=reduced_df, workers=workers_octanegg)
+    players = parse_players(game_df=reduced_df, workers=workers_octanegg)
     ballchasing_list = collect_ballchasing(game_df=reduced_df, workers=workers_ballchasing)
     ballchasing_df = parse_ballchasing(ballchasing_list=ballchasing_list)
 
     # Merge successively to complete input game_player (drop redundant ballchasing_id) & match_player
-    players_augmented = game_player.merge(game_reduced.merge(player_db).merge(main_reduced).merge(ballchasing_df),
+    players_augmented = game_player.merge(game_reduced.merge(players).merge(main_reduced).merge(ballchasing_df),
                                           how='outer').drop('ballchasing_id', axis=1)
 
-    match_augmented = player_db.loc[:, ['player_id', 'player_name']].drop_duplicates().merge(match_player)
+    match_augmented = players.loc[:, ['player_id', 'player_name']].drop_duplicates().merge(match_player)
 
     players_augmented = missing_car_name(dataframe=players_augmented)  # Fix missing car name
     players_augmented = fix_mvp(game_player_df=players_augmented)  # Fix missing MVP attribution
@@ -918,11 +924,24 @@ def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_play
     match_augmented.reset_index(drop=True, inplace=True)
     players_augmented.reset_index(drop=True, inplace=True)
 
+    # Set players database
+    players_db = players_augmented.loc[:, ['player_id', 'player_slug', 'player_tag', 'player_name', 'player_country']] \
+        .sort_values(['player_tag', 'player_name'], key=lambda col: col.str.replace('.', '', regex=True).str.lower()) \
+        .drop_duplicates(subset=['player_id']) \
+        .reset_index(drop=True)
+
+    players_db.player_slug = 'https://octane.gg/players/' + players_db.player_slug.map(str)
+
+    # Drop redundant columns
+    match_augmented.drop(['player_slug', 'player_name', 'player_country'], inplace=True, axis=1)
+    players_augmented.drop(['player_slug', 'player_name', 'player_country'], inplace=True, axis=1)
+
     if export_data:
         match_augmented.to_csv('../../data/retrieved/matches_by_players.csv', encoding='utf8', index=False)
         players_augmented.to_csv('../../data/retrieved/games_by_players.csv', encoding='utf8', index=False)
+        players_db.to_csv('../../data/retrieved/players_db.csv', encoding='utf8', index=False)
 
-    return match_augmented, players_augmented
+    return match_augmented, players_augmented, players_db
 
 
 "MAIN"
@@ -946,5 +965,5 @@ if __name__ == '__main__':
                                                                                   game_player=GAMES_PLAYERS_TMP)
 
     # Add missing information (platform identifiers, settings and cars)
-    MATCH_PLAYER, GAME_PLAYER = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER, game_player=GAME_PLAYER,
-                                                   workers_octanegg=15)
+    MATCH_PLAYER, GAME_PLAYER, PLAYERS_DB = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER,
+                                                               game_player=GAME_PLAYER, workers_octanegg=15)
