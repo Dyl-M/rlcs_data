@@ -1,1 +1,3 @@
-Nothing to see here anymore 👀
+# Player without known country
+
+6266e04bc437fde7e02d49ca         https://octane.gg/players/49ca-pizzaa         PIZZAA         NaN            NaN
