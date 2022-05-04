@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 import itertools
 import json
 import numpy as np
@@ -10,6 +11,7 @@ import requests
 import sys
 import time
 import tqdm
+import tzlocal
 
 """File Information
 
@@ -25,6 +27,7 @@ pd.set_option('display.width', 225)
 "GLOBAL"
 
 rlcs2122 = 'rlcs2122'
+TODAY = datetime.datetime.now(tz=tzlocal.get_localzone())
 
 with open('../../data/private/my_token.txt', 'r', encoding='utf8') as token_file:
     my_token = token_file.read()
@@ -105,6 +108,51 @@ def missing_car_name(dataframe: pd.DataFrame):
         dataframe.loc[dataframe['car_id'] == car_id, 'car_name'] = car_name
 
     return dataframe
+
+
+def format_teams_df(ref_df: pd.DataFrame, neut_cols: list, side_cols: list, color: str):
+    """Format a team dataframe (avoid code duplication)
+    :param ref_df: a reference dataframe (often a dataframe per match or game)
+    :param neut_cols: neutral columns as a list
+    :param side_cols: side columns (orange / blue team) as a list
+    :param color: team color (blue or orange)
+    :return teams_df: a formatted dataframe with information by team.
+    """
+    teams_df = pd.concat([ref_df.loc[:, neut_cols],
+                          pd.DataFrame({'color': []}),
+                          ref_df.loc[:, side_cols]], axis=1)
+
+    teams_df['color'] = color  # Set color
+
+    # Remove columns prefix
+    teams_df.columns = teams_df.columns.str.replace(f'{color}_team_', '')
+    teams_df.columns = teams_df.columns.str.replace(f'{color}_', '')
+
+    return teams_df
+
+
+def format_players_df(ref_df: pd.DataFrame, neut_cols: list, side_cols: list, color: str):
+    """Format a team dataframe (avoid code duplication)
+    :param ref_df: a reference dataframe (often a dataframe per match or game)
+    :param neut_cols: neutral columns as a list
+    :param side_cols: side columns (orange / blue team) as a list
+    :param color: team color (blue or orange)
+    :return players_df: a formatted dataframe with information by player.
+    """
+    players_df = pd.json_normalize(pd.concat([ref_df.loc[:, neut_cols + side_cols],
+                                              pd.DataFrame({'color': []}),
+                                              ref_df.loc[:, [f'{color}_players', f'{color}_winner']]], axis=1)
+                                   .explode(f'{color}_players')
+                                   .to_dict('records'), sep='_').dropna(axis=1, how='all')
+
+    players_df['color'] = color  # Set color
+
+    # Remove columns prefix
+    players_df.columns = players_df.columns.str.replace(f'{color}_team_', '')
+    players_df.columns = players_df.columns.str.replace(f'{color}_players_', '')
+    players_df.columns = players_df.columns.str.replace(f'{color}_', '')
+
+    return players_df
 
 
 def get_an_event(events_id: str):
@@ -426,6 +474,9 @@ def parse_events(events_group: str, event_id_list: list = None, csv_export: bool
     events_df.drop('event_name', axis=1, inplace=True)  # Drop irrelevant columns 'event_name'
     events_df = events_df.sort_values(['event_split', 'event_start_date']).reset_index(drop=True)  # Sort columns
 
+    # Filter events that have not yet taken place
+    events_df = events_df.loc[events_df.stage_end_date < TODAY]
+
     if csv_export:
         events_df.to_csv('../../data/retrieved/events.csv', encoding='utf8', index=False)
 
@@ -453,6 +504,9 @@ def parse_matches(events_dataframe: pd.DataFrame, matches_export: bool = False, 
     matches_df.loc[:, 'date'] = matches_df.loc[:, 'date'].apply(pd.to_datetime)  # Convert date columns to datetime
     matches_df.format_length = 'best-of-' + matches_df.format_length.astype(str)  # Redefine format column
 
+    # Filter matches that have not yet taken place
+    matches_df = matches_df.loc[matches_df.date < TODAY]
+
     # Filter columns
     team_blue_cols = [col for col in matches_df.columns if 'blue_team_' in col] + ['blue_score', 'blue_winner']
     team_oran_cols = [col for col in matches_df.columns if 'orange_team_' in col] + ['orange_score', 'orange_winner']
@@ -463,25 +517,12 @@ def parse_matches(events_dataframe: pd.DataFrame, matches_export: bool = False, 
     games_tmp_df = pd.json_normalize(matches_df.loc[:, ['_id', 'games']].explode('games').to_dict('records'), sep='_')
     games_tmp_df = games_tmp_df.loc[:, ['_id', 'games__id']].rename(columns={'_id': 'match_id', 'games__id': 'game_id'})
 
-    # Matches dataframe - Blue Side
-    team_blue_df = pd.concat([matches_df.loc[:, team_neut_cols],
-                              pd.DataFrame({'color': []}),
-                              matches_df.loc[:, team_blue_cols]], axis=1)
+    # Matches dataframes
+    teams_blue_df = format_teams_df(ref_df=matches_df, neut_cols=team_neut_cols, side_cols=team_blue_cols, color='blue')
+    teams_oran_df = format_teams_df(ref_df=matches_df, neut_cols=team_neut_cols, side_cols=team_oran_cols,
+                                    color='orange')
 
-    # Matches dataframe - Orange Side
-    team_oran_df = pd.concat([matches_df.loc[:, team_neut_cols],
-                              pd.DataFrame({'color': []}),
-                              matches_df.loc[:, team_oran_cols]], axis=1)
-
-    team_blue_df.color, team_oran_df.color = 'blue', 'orange'  # 'color' value addition for both sides
-
-    # Remove columns prefix
-    team_blue_df.columns = team_blue_df.columns.str.replace('blue_team_', '')
-    team_blue_df.columns = team_blue_df.columns.str.replace('blue_', '')
-    team_oran_df.columns = team_oran_df.columns.str.replace('orange_team_', '')
-    team_oran_df.columns = team_oran_df.columns.str.replace('orange_', '')
-
-    matches_teams_df = pd.concat([team_blue_df, team_oran_df])  # Concat bot side
+    matches_teams_df = pd.concat([teams_blue_df, teams_oran_df])  # Concat bot side
     matches_teams_df.columns = matches_teams_df.columns.str.replace('stats_', '')  # Remove stats. column prefix
     matches_teams_df.team_name = matches_teams_df.team_name.str.upper()  # Team name to upper case
     matches_teams_df.drop('team_relevant', axis=1, inplace=True)
@@ -490,34 +531,17 @@ def parse_matches(events_dataframe: pd.DataFrame, matches_export: bool = False, 
     matches_teams_df.columns = matches_teams_df.columns.to_series().apply(format_string_underscore)
     matches_teams_df.rename(columns=true_cols['renaming']['matches'], inplace=True)
 
-    # Players dataframe - Blue Side
+    # Players dataframes
     blue_sup_col = ['blue_team_team__id', 'blue_team_team_region', 'blue_score']
     oran_sup_col = ['orange_team_team__id', 'orange_team_team_region', 'orange_score']
 
-    players_blue_df = pd.json_normalize(pd.concat([matches_df.loc[:, team_neut_cols + blue_sup_col],
-                                                   pd.DataFrame({'color': []}),
-                                                   matches_df.loc[:, ['blue_players', 'blue_winner']]], axis=1)
-                                        .explode('blue_players')
-                                        .to_dict('records'), sep='_').dropna(axis=1, how='all')
+    matches_blue_df = format_players_df(ref_df=matches_df, neut_cols=team_neut_cols, side_cols=blue_sup_col,
+                                        color='blue')
 
-    # Players dataframe - Orange Side
-    players_oran_df = pd.json_normalize(pd.concat([matches_df.loc[:, team_neut_cols + oran_sup_col],
-                                                   pd.DataFrame({'color': []}),
-                                                   matches_df.loc[:, ['orange_players', 'orange_winner']]], axis=1)
-                                        .explode('orange_players')
-                                        .to_dict('records'), sep='_').dropna(axis=1, how='all')
+    matches_oran_df = format_players_df(ref_df=matches_df, neut_cols=team_neut_cols, side_cols=oran_sup_col,
+                                        color='orange')
 
-    players_blue_df.color, players_oran_df.color = 'blue', 'orange'  # 'color' value addition for both sides
-
-    # Remove columns prefix
-    players_blue_df.columns = players_blue_df.columns.str.replace('blue_team_', '')
-    players_blue_df.columns = players_blue_df.columns.str.replace('blue_players_', '')
-    players_blue_df.columns = players_blue_df.columns.str.replace('blue_', '')
-    players_oran_df.columns = players_oran_df.columns.str.replace('orange_team_', '')
-    players_oran_df.columns = players_oran_df.columns.str.replace('orange_players_', '')
-    players_oran_df.columns = players_oran_df.columns.str.replace('orange_', '')
-
-    matches_players_df = pd.concat([players_blue_df, players_oran_df])  # Concat bot side
+    matches_players_df = pd.concat([matches_blue_df, matches_oran_df])  # Concat bot side
     matches_players_df.columns = matches_players_df.columns.str.replace('stats_', '')  # Remove stats. column prefix
 
     # Drop irrelevant columns
@@ -584,30 +608,17 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
     games_df = init_games_df.merge(games_df.drop(match_cols, axis=1).rename(columns={'_id': 'game_id'}))
 
     # Get stats columns by teams (blue / orange) and neutral columns
-    blue_team_cols = [col for col in games_df.columns if 'blue_team_' in col] + ['blue_winner']
-    oran_team_cols = [col for col in games_df.columns if 'orange_team_' in col] + ['orange_winner']
-    neut_cols = [col for col in games_df.columns if
-                 col not in oran_team_cols + blue_team_cols + ['blue_players', 'orange_players']]
+    team_blue_cols = [col for col in games_df.columns if 'blue_team_' in col] + ['blue_winner']
+    team_oran_cols = [col for col in games_df.columns if 'orange_team_' in col] + ['orange_winner']
+    team_neut_cols = [col for col in games_df.columns if
+                      col not in team_oran_cols + team_blue_cols + ['blue_players', 'orange_players']]
 
-    # Games by teams dataframe
-    blue_team_df = pd.concat([games_df.loc[:, neut_cols],
-                              pd.DataFrame({'color': []}),
-                              games_df.loc[:, blue_team_cols]], axis=1)
-
-    oran_team_df = pd.concat([games_df.loc[:, neut_cols],
-                              pd.DataFrame({'color': []}),
-                              games_df.loc[:, oran_team_cols]], axis=1)
-
-    blue_team_df['color'], oran_team_df['color'] = 'blue', 'orange'  # Create 'color' column
-
-    # Remove columns prefix
-    blue_team_df.columns = blue_team_df.columns.str.replace('blue_team_', '')
-    oran_team_df.columns = oran_team_df.columns.str.replace('orange_team_', '')
-    blue_team_df.columns = blue_team_df.columns.str.replace('blue_', '')
-    oran_team_df.columns = oran_team_df.columns.str.replace('orange_', '')
+    # Games dataframes
+    teams_blue_df = format_teams_df(ref_df=games_df, neut_cols=team_neut_cols, side_cols=team_blue_cols, color='blue')
+    teams_oran_df = format_teams_df(ref_df=games_df, neut_cols=team_neut_cols, side_cols=team_oran_cols, color='orange')
 
     # Concat both sides
-    games_teams = pd.concat([blue_team_df, oran_team_df]) \
+    games_teams = pd.concat([teams_blue_df, teams_oran_df]) \
         .drop(['team_image', 'team_relevant', 'flipBallchasing'], axis=1)
 
     games_teams.columns = games_teams.columns.str.replace('stats_', '')  # Delete prefix for stats columns
@@ -620,29 +631,10 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
     blue_sup_col = ['blue_team_team__id', 'blue_team_team_region']
     oran_sup_col = ['orange_team_team__id', 'orange_team_team_region']
 
-    blue_players_df = pd.json_normalize(pd.concat([games_df.loc[:, neut_cols + blue_sup_col],
-                                                   pd.DataFrame({'color': []}),
-                                                   games_df.loc[:, ['blue_players', 'blue_winner']]], axis=1)
-                                        .explode('blue_players')
-                                        .to_dict('records'), sep='_').dropna(axis=1, how='all')
+    games_blue_df = format_players_df(ref_df=games_df, neut_cols=team_neut_cols, side_cols=blue_sup_col, color='blue')
+    games_oran_df = format_players_df(ref_df=games_df, neut_cols=team_neut_cols, side_cols=oran_sup_col, color='orange')
 
-    oran_players_df = pd.json_normalize(pd.concat([games_df.loc[:, neut_cols + oran_sup_col],
-                                                   pd.DataFrame({'color': []}),
-                                                   games_df.loc[:, ['orange_players', 'orange_winner']]], axis=1)
-                                        .explode('orange_players')
-                                        .to_dict('records'), sep='_').dropna(axis=1, how='all')
-
-    blue_players_df['color'], oran_players_df['color'] = 'blue', 'orange'  # Create 'color' column
-
-    # Remove columns prefix
-    blue_players_df.columns = blue_players_df.columns.str.replace('blue_team_', '')
-    blue_players_df.columns = blue_players_df.columns.str.replace('blue_players_', '')
-    blue_players_df.columns = blue_players_df.columns.str.replace('blue_', '')
-    oran_players_df.columns = oran_players_df.columns.str.replace('orange_team_', '')
-    oran_players_df.columns = oran_players_df.columns.str.replace('orange_players_', '')
-    oran_players_df.columns = oran_players_df.columns.str.replace('orange_', '')
-
-    games_players = pd.concat([blue_players_df, oran_players_df])  # Concat bot side
+    games_players = pd.concat([games_blue_df, games_oran_df])  # Concat bot side
     games_players.columns = games_players.columns.str.replace('stats_', '')  # Remove stats. column prefix
 
     # Drop irrelevant columns
@@ -867,8 +859,8 @@ def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_play
     :param main: main dataframe with events, matches and games information
     :param match_player: match by players dataframe
     :param game_player: game by players dataframe
-    :param workers_octanegg: CPU ressources used for multiprocessing tasks with octane.gg API
-    :param workers_ballchasing: CPU ressources used for multiprocessing tasks with ballchasing.com API
+    :param workers_octanegg: CPU resources used for multiprocessing tasks with octane.gg API
+    :param workers_ballchasing: CPU resources used for multiprocessing tasks with ballchasing.com API
     :param export_data: to export dataframes as .csv files or not
     :return: players DB, matches & games dataframes enhanced with new information.
     """
@@ -965,5 +957,7 @@ if __name__ == '__main__':
                                                                                   game_player=GAMES_PLAYERS_TMP)
 
     # Add missing information (platform identifiers, settings and cars)
-    MATCH_PLAYER, GAME_PLAYER, PLAYERS_DB = complete_player_df(main=MAIN_DF, match_player=MATCH_PLAYER,
-                                                               game_player=GAME_PLAYER, workers_octanegg=15)
+    MATCH_PLAYER, GAME_PLAYER, PLAYERS_DB = complete_player_df(main=MAIN_DF,
+                                                               match_player=MATCH_PLAYER,
+                                                               game_player=GAME_PLAYER,
+                                                               workers_octanegg=15)
