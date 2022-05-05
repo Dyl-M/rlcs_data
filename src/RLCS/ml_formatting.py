@@ -1,169 +1,129 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+import json
 import numpy as np
 import pandas as pd
-
-from datetime import datetime
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 200)
 
 """File Information
-
 @file_name: ml_formatting.py
 @author: Dylan "dyl-m" Monfret
-
 Treatment to apply on .csv files for ML model conception.
 """
 
 "FUNCTIONS"
 
 
-def treatment_by_players(ref_date_str, export_players_db: bool = False):
+def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     """Pretreatment pipeline to build a dataframe set for models by players
-    :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are
-    :param export_players_db: to export players database (with in-game ID and team) or not
+    :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are,
+    RLCS 21-22 starting date by default (OCE Fall Regional 1 Inv. Qualifier)
     :return: Dataset formatted for modeling and players name and ID database.
     """
+
+    def teammates_opponents(input_df: pd.DataFrame, team_color: str):
+        """
+        :param input_df:
+        :param team_color:
+        :return df_side:
+        """
+        df_reduced = input_df.loc[:, ['game_id', 'color', 'team_id', 'player_id', 'core_score']]  # Create reduced DF
+
+        # Split blue / orange side and group players ID into list
+        df_side = df_reduced.loc[df_reduced.color == team_color] \
+            .rename(columns={'player_id': 'id_list'}) \
+            .sort_values(['game_id', 'core_score'], ascending=False) \
+            .groupby(['game_id', 'color', 'team_id'])['id_list'] \
+            .apply(list) \
+            .reset_index()
+
+        # Teammates Dataframe
+        teammates_list_v1 = df_reduced.loc[df_reduced.color == team_color, ['game_id', 'player_id']] \
+            .merge(df_side.drop('team_id', axis=1))
+
+        teammates_ex = teammates_list_v1.explode('id_list').reset_index(drop=True)
+
+        teammates_list_v2 = teammates_ex[teammates_ex.id_list != teammates_ex.player_id] \
+            .groupby(['game_id', 'player_id'])['id_list'].apply(list).reset_index()
+
+        as_teammates = pd.concat([teammates_list_v2.loc[:, ['game_id', 'player_id']],
+                                  teammates_list_v2.id_list.apply(pd.Series)], axis=1) \
+            .rename(columns={0: 'teammate_1', 1: 'teammate_2'})
+
+        # Opposition Dataframe
+
+        if team_color == 'blue':
+            opp_color = 'orange'
+        else:
+            opp_color = 'blue'
+
+        as_opponent_series = df_side.id_list.apply(pd.Series)
+
+        as_opponent = df_side \
+            .merge(as_opponent_series, left_index=True, right_index=True) \
+            .drop('id_list', axis=1) \
+            .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team_id': 'opponent_team'}) \
+            .replace({'color': {team_color: opp_color}})
+
+        return as_teammates, as_opponent
+
     # Reference date to game datetime
-    ref_date = datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
+    ref_date = datetime.datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
 
     # Dataframe imports
-    players_df = pd.read_csv('../../data/retrieved/by_players.csv', encoding='utf8', low_memory=False)
-    general_df = pd.read_csv('../../data/retrieved/general.csv', encoding='utf8', low_memory=False)
+    game_df = pd.read_csv('../../data/retrieved/games_by_players.csv', encoding='utf8', low_memory=False)
+    main_df = pd.read_csv('../../data/retrieved/main.csv', encoding='utf8', low_memory=False)
+    player_df = pd.read_csv('../../data/retrieved/players_db.csv', encoding='utf8', low_memory=False)
 
-    players_df = players_df \
-        .rename(columns={'name': 'team'}) \
-        .rename(columns=lambda x: x[2:] if x.startswith('p_') else x)
+    with open('../../data/public/true_cols.json', 'r', encoding='utf8') as tru_cols:
+        col_order = json.load(tru_cols)['ordering']['ml_formatting']  # Import columns order
+
+    main_df = main_df[main_df.game_id.notna()].reset_index(drop=True)  # Drop in main_df where 'game_id' is NaN
 
     # Keep relevant features from each dataset
-    general_df = general_df.loc[:, ['ballchasing_id', 'correction', 'region', 'split', 'event', 'phase', 'stage',
-                                    'round', 'date', 'duration', 'overtime', 'overtime_seconds']]
-    players_df = players_df.drop(['start_time', 'end_time', 'mvp', 'car_id'], axis=1)
+    main_df = main_df.loc[:, ['game_id', 'game_date', 'event', 'event_split', 'event_region', 'event_phase', 'stage',
+                              'stage_is_lan', 'stage_is_qualifier', 'location_venue', 'location_city',
+                              'location_country', 'match_round', 'match_format', 'game_number', 'game_duration',
+                              'map_id']]
 
-    # Merge dataset and drop stats correction replays
-    dataframe = general_df.merge(players_df)
-    dataframe = dataframe.loc[~dataframe.correction].drop('correction', axis=1)
+    game_df = game_df.drop(['player_tag', 'platform_id', 'car_name'], axis=1)
+    player_df = player_df.loc[:, ['player_id', 'player_country']]
 
-    # Get matches results
-    results = dataframe.loc[:, ['ballchasing_id', 'color', 'core_mvp']] \
-        .drop_duplicates() \
-        .groupby(['ballchasing_id', 'color'], as_index=False).mean()
+    # Merge datasets
+    dataframe = main_df.merge(game_df).merge(player_df)
 
-    results = results.loc[results.core_mvp > 0].drop('core_mvp', axis=1).rename(columns={'color': 'win'})
-
-    # Merge results with previous data and recode game_winner into 1 if the player won the game, else 0.
-    dataframe = dataframe.merge(results)
-    dataframe.win = np.where(dataframe.color == dataframe.win, 1, 0)
-
-    # Recode platform ID with "platform + _ + ID"
-    dataframe.platform_id = dataframe['platform'] + '_' + dataframe['platform_id'].astype(str)
-    dataframe = dataframe.drop(['platform'], axis=1)
-
-    # Changing 'date' to a time delta with the reference date
-    dataframe.date = pd.to_datetime(dataframe.date, utc=True)
-    dataframe.date = (dataframe.date - ref_date) / np.timedelta64(1, 'D')
-    dataframe = dataframe.rename(columns={'date': 'since_ref_date'})
-
-    # Fill overtime seconds
-    dataframe.overtime_seconds = dataframe.overtime_seconds.fillna(0)
-
-    # Players name & ID dataset
-    players_db = dataframe.loc[:, ['team', 'name', 'platform_id', 'since_ref_date']] \
-        .sort_values('since_ref_date', ascending=False) \
-        .drop_duplicates(subset=['platform_id'], keep='first') \
-        .reset_index(drop=True) \
-        .sort_values(['team', 'name']) \
-        .drop('since_ref_date', axis=1)
+    # Changing 'game_date' to a time delta with the reference date and reorder columns
+    dataframe.game_date = pd.to_datetime(dataframe.game_date, utc=True)
+    dataframe.game_date = (dataframe.game_date - ref_date) / np.timedelta64(1, 'D')
+    dataframe = dataframe.rename(columns={'game_date': 'since_ref_date'})
+    dataframe = dataframe[col_order]
 
     # Add opponents and teammates as features
-    df_reduced = dataframe.loc[:, ['ballchasing_id', 'color', 'team', 'platform_id', 'core_score']]  # Create reduced DF
+    bl_team, bl_oppo = teammates_opponents(input_df=dataframe, team_color='blue')  # Blue side
+    or_team, or_oppo = teammates_opponents(input_df=dataframe, team_color='orange')  # Orange side
+    teammates = pd.concat([bl_team, or_team]).reset_index(drop=True)  # Merge both sides in team POV
+    opposition = pd.concat([bl_oppo, or_oppo]).reset_index(drop=True)  # Merge both sides in opposition POV
+    dataframe = dataframe.merge(teammates, how='outer').merge(opposition)  # Merge with principal dataframe
+    dataframe = dataframe.drop(['game_id', 'color'], axis=1)  # Remove no longer needed variables
 
-    # # Split blue and orange side and group players ID into list
-    bl_side = df_reduced.loc[df_reduced.color == 'blue'] \
-        .rename(columns={'platform_id': 'id_list'}) \
-        .sort_values(['ballchasing_id', 'core_score'], ascending=False) \
-        .groupby(['ballchasing_id', 'color', 'team'])['id_list'] \
-        .apply(list) \
-        .reset_index()
+    # Change MVP column to numeric (better format for further exploitation)
+    dataframe.advanced_mvp = np.where(dataframe.advanced_mvp, 1, 0)
 
-    or_side = df_reduced.loc[df_reduced.color == 'orange'] \
-        .rename(columns={'platform_id': 'id_list'}) \
-        .sort_values(['ballchasing_id', 'core_score'], ascending=False) \
-        .groupby(['ballchasing_id', 'color', 'team'])['id_list'] \
-        .apply(list) \
-        .reset_index()
+    # Change some column type
+    dataframe.game_number = dataframe.game_number.astype(int)
+    dataframe.game_number = dataframe.game_number.astype(str)
 
-    # # Teammates Dataframe - Blue side
-    bl_teammates_list_v1 = df_reduced.loc[df_reduced.color == 'blue', ['ballchasing_id', 'platform_id']] \
-        .merge(bl_side.drop('team', axis=1))
+    dataframe.car_id = dataframe.car_id.fillna(-1)
+    dataframe.car_id = dataframe.car_id.astype(int)
+    dataframe.car_id = dataframe.car_id.astype(str)
+    dataframe.car_id = dataframe.car_id.replace('-1', np.nan)
 
-    bl_teammates_ex = bl_teammates_list_v1.explode('id_list').reset_index(drop=True)
-
-    bl_teammates_list_v2 = bl_teammates_ex[bl_teammates_ex.id_list != bl_teammates_ex.platform_id] \
-        .groupby(['ballchasing_id', 'platform_id'])['id_list'] \
-        .apply(list) \
-        .reset_index()
-
-    bl_teammates = pd.concat([bl_teammates_list_v2.loc[:, ['ballchasing_id', 'platform_id']],
-                              bl_teammates_list_v2.id_list.apply(pd.Series)], axis=1) \
-        .rename(columns={0: 'teammate_1', 1: 'teammate_2'})
-
-    # # Teammates Dataframe - Orange side
-    or_teammates_list_v1 = df_reduced.loc[df_reduced.color == 'orange', ['ballchasing_id', 'platform_id']] \
-        .merge(or_side.drop('team', axis=1))
-
-    or_teammates_ex = or_teammates_list_v1.explode('id_list').reset_index(drop=True)
-
-    or_teammates_list_v2 = or_teammates_ex[or_teammates_ex.id_list != or_teammates_ex.platform_id] \
-        .groupby(['ballchasing_id', 'platform_id'])['id_list'] \
-        .apply(list) \
-        .reset_index()
-
-    or_teammates = pd.concat([or_teammates_list_v2.loc[:, ['ballchasing_id', 'platform_id']],
-                              or_teammates_list_v2.id_list.apply(pd.Series)], axis=1) \
-        .rename(columns={0: 'teammate_1', 1: 'teammate_2'})
-
-    # # Merge both sides
-    teammates = pd.concat([or_teammates, bl_teammates])
-
-    # # Opposition Dataframe - Blue side
-    bl_as_opponent_series = bl_side.id_list.apply(pd.Series)
-
-    bl_as_opponent = bl_side \
-        .merge(bl_as_opponent_series, left_index=True, right_index=True) \
-        .drop('id_list', axis=1) \
-        .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
-        .replace({'color': {'blue': 'orange'}})
-
-    # # Opposition Dataframe - Orange side
-    or_as_opponent_series = or_side.id_list.apply(pd.Series)
-
-    or_as_opponent = or_side \
-        .merge(or_as_opponent_series, left_index=True, right_index=True) \
-        .drop('id_list', axis=1) \
-        .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team': 'opponent_team'}) \
-        .replace({'color': {'orange': 'blue'}})
-
-    # # Merge both sides
-    opps = pd.concat([or_as_opponent, bl_as_opponent])
-
-    # Merge principal dataframe with teammates and opponents ones
-    dataframe = dataframe.merge(teammates, how='outer').merge(opps)
-
-    # Remove no longer needed variables
-    dataframe = dataframe.drop(['ballchasing_id', 'name', 'color'], axis=1)
-
-    # Change overtime and MVP column to numeric (better format for further exploitation)
-    dataframe.overtime = np.where(dataframe.overtime, 1, 0)
-    dataframe.core_mvp = np.where(dataframe.core_mvp, 1, 0)
-
-    if export_players_db:
-        players_db.to_csv('../../data/retrieved/players_db.csv', encoding='utf8', index=False)
-
-    return dataframe, players_db
+    return dataframe
 
 
 if __name__ == '__main__':
-    REF_DATE_STR = '2021-10-08 06:00:00+00:00'  # Very first day of RLCS 2021-22
-    data, my_players_db = treatment_by_players(REF_DATE_STR)
+    DF = treatment_by_players()
+    print(DF)
