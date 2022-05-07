@@ -2,6 +2,7 @@
 
 import ml_formatting
 
+import json
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -20,9 +21,10 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 "GLOBAL"
 
-REF_DATE_STR = '2021-10-08 06:00:00+00:00'  # Very first day of RLCS 2021-22
-RANDOM_SEED = 42069
-RANDOM_SEED_2 = 69420
+with open('../../data/private/random_seeds.json', 'r', encoding='utf8') as seeds_file:
+    SEEDS = json.load(seeds_file)
+
+RANDOM_SEED, RANDOM_SEED_2 = SEEDS['seed_1'], SEEDS['seed_2']
 
 "OPTIONS"
 
@@ -313,9 +315,9 @@ def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_gr
     return evaluation_df, best_settings
 
 
-def compil_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, batch_size: int, alpha: float,
-                      workers: int = 1, verbose: bool = True):
-    """Compil best model (the best combination of batch size & alpha) with Keras model implemented in 'compile_model'
+def compile_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, batch_size: int, alpha: float,
+                       workers: int = 1, verbose: bool = True):
+    """Compile best model (the best combination of batch size & alpha) with Keras model implemented in 'compile_model'
     function
     :param x: training instances to class
     :param y: target array relative to x
@@ -353,14 +355,14 @@ def compil_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, bat
 
 if __name__ == '__main__':
     # Data import and formatting
-    DF_GAMES, DF_PLAYERS = ml_formatting.treatment_by_players(ref_date_str=REF_DATE_STR)  # export_players_db=False
+    DF_GAMES = ml_formatting.treatment_by_players()
 
     # Extract target array
-    DATA = DF_GAMES.drop('win', axis=1)
-    TARGET = DF_GAMES.win
+    DATA = DF_GAMES.drop('winner', axis=1)
+    TARGET = DF_GAMES.winner
 
     # Tuning Settings
-    EPOCHS = 1000
+    EPOCHS = 500
     BATCH_GRID = [32, 64, 128, 256]
     ALPHA_GRID = [1e-3, 1e-4, 1e-5, 1e-6]
 
@@ -376,12 +378,8 @@ if __name__ == '__main__':
     print(f'BEST SETTINGS: {BEST_SETTINGS}')
 
     # Training and save optimal model
-    REF_MODEL, BEST_MODEL_HISTORY = compil_best_model(x=DATA,
-                                                      y=TARGET,
-                                                      epochs=EPOCHS,
-                                                      es_rate=0.10,
-                                                      batch_size=BEST_SETTINGS['batch_size'],
-                                                      alpha=BEST_SETTINGS['init_alpha'],
-                                                      workers=12)
+    REF_MODEL, BEST_MODEL_HISTORY = compile_best_model(x=DATA, y=TARGET, epochs=1000, es_rate=0.10,
+                                                       batch_size=BEST_SETTINGS['batch_size'],
+                                                       alpha=BEST_SETTINGS['init_alpha'], workers=12)
 
     REF_MODEL.save('../../models/best_model.h5')
