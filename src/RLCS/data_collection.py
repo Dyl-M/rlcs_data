@@ -347,28 +347,28 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     cond_spring_playoff_ur1 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
                               (rounds_df.match_number.between(1, 8))
 
-    cond_spring_playoff_lr1 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+    cond_spring_playoff_uqf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
                               (rounds_df.match_number.between(9, 12))
 
-    cond_spring_playoff_uqf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(13, 16))
-
-    cond_spring_playoff_lr2 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(17, 20))
-
-    cond_spring_playoff_lr3 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(21, 22))
-
     cond_spring_playoff_usf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(23, 24))
-
-    cond_spring_playoff_lqf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number.between(25, 26))
-
-    cond_spring_playoff_lsf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
-                              (rounds_df.match_number == 27)
+                              (rounds_df.match_number.between(13, 14))
 
     cond_spring_playoff_ufn = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+                              (rounds_df.match_number == 15)
+
+    cond_spring_playoff_lr1 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+                              (rounds_df.match_number.between(16, 19))
+
+    cond_spring_playoff_lr2 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+                              (rounds_df.match_number.between(20, 23))
+
+    cond_spring_playoff_lr3 = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+                              (rounds_df.match_number.between(24, 25))
+
+    cond_spring_playoff_lqf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
+                              (rounds_df.match_number.between(26, 27))
+
+    cond_spring_playoff_lsf = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
                               (rounds_df.match_number == 28)
 
     cond_spring_playoff_lfn = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
