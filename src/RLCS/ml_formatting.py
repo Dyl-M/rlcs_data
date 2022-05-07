@@ -25,10 +25,10 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     """
 
     def teammates_opponents(input_df: pd.DataFrame, team_color: str):
-        """
-        :param input_df:
-        :param team_color:
-        :return df_side:
+        """Format input data to extract teammates and opposition
+        :param input_df: input dataframe
+        :param team_color: team color
+        :return: teammates and opposition.
         """
         df_reduced = input_df.loc[:, ['game_id', 'color', 'team_id', 'player_id', 'core_score']]  # Create reduced DF
 
@@ -70,6 +70,20 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
 
         return as_teammates, as_opponent
 
+    def most_used_settings(input_df: pd.DataFrame):
+        """
+        :param input_df: input dataframe
+        :return:
+        """
+        settings = input_df.loc[:, ['steering_sensitivity', 'camera_fov', 'camera_height', 'camera_pitch',
+                                    'camera_distance', 'camera_stiffness', 'camera_swivel_speed',
+                                    'camera_transition_speed']].mean().round(1).to_dict()
+
+        settings_cat = input_df.loc[:, ['platform', 'car_id']].mode().to_dict('records')[0]
+        settings.update(settings_cat)
+
+        return settings
+
     # Reference date to game datetime
     ref_date = datetime.datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
 
@@ -85,9 +99,8 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
 
     # Keep relevant features from each dataset
     main_df = main_df.loc[:, ['game_id', 'game_date', 'event', 'event_split', 'event_region', 'event_phase', 'stage',
-                              'stage_is_lan', 'stage_is_qualifier', 'location_venue', 'location_city',
-                              'location_country', 'match_round', 'match_format', 'game_number', 'game_duration',
-                              'map_id']]
+                              'stage_is_lan', 'stage_is_qualifier', 'location_country', 'match_round',
+                              'match_format', 'overtime']]
 
     game_df = game_df.drop(['player_tag', 'platform_id', 'car_name'], axis=1)
     player_df = player_df.loc[:, ['player_id', 'player_country']]
@@ -101,6 +114,9 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     dataframe = dataframe.rename(columns={'game_date': 'since_ref_date'})
     dataframe = dataframe[col_order]
 
+    # Filter where this new field is empty
+    dataframe = dataframe.loc[dataframe.since_ref_date.notna()]
+
     # Add opponents and teammates as features
     bl_team, bl_oppo = teammates_opponents(input_df=dataframe, team_color='blue')  # Blue side
     or_team, or_oppo = teammates_opponents(input_df=dataframe, team_color='orange')  # Orange side
@@ -109,17 +125,24 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     dataframe = dataframe.merge(teammates, how='outer').merge(opposition)  # Merge with principal dataframe
     dataframe = dataframe.drop(['game_id', 'color'], axis=1)  # Remove no longer needed variables
 
-    # Change MVP column to numeric (better format for further exploitation)
+    # Change winner, overtime and MVP columns to numeric (better format for further exploitation)
     dataframe.advanced_mvp = np.where(dataframe.advanced_mvp, 1, 0)
+    dataframe.winner = np.where(dataframe.winner, 1, 0)
+    dataframe.overtime = np.where(dataframe.overtime, 1, 0)
 
-    # Change some column type
-    dataframe.game_number = dataframe.game_number.astype(int)
-    dataframe.game_number = dataframe.game_number.astype(str)
-
+    # Change some column type and fill NaN
     dataframe.car_id = dataframe.car_id.fillna(-1)
     dataframe.car_id = dataframe.car_id.astype(int)
     dataframe.car_id = dataframe.car_id.astype(str)
+
+    dataframe.location_country = dataframe.location_country.fillna('no_country')
+    dataframe.advanced_rating = dataframe.advanced_rating.fillna(0)
     dataframe.car_id = dataframe.car_id.replace('-1', np.nan)
+
+    common_settings = most_used_settings(input_df=dataframe)
+
+    for k, v in common_settings.items():
+        dataframe[k] = dataframe[k].fillna(v)
 
     return dataframe
 
