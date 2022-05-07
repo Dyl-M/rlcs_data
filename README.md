@@ -14,7 +14,7 @@ Introduction
 -------------
 
 > Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for Microsoft Windows and PlayStation 4 in July 2015, with ports for Xbox One and Nintendo Switch being released later on. In June 2016, 505 Games began distributing a physical retail version for PlayStation 4 and Xbox One, with Warner Bros. Interactive Entertainment taking over those duties by the end of 2017. Versions for macOS and Linux were also released in 2016, but support for their online services was dropped in 2020. The game went free-to-play in September 2020.
-> 
+>
 >[Wikipedia - Rocket League](https://en.wikipedia.org/wiki/Rocket_League "Wikipedia - Rocket League")
 
 The **`ballchasing_ML`** project aims to pursue the opening of analytical possibilities to the community by using [ballchasing.com](https://ballchasing.com/) database, a website gathering Rocket League games&#39; replays. &quot;ML&quot; stands here for &quot;Machine Learning&quot;, because my first works around this database will be:
@@ -33,10 +33,14 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 ├── .github
 │   └── ISSUE_TEMPLATE
 │       └── feature_request.md
-│   
+│
+├── cmd (IGNORED)
+│
+│
 ├── data
 │   ├── private (IGNORED)
-│   │   └── my_token.txt
+│   │   ├── my_token.txt
+│   │   └── random_seeds.json
 │   │
 │   ├── public
 │   │   ├── data_coverage.csv
@@ -55,7 +59,7 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │       ├── players_db.csv
 │       └── replays_tmp.json
 │
-├── models (IGNORED, temporarily?)
+├── models (IGNORED)
 │   ├── tuning_results
 │   │   └── evaluation.csv
 │   │

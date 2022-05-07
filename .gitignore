@@ -139,3 +139,4 @@ dmypy.json
 /deprecated/
 /reports/figures/
 /models/
+/cmd/
