@@ -157,7 +157,8 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
         dataframe[k] = dataframe[k].fillna(v)
 
     for col in to_avg:  # Average stats per 5 minutes
-        dataframe[col] = dataframe.apply(lambda x: stat_per_5_min(x.game_duration, x[col]), axis=1)
+        dataframe[col] = dataframe.apply(lambda x: stat_per_5_min(x.game_duration, x[col]),
+                                         axis=1)  # skipcq: PYL-W0640 - No fixes ATM.
 
     if event_list:  # Extract games from a specific event
         event_sample = dataframe.loc[dataframe.event_id.isin(event_list)]  # Get event(s) sample

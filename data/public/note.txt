@@ -1,3 +1,5 @@
 # Player without known country
+    - https://octane.gg/players/49ca-pizzaa
 
-6266e04bc437fde7e02d49ca         https://octane.gg/players/49ca-pizzaa         PIZZAA         NaN            NaN
+# FIXME
+    - ml_formatting.py, line 160
