@@ -17,10 +17,11 @@ Treatment to apply on .csv files for ML model conception.
 "FUNCTIONS"
 
 
-def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
+def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_list: list = None):
     """Pretreatment pipeline to build a dataframe set for models by players
     :param ref_date_str: A reference date as string, to put a weight on matches based to how old those games are,
     RLCS 21-22 starting date by default (OCE Fall Regional 1 Inv. Qualifier)
+    :param event_list: event list to split from model set
     :return: Dataset formatted for modeling and players name and ID database.
     """
 
@@ -84,6 +85,16 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
 
         return settings
 
+    def stat_per_5_min(g_duration, g_stat):
+        """Average a statistic on a 5 minutes game
+        :param g_duration: game duration
+        :param g_stat: a game statistic
+        :return: stat averaged per 5 minutes.
+        """
+        g_min = g_duration / 60
+        g_stat_per_min = g_stat / g_min
+        return g_stat_per_min * 5
+
     # Reference date to game datetime
     ref_date = datetime.datetime.strptime(ref_date_str, '%Y-%m-%d %H:%M:%S%z')
 
@@ -92,15 +103,18 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     main_df = pd.read_csv('../../data/retrieved/main.csv', encoding='utf8', low_memory=False)
     player_df = pd.read_csv('../../data/retrieved/players_db.csv', encoding='utf8', low_memory=False)
 
-    with open('../../data/public/true_cols.json', 'r', encoding='utf8') as tru_cols:
-        col_order = json.load(tru_cols)['ordering']['ml_formatting']  # Import columns order
+    with open('../../data/public/true_cols.json', 'r', encoding='utf8') as tru_cols_file:
+        tru_cols = json.load(tru_cols_file)
+
+    col_order = tru_cols['ordering']['ml_formatting']  # Import columns order
+    to_avg = tru_cols['per_5_min']  # Import columns to average per 5 minutes
 
     main_df = main_df[main_df.game_id.notna()].reset_index(drop=True)  # Drop in main_df where 'game_id' is NaN
 
     # Keep relevant features from each dataset
-    main_df = main_df.loc[:, ['game_id', 'game_date', 'event', 'event_split', 'event_region', 'event_phase', 'stage',
-                              'stage_is_lan', 'stage_is_qualifier', 'location_country', 'match_round',
-                              'match_format', 'overtime']]
+    main_df = main_df.loc[:, ['event_id', 'game_id', 'game_date', 'game_duration', 'event', 'event_split',
+                              'event_region', 'event_phase', 'stage', 'stage_is_lan', 'stage_is_qualifier',
+                              'location_country', 'match_round', 'match_format', 'overtime']]
 
     game_df = game_df.drop(['player_tag', 'platform_id', 'car_name'], axis=1)
     player_df = player_df.loc[:, ['player_id', 'player_country']]
@@ -108,11 +122,10 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     # Merge datasets
     dataframe = main_df.merge(game_df).merge(player_df)
 
-    # Changing 'game_date' to a time delta with the reference date and reorder columns
+    # Changing 'game_date' to a time delta with the reference date
     dataframe.game_date = pd.to_datetime(dataframe.game_date, utc=True)
     dataframe.game_date = (dataframe.game_date - ref_date) / np.timedelta64(1, 'D')
     dataframe = dataframe.rename(columns={'game_date': 'since_ref_date'})
-    dataframe = dataframe[col_order]
 
     # Filter where this new field is empty
     dataframe = dataframe.loc[dataframe.since_ref_date.notna()]
@@ -123,7 +136,6 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
     teammates = pd.concat([bl_team, or_team]).reset_index(drop=True)  # Merge both sides in team POV
     opposition = pd.concat([bl_oppo, or_oppo]).reset_index(drop=True)  # Merge both sides in opposition POV
     dataframe = dataframe.merge(teammates, how='outer').merge(opposition)  # Merge with principal dataframe
-    dataframe = dataframe.drop(['game_id', 'color'], axis=1)  # Remove no longer needed variables
 
     # Change winner, overtime and MVP columns to numeric (better format for further exploitation)
     dataframe.advanced_mvp = np.where(dataframe.advanced_mvp, 1, 0)
@@ -141,12 +153,25 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00'):
 
     common_settings = most_used_settings(input_df=dataframe)
 
-    for k, v in common_settings.items():
+    for k, v in common_settings.items():  # Fill NaN with common settings
         dataframe[k] = dataframe[k].fillna(v)
 
-    return dataframe
+    for col in to_avg:  # Average stats per 5 minutes
+        dataframe[col] = dataframe.apply(lambda x: stat_per_5_min(x.game_duration, x[col]), axis=1)
+
+    if event_list:  # Extract games from a specific event
+        event_sample = dataframe.loc[dataframe.event_id.isin(event_list)]  # Get event(s) sample
+        model_sample = dataframe.loc[~dataframe.event_id.isin(event_list)]  # Get model conception sample
+        event_sample, model_sample = event_sample[col_order], model_sample[col_order]  # Reorder columns
+        event_sample.reset_index(drop=True, inplace=True)
+        model_sample.reset_index(drop=True, inplace=True)
+        return model_sample, event_sample
+
+    dataframe = dataframe[col_order]  # Reorder columns
+
+    return dataframe, pd.DataFrame()
 
 
 if __name__ == '__main__':
-    DF = treatment_by_players()
+    DF, EVENT_SMPL = treatment_by_players()
     print(DF)

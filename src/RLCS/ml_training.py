@@ -355,25 +355,20 @@ def compile_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, ba
 
 if __name__ == '__main__':
     # Data import and formatting
-    DF_GAMES = ml_formatting.treatment_by_players()
+    DF_GAMES, _ = ml_formatting.treatment_by_players()
 
     # Extract target array
     DATA = DF_GAMES.drop('winner', axis=1)
     TARGET = DF_GAMES.winner
 
     # Tuning Settings
-    EPOCHS = 500
+    EPOCHS = 1000
     BATCH_GRID = [32, 64, 128, 256]
     ALPHA_GRID = [1e-3, 1e-4, 1e-5, 1e-6]
 
     # Model tuning & Report
-    EVALUATION_DF, BEST_SETTINGS = model_tuning(x=DATA,
-                                                y=TARGET,
-                                                epochs=EPOCHS,
-                                                es_rate=0.10,
-                                                batch_grid=BATCH_GRID,
-                                                alpha_grid=ALPHA_GRID,
-                                                workers=12)
+    EVALUATION_DF, BEST_SETTINGS = model_tuning(x=DATA, y=TARGET, epochs=EPOCHS, es_rate=0.10, batch_grid=BATCH_GRID,
+                                                alpha_grid=ALPHA_GRID, workers=12)
 
     print(f'BEST SETTINGS: {BEST_SETTINGS}')
 
