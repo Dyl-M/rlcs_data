@@ -120,4 +120,7 @@ event_id,event_split,event,event_region,event_phase
 614b77b5143c37878b237b3c,Spring,Regional 1,Europe,Main Event
 614b7f01f8090ec745286446,Spring,Regional 1,Sub-Saharan Africa,Main Event
 614b7aa9143c37878b237b40,Spring,Regional 1,South America,Main Event
+614b7a1af8090ec74528643f,Spring,Regional 2,Oceania,Closed Qualifier
+614b7e56143c37878b237b45,Spring,Regional 2,Asia-Pacific South,Closed Qualifier
+614b7bdbf8090ec745286441,Spring,Regional 2,Middle East & North Africa,Closed Qualifier
 614b78f1f8090ec74528643c,Spring,Regional 2,North America,Closed Qualifier
