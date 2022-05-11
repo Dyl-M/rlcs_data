@@ -45,14 +45,76 @@
       "car_name": "McLaren 570S"
     },
     {
+      "car_id": "6836",
+      "car_name": "Ford Mustang Shelby GT350R RLE"
+    },
+    {
       "car_id": "6939",
       "car_name": "Ford Mustang Mach-E RLE"
+    },
+    {
+      "car_id": "7052",
+      "car_name": "Formula 1 2022"
+    },
+    {
+      "car_id": "7337",
+      "car_name": "NASCAR Next Gen Chevrolet Camaro"
+    },
+    {
+      "car_id": "7338",
+      "car_name": "NASCAR Next Gen Ford Mustang"
+    },
+    {
+      "car_id": "7341",
+      "car_name": "NASCAR Next Gen Toyota Camry"
+    },
+    {
+      "car_id": "7477",
+      "car_name": "Nomad GXT"
     }
   ],
   "map_names": [
     {
       "map_id": "outlaw_p",
       "map_name": "Deadeye Canyon"
+    }
+  ],
+  "map_ids": [
+    {
+      "map_id": "eurostadium_p",
+      "map_name": "Mannfield"
+    },
+    {
+      "map_id": "stadium_p",
+      "map_name": "DFH Stadium"
+    },
+    {
+      "map_id": "neotokyo_standard_p",
+      "map_name": "Neo Tokyo"
+    },
+    {
+      "map_id": "chn_stadium_p",
+      "map_name": "Forbidden Temple"
+    },
+    {
+      "map_id": "wasteland_night_s_p",
+      "map_name": "Wasteland"
+    },
+    {
+      "map_id": "utopiastadium_dusk_p",
+      "map_name": "Utopia Coliseum"
+    },
+    {
+      "map_id": "cs_p",
+      "map_name": "Champions Field"
+    },
+    {
+      "map_id": "trainstation_p",
+      "map_name": "Urban Central"
+    },
+    {
+      "map_id": "underwater_p",
+      "map_name": "Aquadome"
     }
   ],
   "players_country": [
@@ -182,6 +244,11 @@
       "player_country": "jo"
     },
     {
+      "player_id": "627b97c8da9d7ca1c7baebe9",
+      "player_tag": "i8hw2",
+      "player_country": "sa"
+    },
+    {
       "player_id": "617953b7143c37878b23aeb7",
       "player_tag": "islamdr03",
       "player_country": "ly"
@@ -195,6 +262,11 @@
       "player_id": "61794c34f8090ec7452894a3",
       "player_tag": "jamity.",
       "player_country": "mv"
+    },
+    {
+      "player_id": "627a55d9da9d7ca1c7bae792",
+      "player_tag": "JeffC",
+      "player_country": "za"
     },
     {
       "player_id": "620a7c2fc437fde7e02cff2b",
@@ -255,6 +327,11 @@
       "player_id": "61daef2cc437fde7e02cb80c",
       "player_tag": "mentus",
       "player_country": "tn"
+    },
+    {
+      "player_id": "627a3c33c437fde7e02d5e94",
+      "player_tag": "Noxya",
+      "player_country": "re"
     },
     {
       "player_id": "619e616e143c37878b23f032",
@@ -355,6 +432,11 @@
       "player_id": "617953b7143c37878b23aeb6",
       "player_tag": "taker",
       "player_country": "ly"
+    },
+    {
+      "player_id": "627b91fada9d7ca1c7baeaf1",
+      "player_tag": "takoyaki",
+      "player_country": "la"
     },
     {
       "player_id": "620a8160c437fde7e02cfff3",
