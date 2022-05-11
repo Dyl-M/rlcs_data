@@ -71,15 +71,20 @@ def find_missing_players_country(players_df: pd.DataFrame):
     country_miss.to_json('../../data/public/miss_country_tmp.json', orient="records", indent=1)
 
 
-def missing_map_name(dataframe: pd.DataFrame):
+def missing_map_name_id(dataframe: pd.DataFrame):
     """Add missing map names to dataframe
     :param dataframe: main / original pandas dataframe
     :return: fixed pandas dataframe.
     """
-    for rl_map in missing_value['map_names']:
-        map_name = rl_map['map_name']
-        map_id = rl_map['map_id']
+    for rl_map_name in missing_value['map_names']:
+        map_name = rl_map_name['map_name']
+        map_id = rl_map_name['map_id']
         dataframe.loc[dataframe['map_id'] == map_id, 'map_name'] = map_name
+
+    for rl_map_id in missing_value['map_ids']:
+        map_name = rl_map_id['map_name']
+        map_id = rl_map_id['map_id']
+        dataframe.loc[dataframe['map_name'] == map_name, 'map_id'] = map_id
 
     return dataframe
 
@@ -597,7 +602,7 @@ def parse_games(init_games_df: pd.DataFrame, games_export: bool = False, workers
 
     # Flat the list of dict. as pandas dataframe
     games_df = pd.json_normalize(games_list, sep='_').dropna(axis=1, how='all')
-    games_df = missing_map_name(dataframe=games_df)  # Fill missing map_name
+    games_df = missing_map_name_id(dataframe=games_df)  # Fill missing map_name
     games_df.loc[:, 'date'] = games_df.loc[:, 'date'].apply(pd.to_datetime)  # Date column to datetime
     games_df.number = games_df.number.astype('int64')  # Game number to integer
 
