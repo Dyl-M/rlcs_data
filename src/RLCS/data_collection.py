@@ -195,7 +195,7 @@ def get_event_matches(event_id: str):
     uri = f'https://zsr.octane.gg/matches?event={event_id}'
 
     try:
-        matches_list = requests.get(uri).json()['matches']
+        matches_list = [match for match in requests.get(uri).json()['matches'] if 'tbd' not in match['slug']]
         return matches_list
 
     except json.decoder.JSONDecodeError:
