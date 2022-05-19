@@ -51,8 +51,8 @@ event_id,event_split,event,event_region,event_phase
 614b724af8090ec745286430,Fall,Regional 3,South America,Main Event
 614b7721143c37878b237b3b,Fall,Regional 3,Sub-Saharan Africa,Closed Qualifier
 614b7721143c37878b237b3b,Fall,Regional 3,Sub-Saharan Africa,Main Event
-61912154143c37878b23d438,Fall,APAC Qualifier,Asia-Pacific,Main Event
-619120e3143c37878b23d436,Fall,Major Tiebreaker,North America,Main Event
+61912154143c37878b23d438,Fall,APAC Qualifier,Asia-Pacific,Major Qualifier
+619120e3143c37878b23d436,Fall,Major Tiebreaker,North America,Main Event Tiebreaker
 614b6589f8090ec745286426,Fall,Major,World,Main Event
 6153529c143c37878b2380a3,Winter,Regional 1,Middle East & North Africa,Closed Qualifier
 6153529c143c37878b2380a3,Winter,Regional 1,Middle East & North Africa,Main Event
@@ -102,7 +102,7 @@ event_id,event_split,event,event_region,event_phase
 615356c9143c37878b2380a4,Winter,Regional 3,Sub-Saharan Africa,Main Event
 615342b3143c37878b237fd4,Winter,Regional 3,Europe,Main Event
 61534ae3143c37878b237fe1,Winter,Regional 3,South America,Main Event
-620bf77fda9d7ca1c7ba8719,Winter,APAC Qualifier,Asia-Pacific,Main Event
+620bf77fda9d7ca1c7ba8719,Winter,APAC Qualifier,Asia-Pacific,Major Qualifier
 614b6649f8090ec745286427,Winter,Major,World,Main Event
 614b79cef8090ec74528643e,Spring,Regional 1,Oceania,Closed Qualifier
 614b7e10f8090ec745286444,Spring,Regional 1,Asia-Pacific South,Closed Qualifier
@@ -124,3 +124,12 @@ event_id,event_split,event,event_region,event_phase
 614b7e56143c37878b237b45,Spring,Regional 2,Asia-Pacific South,Closed Qualifier
 614b7bdbf8090ec745286441,Spring,Regional 2,Middle East & North Africa,Closed Qualifier
 614b78f1f8090ec74528643c,Spring,Regional 2,North America,Closed Qualifier
+614b7a1af8090ec74528643f,Spring,Regional 2,Oceania,Main Event
+614b7e56143c37878b237b45,Spring,Regional 2,Asia-Pacific South,Main Event
+614b7bdbf8090ec745286441,Spring,Regional 2,Middle East & North Africa,Main Event
+614b78f1f8090ec74528643c,Spring,Regional 2,North America,Main Event
+614b7804f8090ec74528643b,Spring,Regional 2,Europe,Qualifier Tiebreaker
+614b7d6cf8090ec745286443,Spring,Regional 2,Asia-Pacific North,Closed Qualifier
+614b7f42f8090ec745286447,Spring,Regional 2,Sub-Saharan Africa,Closed Qualifier
+614b7804f8090ec74528643b,Spring,Regional 2,Europe,Closed Qualifier
+614b7af3143c37878b237b41,Spring,Regional 2,South America,Closed Qualifier

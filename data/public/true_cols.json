@@ -417,7 +417,7 @@
       "endDate": "event_end_date",
       "region": "event_region",
       "tier": "event_tier",
-      "prize_amount": "prize_money",
+      "stages_prize_amount": "prize_money",
       "stages__id": "stage_step",
       "stages_name": "stage",
       "stages_region": "stage_region",
