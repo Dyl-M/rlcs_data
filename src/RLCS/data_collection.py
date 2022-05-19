@@ -262,14 +262,19 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
         try:
             for color in ['blue', 'orange']:
                 for a_player in response[color]['players']:
-                    if 'car_name' in a_player.keys():
+                    if all(key in a_player.keys() for key in ['car_name', 'car_id']):
                         replay['players'].append({'accounts': a_player['id'], 'camera': a_player['camera'],
                                                   'steering_sensitivity': a_player['steering_sensitivity'],
                                                   'car_id': str(a_player['car_id']), 'car_name': a_player['car_name']})
-                    else:
+                    elif 'car_id' in a_player.keys():
                         replay['players'].append({'accounts': a_player['id'], 'camera': a_player['camera'],
                                                   'steering_sensitivity': a_player['steering_sensitivity'],
                                                   'car_id': str(a_player['car_id']), 'car_name': None})
+                    else:
+                        replay['players'].append({'accounts': a_player['id'], 'camera': a_player['camera'],
+                                                  'steering_sensitivity': a_player['steering_sensitivity'],
+                                                  'car_id': None, 'car_name': None})
+
             return replay
 
         except json.decoder.JSONDecodeError:
@@ -387,7 +392,8 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     cond_apac_ufn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number == 4)
     cond_apac_lfn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number == 5)
     cond_apac_gfn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number > 5)
-    cond_major_tb = (rounds_df.event == 'Major Tiebreaker')
+    cond_tb = (rounds_df.event == 'Major Tiebreaker') | (rounds_df.event_phase == 'Qualifier Tiebreaker') | \
+              (rounds_df.event_phase == 'Main Event Tiebreaker')
 
     rounds_df.loc[cond_swiss_round_1 | cond_winter_group_round_1, 'match_round'] = 'Round 1'
     rounds_df.loc[cond_swiss_round_2 | cond_winter_group_round_2, 'match_round'] = 'Round 2'
@@ -397,7 +403,6 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     rounds_df.loc[cond_winter_group_tb, 'match_round'] = 'Tiebreaker Round'
     rounds_df.loc[cond_fall_playoff_qf, 'match_round'] = 'Quarterfinal'
     rounds_df.loc[cond_fall_playoff_sf, 'match_round'] = 'Semifinal'
-    rounds_df.loc[cond_fall_playoff_fn | cond_major_tb, 'match_round'] = 'Final'
     rounds_df.loc[cond_winter_playoff_lr1 | cond_spring_playoff_lr1, 'match_round'] = 'Lower Round 1'
     rounds_df.loc[cond_winter_playoff_lr2 | cond_spring_playoff_lr2, 'match_round'] = 'Lower Round 2'
     rounds_df.loc[cond_spring_playoff_lr3, 'match_round'] = 'Lower Round 3'
@@ -409,6 +414,7 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     rounds_df.loc[cond_winter_playoff_usf | cond_spring_playoff_usf | cond_apac_usf, 'match_round'] = 'Upper Semifinal'
     rounds_df.loc[cond_winter_playoff_ufn | cond_spring_playoff_ufn | cond_apac_ufn, 'match_round'] = 'Upper Final'
     rounds_df.loc[cond_winter_playoff_gfn | cond_spring_playoff_gfn | cond_apac_gfn, 'match_round'] = 'Grand Final'
+    rounds_df.loc[cond_fall_playoff_fn | cond_tb, 'match_round'] = 'Final'
 
     matches_df = rounds_df.merge(matches_df)
 
@@ -437,11 +443,12 @@ def parse_events(events_group: str, event_id_list: list = None, csv_export: bool
 
     # Second parsing: stages and drop irrelevant columns
     stages_df = pd.json_normalize(events_df.loc[:, ['_id', 'stages']].explode('stages').to_dict('records'), sep='_')
-    stages_df.drop(['stages_region', 'stages_prize_amount', 'stages_prize_currency'], axis=1, inplace=True)
+    stages_df.drop(['stages_region', 'stages_prize_currency'], axis=1, inplace=True)
 
-    events_df.drop('stages', axis=1, inplace=True)  # Drop 'stages' columns parsed before
+    # Drop 'stages' columns parsed before and redundant 'prize_amount'
+    events_df.drop(['stages', 'prize_amount'], axis=1, inplace=True)
     events_df = events_df.merge(stages_df).rename(columns=true_cols['renaming']['events'])  # Merge both dataframe
-    events_df.prize_money.fillna(0, inplace=True)  # Fill NaN prize money with 0
+    events_df.prize_money.fillna(0, inplace=True)  # Fill NaN prize_money with 0
     events_df.stage_is_lan.fillna(False, inplace=True)  # Fill NaN stage_is_lan with False
 
     # Fill stage_is_qualifier with False and fix Major Tiebreaker and APAC Qualifiers values
@@ -458,16 +465,36 @@ def parse_events(events_group: str, event_id_list: list = None, csv_export: bool
 
     # Fix event region and stages
     events_df.event_region = events_df.event_name.apply(lambda x: " ".join(x.split(" ")[3:-2]))
+
+    l_event_closed_tb = ['614b7804f8090ec74528643b',
+                         '615354d5f8090ec745286981',
+                         '614b7f42f8090ec745286447']  # Event with tiebreaker match for a place in Closed Qualifier
+    l_event_main_tb = ['614b7975f8090ec74528643d']  # Event with a tiebreaker for a place in Main Event
+
+    # Conditions for event Tiebreakers
+    cond_closed_tb = (events_df.stage == 'Tiebreaker') & (events_df.event_id.isin(l_event_closed_tb))
+    cond_main_tb = (events_df.stage == 'Tiebreaker') & (events_df.event_id.isin(l_event_main_tb))
+
     events_df.loc[events_df.event_region == '', 'event_region'] = 'World'
     events_df.loc[events_df.event_region == 'Major', ['event_region', 'stage']] = ['Asia-Pacific', 'Playoffs']
-    events_df.loc[events_df.stage == 'North America', ['event_region', 'stage']] = ['North America', 'Playoffs']
+    events_df.loc[events_df.event == 'Major Tiebreaker', ['event_region', 'stage']] = ['North America',
+                                                                                       'Main Event Tiebreaker']
+    events_df.loc[cond_closed_tb, ['stage', 'event_tier']] = ['Qualifier Tiebreaker', 'Qualifier']
+    events_df.loc[cond_main_tb, ['stage', 'event_tier']] = ['Main Event Tiebreaker', 'Qualifier']
+    events_df.loc[events_df.stage_is_qualifier, 'event_tier'] = 'Qualifier'  # Fix 'event_tier' for qualifiers
 
     # Create 'event_phase' from 'stage_is_qualifier' and patch specific rows (event_phase and stage)
     events_df['event_phase'] = np.where(events_df.stage_is_qualifier.isin([True]), events_df.stage, 'Main Event')
-    events_df.loc[(events_df.event_phase == 'Playoffs') |
-                  (events_df.event_phase == 'Tiebreaker Match'), 'event_phase'] = 'Main Event'
-    events_df.loc[events_df.event_phase != 'Main Event', 'stage'] = 'Swiss Stage'
-    events_df.loc[(events_df.event_phase == 'Main Event') & (events_df.event_split == 'Spring'), 'stage'] = 'Playoffs'
+    events_df.loc[events_df.event == 'APAC Qualifier', 'event_phase'] = 'Major Qualifier'
+
+    # Fix 'stage'
+    cond_tb = (events_df.event_phase == 'Main Event Tiebreaker') | (events_df.event_phase == 'Qualifier Tiebreaker')
+    cond_spring = (events_df.event_split == 'Spring') & (events_df.event_phase == 'Main Event')
+
+    events_df.loc[(events_df.event_phase == 'Closed Qualifier') |
+                  (events_df.event_phase == 'Invitational Qualifier'), 'stage'] = 'Swiss Stage'
+
+    events_df.loc[cond_tb | cond_spring, 'stage'] = 'Playoffs'
 
     # Convert date columns to datetime
     date_cols = ['event_start_date', 'event_end_date', 'stage_start_date', 'stage_end_date']
@@ -477,7 +504,8 @@ def parse_events(events_group: str, event_id_list: list = None, csv_export: bool
     events_df.event_split = pd.Categorical(events_df.event_split, ['Fall', 'Winter', 'Spring', 'Summer'])
 
     events_df.drop('event_name', axis=1, inplace=True)  # Drop irrelevant columns 'event_name'
-    events_df = events_df.sort_values(['event_split', 'event_start_date']).reset_index(drop=True)  # Sort columns
+    events_df = events_df.sort_values(['event_split', 'event_start_date',
+                                       'stage_start_date']).reset_index(drop=True)  # Sort columns
 
     # Filter events that have not yet taken place
     events_df = events_df.loc[events_df.stage_end_date < TODAY]
@@ -739,7 +767,8 @@ def reduce_dataframes(event_df: pd.DataFrame, match_team: pd.DataFrame, match_pl
     split_order = ['Fall', 'Winter', 'Spring', 'Summer']
     event_order = ['Regional 1', 'Regional 2', 'Regional 3', 'APAC Qualifier', 'Major Tiebreaker', 'Major',
                    'World Championship']
-    phase_order = ['Invitational Qualifier', 'Closed Qualifier', 'Main Event']
+    phase_order = ['Invitational Qualifier', 'Qualifier Tiebreaker', 'Closed Qualifier', 'Main Event Tiebreaker',
+                   'Main Event', 'Major Qualifier']
 
     main_df.event_split = pd.Categorical(main_df.event_split, split_order)
     main_df.event = pd.Categorical(main_df.event, event_order)
@@ -832,7 +861,7 @@ def collect_ballchasing(game_df: pd.DataFrame, token: str = my_token, workers: i
 
     elif to_treat:
         for ballchasing_id in tqdm.tqdm(to_treat, desc='ballchasing.com requests'):
-            replay_list += get_ballchasing(ballchasing_id)
+            replay_list += [get_ballchasing(ballchasing_id)]
 
             with open('../../data/retrieved/replays_tmp.json', 'w', encoding='utf-8') as replay_list_file:
                 json.dump(replay_list, replay_list_file, indent=1)  # Saving intermediate results

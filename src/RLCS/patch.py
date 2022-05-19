@@ -20,17 +20,21 @@ def missing_info():
                                   ['game_id', 'player_tag', 'car_name', 'car_id']]
 
     missing_map = pd.read_csv('../../data/retrieved/main.csv', encoding='utf8', low_memory=False)
-    missing_map = missing_map.loc[(missing_map.map_id.isna()) & (missing_map.map_name.notna()),
-                                  ['map_id', 'map_name']].drop_duplicates()
+    missing_map_id = missing_map.loc[(missing_map.map_id.isna()) & (missing_map.map_name.notna()),
+                                     ['map_id', 'map_name']].drop_duplicates()
+
+    missing_map_name = missing_map.loc[(missing_map.map_id.notna()) & (missing_map.map_name.isna()),
+                                       ['map_id', 'map_name']].drop_duplicates()
 
     missing_country = pd.read_csv('../../data/retrieved/players_db.csv', encoding='utf8', low_memory=False)
     missing_country = missing_country.loc[missing_country.player_country.isna()]
 
-    return missing_car, missing_map, missing_country
+    return missing_car, missing_map_id, missing_map_name, missing_country
 
 
 if __name__ == '__main__':
-    CAR, MAP, COUNTRY = missing_info()
+    CAR, MAP_ID, MAP_NAME, COUNTRY = missing_info()
     print(CAR)
-    print(MAP)
+    print(MAP_ID)
+    print(MAP_NAME)
     print(COUNTRY)
