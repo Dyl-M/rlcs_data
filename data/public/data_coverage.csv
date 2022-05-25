@@ -133,3 +133,12 @@ event_id,event_split,event,event_region,event_phase
 614b7f42f8090ec745286447,Spring,Regional 2,Sub-Saharan Africa,Closed Qualifier
 614b7804f8090ec74528643b,Spring,Regional 2,Europe,Closed Qualifier
 614b7af3143c37878b237b41,Spring,Regional 2,South America,Closed Qualifier
+614b7d6cf8090ec745286443,Spring,Regional 2,Asia-Pacific North,Main Event
+614b7804f8090ec74528643b,Spring,Regional 2,Europe,Main Event
+614b7f42f8090ec745286447,Spring,Regional 2,Sub-Saharan Africa,Main Event
+614b7af3143c37878b237b41,Spring,Regional 2,South America,Main Event
+614b7a5e143c37878b237b3f,Spring,Regional 3,Oceania,Closed Qualifier
+614b7eaef8090ec745286445,Spring,Regional 3,Asia-Pacific South,Closed Qualifier
+614b7cbe143c37878b237b43,Spring,Regional 3,Middle East & North Africa,Closed Qualifier
+614b7975f8090ec74528643d,Spring,Regional 3,North America,Closed Qualifier
+614b7975f8090ec74528643d,Spring,Regional 3,North America,Main Event Tiebreaker
