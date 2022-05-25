@@ -5,7 +5,7 @@ pd.set_option('display.width', 225)
 
 """File Information
 
-@file_name: patch.py
+@file_name: data_patch.py
 @author: Dylan "dyl-m" Monfret
 To help me patch RLCS datasets.
 """
