@@ -40,7 +40,8 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 ├── data
 │   ├── private (IGNORED)
 │   │   ├── my_token.txt
-│   │   └── random_seeds.json
+│   │   ├── random_seeds.json
+│   │   └── tokens.json
 │   │
 │   ├── public
 │   │   ├── data_coverage.csv
