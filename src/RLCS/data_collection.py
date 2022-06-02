@@ -14,7 +14,6 @@ import tqdm
 import tzlocal
 
 """File Information
-
 @file_name: data_collection.py
 @author: Dylan "dyl-m" Monfret
 """

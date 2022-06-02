@@ -4,7 +4,6 @@ pd.set_option('display.max_columns', None)  # pd.set_option('display.max_rows', 
 pd.set_option('display.width', 225)
 
 """File Information
-
 @file_name: data_patch.py
 @author: Dylan "dyl-m" Monfret
 To help me patch RLCS datasets.

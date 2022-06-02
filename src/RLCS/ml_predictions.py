@@ -13,7 +13,6 @@ from datetime import datetime, timedelta
 warnings.filterwarnings("ignore", category=UserWarning)
 
 """File Information
-
 @file_name: ml_predictions.py
 @author: Dylan "dyl-m" Monfret
 """
