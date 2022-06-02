@@ -2,5 +2,40 @@
     - https://octane.gg/players/6335-hencov1d
     - https://octane.gg/players/49ca-pizzaa
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Data integrity
+
+## Remove from training set 'MordrogX' performance from this game (he only played the last 48 seconds)
+    - https://octane.gg/matches/c470-1620-kings-vs-friendly-fire-esports/1 (62860066da9d7ca1c7bafe06)
+
+## Remove the two games from this match because of "Hexa" who is duplicated
+    - https://octane.gg/matches/3c42-fulltimeasians-vs-frozen-inferno
+    (628cd779da9d7ca1c7bb0ab7 and 628cd77dc437fde7e02d8162)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# Region Tier (based on Major and Worlds Wildcard spots):
+
+Tier 1
+- EU     | 5 Major teams + 3 Wildcard teams = 8
+- NA     | 5 Major teams + 3 Wildcard teams = 8
+
+Tier 2
+- SAM    | 2 Major teams + 2 Wildcard teams = 4
+- OCE    | 2 Major teams + 2 Wildcard teams = 4
+
+Tier 3
+- MENA   | 1 Major teams + 2 Wildcard teams = 3
+
+Tier 4
+- APAC-N | 0.5 Major team + 2 Wildcard teams = 2.5
+- APAC-S | 0.5 Major team + 2 Wildcard teams = 2.5
+
+Tier 5
+- SSA    | 0 Major team + 2 Wildcard teams = 2
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 # FIXME
     - ml_formatting.py, line 160
