@@ -31,12 +31,14 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
         :param team_color: team color
         :return: teammates and opposition.
         """
-        df_reduced = input_df.loc[:, ['game_id', 'color', 'team_id', 'player_id', 'core_score']]  # Create reduced DF
+        # Create reduced DF
+        df_reduced = input_df.loc[:, ['game_id', 'color', 'team_id', 'team_region_tier', 'player_id', 'core_score',
+                                      'advanced_rating']]
 
         # Split blue / orange side and group players ID into list
         df_side = df_reduced.loc[df_reduced.color == team_color] \
             .rename(columns={'player_id': 'id_list'}) \
-            .sort_values(['game_id', 'core_score'], ascending=False) \
+            .sort_values(['game_id', 'core_score', 'advanced_rating'], ascending=False) \
             .groupby(['game_id', 'color', 'team_id'])['id_list'] \
             .apply(list) \
             .reset_index()
@@ -68,6 +70,13 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
             .drop('id_list', axis=1) \
             .rename(columns={0: 'opponent_1', 1: 'opponent_2', 2: 'opponent_3', 'team_id': 'opponent_team'}) \
             .replace({'color': {team_color: opp_color}})
+
+        df_opp_tiers = df_reduced.loc[:, ['game_id', 'color', 'team_id', 'team_region_tier']] \
+            .drop_duplicates(ignore_index=True) \
+            .rename(columns={'team_id': 'opponent_team'}) \
+            .replace({'color': {team_color: opp_color}})
+
+        as_opponent = as_opponent.merge(df_opp_tiers).rename(columns={'team_region_tier': 'opponent_region_tier'})
 
         return as_teammates, as_opponent
 
@@ -111,16 +120,35 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
 
     main_df = main_df[main_df.game_id.notna()].reset_index(drop=True)  # Drop in main_df where 'game_id' is NaN
 
-    # Keep relevant features from each dataset
+    # Keep relevant features from each dataset / Drop redundant features
     main_df = main_df.loc[:, ['event_id', 'game_id', 'game_date', 'game_duration', 'event', 'event_split',
                               'event_region', 'event_phase', 'stage', 'stage_is_lan', 'stage_is_qualifier',
                               'location_country', 'match_round', 'match_format', 'overtime']]
 
-    game_df = game_df.drop(['player_tag', 'platform_id', 'car_name'], axis=1)
+    game_df = game_df.drop(['player_tag', 'platform_id', 'car_name', 'boost_time_zero_boost',
+                            'boost_time_full_boost', 'boost_time_boost_0_25', 'boost_time_boost_25_50',
+                            'boost_time_boost_50_75', 'boost_time_boost_75_100', 'movement_avg_powerslide_duration',
+                            'movement_time_supersonic_speed', 'movement_time_boost_speed',
+                            'movement_time_slow_speed', 'movement_time_ground', 'movement_time_low_air',
+                            'movement_time_high_air', 'positioning_time_defensive_third',
+                            'positioning_time_neutral_third', 'positioning_time_offensive_third',
+                            'positioning_time_defensive_half', 'positioning_time_offensive_half',
+                            'positioning_time_behind_ball', 'positioning_time_in_front_ball',
+                            'positioning_time_most_back', 'positioning_time_most_forward',
+                            'positioning_time_closest_to_ball', 'positioning_time_farthest_from_ball'], axis=1)
+
     player_df = player_df.loc[:, ['player_id', 'player_country']]
 
     # Merge datasets
     dataframe = main_df.merge(game_df).merge(player_df)
+
+    # Data integrity (cf. data/public/notes.txt)
+    to_remove_cd_1 = (dataframe.game_id == '62860066da9d7ca1c7bafe06') & \
+                     (dataframe.player_id == '6283b058c437fde7e02d6b27')
+
+    to_remove_cd_2 = (dataframe.game_id.isin(['628cd779da9d7ca1c7bb0ab7', '628cd77dc437fde7e02d8162']))
+
+    dataframe = dataframe.loc[~to_remove_cd_1 & ~to_remove_cd_2]
 
     # Changing 'game_date' to a time delta with the reference date
     dataframe.game_date = pd.to_datetime(dataframe.game_date, utc=True)
@@ -130,6 +158,18 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
     # Filter where this new field is empty
     dataframe = dataframe.loc[dataframe.since_ref_date.notna()]
 
+    # Adding region tiers (cf. data/public/notes.txt)
+    tier_1 = (dataframe.team_region.isin(['Europe', 'North America']))
+    tier_2 = (dataframe.team_region.isin(['Oceania', 'South America']))
+    tier_3 = (dataframe.team_region == 'Middle East & North Africa')
+    tier_4 = (dataframe.team_region.isin(['Asia-Pacific South', 'Asia-Pacific North']))
+    tier_5 = (dataframe.team_region == 'Sub-Saharan Africa')
+
+    tier_list = [tier_1, tier_2, tier_3, tier_4, tier_5]
+
+    for idx, tier in enumerate(tier_list):
+        dataframe.loc[tier, 'team_region_tier'] = idx + 1
+
     # Add opponents and teammates as features
     bl_team, bl_oppo = teammates_opponents(input_df=dataframe, team_color='blue')  # Blue side
     or_team, or_oppo = teammates_opponents(input_df=dataframe, team_color='orange')  # Orange side
@@ -137,10 +177,9 @@ def treatment_by_players(ref_date_str: str = '2021-10-08 06:00:00+00:00', event_
     opposition = pd.concat([bl_oppo, or_oppo]).reset_index(drop=True)  # Merge both sides in opposition POV
     dataframe = dataframe.merge(teammates, how='outer').merge(opposition)  # Merge with principal dataframe
 
-    # Change winner, overtime and MVP columns to numeric (better format for further exploitation)
+    # Change winner and MVP columns to numeric (better format for further exploitation)
     dataframe.advanced_mvp = np.where(dataframe.advanced_mvp, 1, 0)
     dataframe.winner = np.where(dataframe.winner, 1, 0)
-    dataframe.overtime = np.where(dataframe.overtime, 1, 0)
 
     # Change some column type and fill NaN
     dataframe.car_id = dataframe.car_id.fillna(-1)
