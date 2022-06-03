@@ -5,16 +5,16 @@ import ml_formatting
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import pandas as pd
 import tensorflow as tf
 
 from matplotlib import rcParams
-from sklearn.metrics import accuracy_score, f1_score, log_loss
+from sklearn.metrics import accuracy_score, log_loss
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 """File Information
-
 @file_name: ml_training.py
 @author: Dylan "dyl-m" Monfret
 """
@@ -38,24 +38,26 @@ rcParams['figure.figsize'] = (19.2, 10.8)
 "FUNCTIONS"
 
 
-def pretreatment(original_data: pd.DataFrame, split_data: pd.DataFrame):
+def pretreatment(original_data: pd.DataFrame, to_transform: pd.DataFrame):
     """Prepare raw data for further treatments
     :param original_data: original dataframe for fit step application and to get columns by type
-    :param split_data: split / sample data resulting from sklearn 'train_test_split' or K-folds operation
+    :param to_transform: sample to transform
     :return split_data_final: formatted data as numpy array.
     """
     num_cols = original_data.select_dtypes(include=np.number).columns.to_list()  # Getting numerical columns
     cat_cols = original_data.select_dtypes(exclude=np.number).columns.to_list()  # Getting categorical columns
 
-    split_data_cat = OneHotEncoder(drop='if_binary', handle_unknown='ignore') \
+    transformed_cat = OneHotEncoder(drop='if_binary', handle_unknown='ignore') \
         .fit(original_data[cat_cols]) \
-        .transform(split_data[cat_cols]) \
+        .transform(to_transform[cat_cols]) \
         .toarray()  # From Categorical to One Hot
 
-    split_data_scaled = StandardScaler().fit(original_data[num_cols]).transform(split_data[num_cols])  # Standardisation
-    split_data_final = np.concatenate((split_data_cat, split_data_scaled), axis=1)  # Concatenation
+    # Standardisation
+    transformed_scaled = StandardScaler().fit(original_data[num_cols]).transform(to_transform[num_cols])
 
-    return split_data_final
+    transformed = np.concatenate((transformed_cat, transformed_scaled), axis=1)  # Concatenation
+
+    return transformed
 
 
 def compile_model(train: np.array, train_target: np.array, validation: np.array, val_target: np.array,
@@ -80,19 +82,17 @@ def compile_model(train: np.array, train_target: np.array, validation: np.array,
     elif es_rate < 0:  # Patience set to 0 is equivalent at not setting early stopping
         es_rate = 0.2
 
+    # Tensor conversion
+    train = tf.convert_to_tensor(train)
+    train_target = tf.convert_to_tensor(train_target)
+    validation = tf.convert_to_tensor(validation)
+    val_target = tf.convert_to_tensor(val_target)
+
     # Early Stopping settings
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss',
                                                       patience=es_rate * epochs,
                                                       mode='min',
                                                       restore_best_weights=True)
-
-    # Alpha reducer
-    reduce_lr_loss = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss',
-                                                          factor=0.1,
-                                                          patience=es_rate * epochs / 4,
-                                                          verbose=0,
-                                                          mode='min',
-                                                          min_lr=1e-6)
 
     # Model Checkpoint
 
@@ -103,7 +103,8 @@ def compile_model(train: np.array, train_target: np.array, validation: np.array,
                                                     save_best_only=True)
 
     # Layers
-    model = tf.keras.Sequential([tf.keras.layers.Dense(128, activation='relu'),
+    model = tf.keras.Sequential([tf.keras.Input(shape=(train.shape[1])),
+                                 tf.keras.layers.Dense(128, activation='relu'),
                                  tf.keras.layers.Dense(256, activation='relu'),
                                  tf.keras.layers.Dense(256, activation='relu'),
                                  tf.keras.layers.Dense(1, activation='sigmoid')])
@@ -116,7 +117,7 @@ def compile_model(train: np.array, train_target: np.array, validation: np.array,
     # Fit
     history = model.fit(train,
                         train_target,
-                        callbacks=[early_stopping, reduce_lr_loss, checkpoint],
+                        callbacks=[early_stopping, checkpoint],
                         batch_size=batch_size,
                         epochs=epochs,
                         validation_data=(validation, val_target),
@@ -212,18 +213,17 @@ def get_predictions(model: tf.keras.Model, test: np.array, test_target: np.array
     results['init_alpha'] = alpha
     results['log_loss'] = log_loss(test_target, probabilities)
     results['accuracy'] = accuracy_score(test_target, prediction_classes)
-    results['f1_score'] = f1_score(test_target, prediction_classes)
 
     print(f'TEST SET EVALUATION (batch={batch_size}, init. alpha={alpha:.0e})\n'
           f' > Log Loss: {results["log_loss"]:.4f}\n'
-          f' > Accuracy: {results["accuracy"]:.4f}\n'
-          f' > F1-Score: {results["f1_score"]:.4f}\n')
+          f' > Accuracy: {results["accuracy"]:.4f}\n')
 
     return results
 
 
 def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_grid: list, alpha_grid: list,
-                 workers: int = 1, verbose: bool = False, export_graph: bool = True, display_graph: bool = False):
+                 workers: int = 1, verbose: bool = False, export_graph: bool = True, display_graph: bool = False,
+                 original_data: bool = None):
     """Test learning rate and batch size values with Keras model implemented in 'compile_model' function
     :param x: training instances to class
     :param y: target array relative to x
@@ -235,7 +235,8 @@ def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_gr
     :param verbose: to display progress or not
     :param export_graph: to export plots or not
     :param display_graph: to display / show plots or not
-    :return predictions_results: metrics on test set predictions
+    :param original_data: entire original dataset (train set + ignored events) without target
+    :return predictions_results: metrics on test set predictions.
     """
 
     def perf(value: float, ref_val: float, mode_max: bool = True):
@@ -262,9 +263,16 @@ def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_gr
                                                       stratify=y_train)
 
     # Pretreatments
-    new_x_train = pretreatment(original_data=x, split_data=x_train)
-    new_x_val = pretreatment(original_data=x, split_data=x_val)
-    new_x_test = pretreatment(original_data=x, split_data=x_test)
+    if original_data is None:
+        original_data = x
+
+    new_x_train = pretreatment(original_data=original_data, to_transform=x_train)
+    new_x_val = pretreatment(original_data=original_data, to_transform=x_val)
+    new_x_test = pretreatment(original_data=original_data, to_transform=x_test)
+
+    print(f'new_x_train shape | {new_x_train.shape}\n'
+          f'new_x_val shape   | {new_x_val.shape}\n'
+          f'new_x_test shape  | {new_x_test.shape}\n')
 
     for idx, set_of_par in enumerate(param_grid):
         print(f'Model # {idx + 1} out of {len(param_grid)}')
@@ -300,12 +308,10 @@ def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_gr
     min_log_loss = evaluation_df.log_loss.min()
     max_accuracy = evaluation_df.accuracy.max()
     max_accuracy = evaluation_df.accuracy.max()
-    max_f1_score = evaluation_df.f1_score.max()
     evaluation_df['log_loss_perf'] = evaluation_df.log_loss.apply(lambda val: perf(val, min_log_loss, mode_max=False))
     evaluation_df['accuracy_perf'] = evaluation_df.accuracy.apply(lambda val: perf(val, max_accuracy))
-    evaluation_df['f1_score_perf'] = evaluation_df.f1_score.apply(lambda val: perf(val, max_f1_score))
-    evaluation_df['mean_perf'] = evaluation_df.loc[:, ['log_loss_perf', 'accuracy_perf', 'f1_score_perf']].mean(axis=1)
-    evaluation_df = evaluation_df.sort_values('mean_perf', ascending=False).reset_index(drop=True)
+    evaluation_df['mean_perf'] = evaluation_df.loc[:, ['log_loss_perf', 'accuracy_perf']].mean(axis=1)
+    evaluation_df = evaluation_df.sort_values('mean_perf', ascending=False, ignore_index=True)
     evaluation_df.batch_size = evaluation_df.batch_size.astype(int)
     best_settings = evaluation_df[['batch_size', 'init_alpha']].iloc[0, :].to_dict()
 
@@ -316,7 +322,7 @@ def model_tuning(x: np.array, y: np.array, epochs: int, es_rate: float, batch_gr
 
 
 def compile_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, batch_size: int, alpha: float,
-                       workers: int = 1, verbose: bool = True):
+                       workers: int = 1, verbose: bool = True, original_data: bool = None):
     """Compile best model (the best combination of batch size & alpha) with Keras model implemented in 'compile_model'
     function
     :param x: training instances to class
@@ -327,14 +333,18 @@ def compile_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, ba
     :param alpha: initial learning rate
     :param workers: maximum number of processes to spin up when using process-based threading
     :param verbose: to display progress or not
-    :return model, model_history: Keras model and model's history
+    :param original_data: entire original dataset (train set + ignored events) without target
+    :return model, model_history: Keras model and model's history.
     """
     # Split Train / Validation / Test
     x_train, x_val, y_train, y_val = train_test_split(x, y, test_size=1 / 3, random_state=RANDOM_SEED_2, stratify=y)
 
     # Pretreatments
-    new_x_train = pretreatment(original_data=x, split_data=x_train)
-    new_x_val = pretreatment(original_data=x, split_data=x_val)
+    if original_data is None:
+        original_data = x
+
+    new_x_train = pretreatment(original_data=original_data, to_transform=x_train)
+    new_x_val = pretreatment(original_data=original_data, to_transform=x_val)
 
     # Model compilation
     model, model_history = compile_model(train=new_x_train,
@@ -355,26 +365,45 @@ def compile_best_model(x: np.array, y: np.array, epochs: int, es_rate: float, ba
 
 if __name__ == '__main__':
     # Data import and formatting
-    DF_GAMES, _ = ml_formatting.treatment_by_players()
+    IGNORED = ['614b7a5e143c37878b237b3f', '614b7eaef8090ec745286445', '614b7cbe143c37878b237b43',
+               '614b7975f8090ec74528643d', '614b7dae143c37878b237b44', '614b7f89f8090ec745286448',
+               '614b784c143c37878b237b3d', '614b7b37143c37878b237b42']  # Spring 3rd Regionals
+
+    DF_GAMES, IGNORED_DF = ml_formatting.treatment_by_players(event_list=IGNORED)
+
+    if not IGNORED_DF.empty:
+        ALL_DATA = pd.concat([DF_GAMES, IGNORED_DF], ignore_index=True).drop('winner', axis=1)
+
+    else:
+        ALL_DATA = DF_GAMES.drop('winner', axis=1)
+
+    print(f'COUNTED  | {DF_GAMES.shape}\n'
+          f'IGNORED  | {IGNORED_DF.shape}\n'
+          f'ALL_DATA | {ALL_DATA.shape}\n')
 
     # Extract target array
     DATA = DF_GAMES.drop('winner', axis=1)
     TARGET = DF_GAMES.winner
 
     # Tuning Settings
-    EPOCHS = 1000
-    BATCH_GRID = [32, 64, 128, 256]
-    ALPHA_GRID = [1e-3, 1e-4, 1e-5, 1e-6]
+    EPOCHS = 500
+    BATCH_GRID = [32, 128, 1024]
+    ALPHA_GRID = [1e-3, 1e-4, 1e-5]
+    WORKERS = os.cpu_count() - 1
 
     # Model tuning & Report
     EVALUATION_DF, BEST_SETTINGS = model_tuning(x=DATA, y=TARGET, epochs=EPOCHS, es_rate=0.10, batch_grid=BATCH_GRID,
-                                                alpha_grid=ALPHA_GRID, workers=12)
+                                                alpha_grid=ALPHA_GRID, workers=WORKERS, original_data=ALL_DATA)
 
     print(f'BEST SETTINGS: {BEST_SETTINGS}')
 
     # Training and save optimal model
-    REF_MODEL, BEST_MODEL_HISTORY = compile_best_model(x=DATA, y=TARGET, epochs=1000, es_rate=0.10,
+    REF_MODEL, BEST_MODEL_HISTORY = compile_best_model(x=DATA, y=TARGET,
+                                                       epochs=1000,
+                                                       es_rate=0.10,
                                                        batch_size=BEST_SETTINGS['batch_size'],
-                                                       alpha=BEST_SETTINGS['init_alpha'], workers=12)
+                                                       alpha=BEST_SETTINGS['init_alpha'],
+                                                       workers=WORKERS,
+                                                       original_data=ALL_DATA)
 
     REF_MODEL.save('../../models/best_model.h5')
