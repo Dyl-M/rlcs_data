@@ -39,3 +39,9 @@ Tier 5
 
 # FIXME
     - ml_formatting.py, line 160
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# MACHINE LEARNING - NOTES
+
+WIP -> Modeling without Spring Regional 3 (Main Events + Closed Qualifiers) from each region
