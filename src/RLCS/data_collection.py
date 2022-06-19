@@ -973,7 +973,7 @@ def complete_player_df(main: pd.DataFrame, match_player: pd.DataFrame, game_play
 
 if __name__ == '__main__':
     # Event Dataframe
-    MISSING_EVENTS = ['620bf77fda9d7ca1c7ba8719']  # Winter Major - APAC Qualifier
+    MISSING_EVENTS = ['620bf77fda9d7ca1c7ba8719', '62a054f7da9d7ca1c7bb227e']  # Winter / Spring Major - APAC Qualifier
     EVENTS_DF = parse_events(events_group=rlcs2122, event_id_list=MISSING_EVENTS)
 
     # Games temp. Dataframe & Matches Dataframes / Set less workers if your CPU doesn't have 15 cores
