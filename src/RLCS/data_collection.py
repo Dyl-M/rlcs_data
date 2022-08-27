@@ -294,7 +294,7 @@ def get_ballchasing(ballchasing_id: str, token: str = my_token):
     sys.exit()
 
 
-def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Championship (Wildcard, Groups and Playoffs)
+def add_rounds(matches_df: pd.DataFrame):
     """Add round information to a matches dataframe
     :param matches_df: matches pandas dataframe
     :return matches_df: enhanced dataframe.
@@ -386,34 +386,100 @@ def add_rounds(matches_df: pd.DataFrame):  # TODO: Add condition for World Champ
     cond_spring_playoff_gfn = (rounds_df.event_split == 'Spring') & (rounds_df.stage == 'Playoffs') & \
                               (rounds_df.match_number > 29)
 
-    cond_apac_usf = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number.between(1, 2))
-    cond_apac_lsf = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number == 3)
-    cond_apac_ufn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number == 4)
-    cond_apac_lfn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number == 5)
-    cond_apac_gfn = (rounds_df.event == 'APAC Qualifier') & (rounds_df.match_number > 5)
+    cond_worlds_wildcard_r1 = (rounds_df.stage == 'Wildcard') & (rounds_df.match_number.between(1, 8))
+    cond_worlds_wildcard_r2 = (rounds_df.stage == 'Wildcard') & (rounds_df.match_number.between(9, 16))
+    cond_worlds_wildcard_r3 = (rounds_df.stage == 'Wildcard') & (rounds_df.match_number.between(17, 24))
+    cond_worlds_wildcard_r4 = (rounds_df.stage == 'Wildcard') & (rounds_df.match_number.between(25, 30))
+    cond_worlds_wildcard_r5 = (rounds_df.stage == 'Wildcard') & (rounds_df.match_number > 30)
+
+    cond_worlds_group_ur1 = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Group Stage') & \
+                            (rounds_df.match_number.isin([1, 2, 3, 4, 11, 12, 13, 14]))
+
+    cond_worlds_group_ur2 = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Group Stage') & \
+                            (rounds_df.match_number.isin([5, 6, 15, 16]))
+
+    cond_worlds_group_lr1 = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Group Stage') & \
+                            (rounds_df.match_number.isin([7, 8, 17, 18]))
+
+    cond_worlds_group_lr2 = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Group Stage') & \
+                            (rounds_df.match_number.isin([9, 10, 19, 20]))
+
+    cond_worlds_playoff_qf = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Playoffs') & \
+                             (rounds_df.match_number.between(1, 4))
+
+    cond_worlds_playoff_sf = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Playoffs') & \
+                             (rounds_df.match_number.between(5, 6))
+
+    cond_worlds_playoff_fn = (rounds_df.event_split == 'Summer') & (rounds_df.stage == 'Playoffs') & \
+                             (rounds_df.match_number > 6)
+
+    cond_apac_usf = (rounds_df.event_split != 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                    (rounds_df.match_number.between(1, 2))
+
+    cond_apac_lsf = (rounds_df.event_split != 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                    (rounds_df.match_number == 3)
+
+    cond_apac_ufn = (rounds_df.event_split != 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                    (rounds_df.match_number == 4)
+
+    cond_apac_lfn = (rounds_df.event_split != 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                    (rounds_df.match_number == 5)
+
+    cond_apac_gfn = (rounds_df.event_split != 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                    (rounds_df.match_number > 5)
+
+    cond_apac_sp_ufn = (rounds_df.event_split == 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                       (rounds_df.match_number == 1)
+
+    cond_apac_sp_lsf = (rounds_df.event_split == 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                       (rounds_df.match_number == 2)
+
+    cond_apac_sp_lfn = (rounds_df.event_split == 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                       (rounds_df.match_number == 3)
+
+    cond_apac_sp_gf = (rounds_df.event_split == 'Spring') & (rounds_df.event == 'APAC Qualifier') & \
+                      (rounds_df.match_number > 3)
+
     cond_tb = (rounds_df.event == 'Major Tiebreaker') | (rounds_df.event_phase == 'Qualifier Tiebreaker') | \
               (rounds_df.event_phase == 'Main Event Tiebreaker')
 
-    rounds_df.loc[cond_swiss_round_1 | cond_winter_group_round_1, 'match_round'] = 'Round 1'
-    rounds_df.loc[cond_swiss_round_2 | cond_winter_group_round_2, 'match_round'] = 'Round 2'
-    rounds_df.loc[cond_swiss_round_3 | cond_winter_group_round_3, 'match_round'] = 'Round 3'
-    rounds_df.loc[cond_swiss_round_4, 'match_round'] = 'Round 4'
-    rounds_df.loc[cond_swiss_round_5, 'match_round'] = 'Round 5'
+    rounds_df.loc[cond_swiss_round_1 | cond_winter_group_round_1 | cond_worlds_wildcard_r1, 'match_round'] = 'Round 1'
+    rounds_df.loc[cond_swiss_round_2 | cond_winter_group_round_2 | cond_worlds_wildcard_r2, 'match_round'] = 'Round 2'
+    rounds_df.loc[cond_swiss_round_3 | cond_winter_group_round_3 | cond_worlds_wildcard_r3, 'match_round'] = 'Round 3'
+    rounds_df.loc[cond_swiss_round_4 | cond_worlds_wildcard_r4, 'match_round'] = 'Round 4'
+    rounds_df.loc[cond_swiss_round_5 | cond_worlds_wildcard_r5, 'match_round'] = 'Round 5'
     rounds_df.loc[cond_winter_group_tb, 'match_round'] = 'Tiebreaker Round'
-    rounds_df.loc[cond_fall_playoff_qf, 'match_round'] = 'Quarterfinal'
-    rounds_df.loc[cond_fall_playoff_sf, 'match_round'] = 'Semifinal'
-    rounds_df.loc[cond_winter_playoff_lr1 | cond_spring_playoff_lr1, 'match_round'] = 'Lower Round 1'
-    rounds_df.loc[cond_winter_playoff_lr2 | cond_spring_playoff_lr2, 'match_round'] = 'Lower Round 2'
+    rounds_df.loc[cond_fall_playoff_qf | cond_worlds_playoff_qf, 'match_round'] = 'Quarterfinal'
+    rounds_df.loc[cond_fall_playoff_sf | cond_worlds_playoff_sf, 'match_round'] = 'Semifinal'
+
+    rounds_df.loc[cond_winter_playoff_lr1 | cond_spring_playoff_lr1 | cond_worlds_group_lr1,
+                  'match_round'] = 'Lower Round 1'
+
+    rounds_df.loc[cond_winter_playoff_lr2 | cond_spring_playoff_lr2 | cond_worlds_group_lr2,
+                  'match_round'] = 'Lower Round 2'
+
     rounds_df.loc[cond_spring_playoff_lr3, 'match_round'] = 'Lower Round 3'
     rounds_df.loc[cond_winter_playoff_lqf | cond_spring_playoff_lqf, 'match_round'] = 'Lower Quarterfinal'
-    rounds_df.loc[cond_winter_playoff_lsf | cond_spring_playoff_lsf | cond_apac_lsf, 'match_round'] = 'Lower Semifinal'
-    rounds_df.loc[cond_winter_playoff_lfn | cond_spring_playoff_lfn | cond_apac_lfn, 'match_round'] = 'Lower Final'
-    rounds_df.loc[cond_spring_playoff_ur1, 'match_round'] = 'Upper Round 1'
+
+    rounds_df.loc[cond_winter_playoff_lsf | cond_spring_playoff_lsf | cond_apac_lsf | cond_apac_sp_lsf,
+                  'match_round'] = 'Lower Semifinal'
+
+    rounds_df.loc[cond_winter_playoff_lfn | cond_spring_playoff_lfn | cond_apac_lfn | cond_apac_sp_lfn,
+                  'match_round'] = 'Lower Final'
+
+    rounds_df.loc[cond_spring_playoff_ur1 | cond_worlds_group_ur1, 'match_round'] = 'Upper Round 1'
+    rounds_df.loc[cond_worlds_group_ur2, 'match_round'] = 'Upper Round 2'
     rounds_df.loc[cond_spring_playoff_uqf, 'match_round'] = 'Upper Quarterfinal'
-    rounds_df.loc[cond_winter_playoff_usf | cond_spring_playoff_usf | cond_apac_usf, 'match_round'] = 'Upper Semifinal'
+
+    rounds_df.loc[cond_winter_playoff_usf | cond_spring_playoff_usf | cond_apac_usf | cond_apac_sp_ufn,
+                  'match_round'] = 'Upper Semifinal'
+
     rounds_df.loc[cond_winter_playoff_ufn | cond_spring_playoff_ufn | cond_apac_ufn, 'match_round'] = 'Upper Final'
-    rounds_df.loc[cond_winter_playoff_gfn | cond_spring_playoff_gfn | cond_apac_gfn, 'match_round'] = 'Grand Final'
-    rounds_df.loc[cond_fall_playoff_fn | cond_tb, 'match_round'] = 'Final'
+
+    rounds_df.loc[cond_winter_playoff_gfn | cond_spring_playoff_gfn | cond_apac_gfn | cond_apac_sp_gf,
+                  'match_round'] = 'Grand Final'
+
+    rounds_df.loc[cond_fall_playoff_fn | cond_tb | cond_worlds_playoff_fn, 'match_round'] = 'Final'
 
     matches_df = rounds_df.merge(matches_df)
 
