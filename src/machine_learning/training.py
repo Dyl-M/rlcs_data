@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import ml_formatting
+import formatting
 
 import json
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 """File Information
-@file_name: ml_training.py
+@file_name: training.py
 @author: Dylan "dyl-m" Monfret
 """
 
@@ -369,7 +369,7 @@ if __name__ == '__main__':
                '614b7975f8090ec74528643d', '614b7dae143c37878b237b44', '614b7f89f8090ec745286448',
                '614b784c143c37878b237b3d', '614b7b37143c37878b237b42']  # Spring 3rd Regionals
 
-    DF_GAMES, IGNORED_DF = ml_formatting.treatment_by_players(event_list=IGNORED)
+    DF_GAMES, IGNORED_DF = formatting.treatment_by_players(event_list=IGNORED)
 
     if not IGNORED_DF.empty:
         ALL_DATA = pd.concat([DF_GAMES, IGNORED_DF], ignore_index=True).drop('winner', axis=1)

@@ -9,7 +9,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 200)
 
 """File Information
-@file_name: ml_formatting.py
+@file_name: formatting.py
 @author: Dylan "dyl-m" Monfret
 Treatment to apply on .csv files for ML model conception.
 """

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import ml_formatting
-import ml_training
+import formatting
+import training
 
 import numpy as np
 import pandas as pd
@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 warnings.filterwarnings("ignore", category=UserWarning)
 
 """File Information
-@file_name: ml_predictions.py
+@file_name: predictions.py
 @author: Dylan "dyl-m" Monfret
 """
 
@@ -149,7 +149,7 @@ def generate_team_sample(team_dict: dict, ref_df: pd.DataFrame, region: str):
     :param team_dict: team information dictionary
     :param ref_df: reference dataset generated with 'ml_formatting.treatment_by_players' function
     :param region: tournament region (North America, Europe, Oceania, ..., Worlds)
-    :return sample: suitable pandas dataframe for prediction with the model implemented in 'ml_training.py' script.
+    :return sample: suitable pandas dataframe for prediction with the model implemented in 'training.py' script.
     """
     """
     Suitable team dictionaries format (player_name only serve here as landmark for sample observation):
@@ -269,7 +269,7 @@ def game_prediction(sample: pd.DataFrame, ref_df: pd.DataFrame, model: tf.keras.
     players = pd.concat([pd.DataFrame(team_1_dict['players']),
                          pd.DataFrame(team_2_dict['players'])])
 
-    new_sample = ml_training.pretreatment(ref_df, sample)
+    new_sample = training.pretreatment(ref_df, sample)
     predictions = model.predict(new_sample)
     sample['probabilities'] = predictions
 
@@ -311,7 +311,7 @@ def game_on(team_1: tuple, team_2: tuple, model: tf.keras.Model, match_df: pd.Da
 "MAIN"
 
 if __name__ == '__main__':
-    DF_GAMES, _ = ml_formatting.treatment_by_players(ref_date_str=REF_DATE_STR)  # Data import and formatting
+    DF_GAMES, _ = formatting.treatment_by_players(ref_date_str=REF_DATE_STR)  # Data import and formatting
 
     # Extract target array
     DATA = DF_GAMES.drop('win', axis=1)
