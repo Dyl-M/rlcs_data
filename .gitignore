@@ -141,3 +141,4 @@ dmypy.json
 /models/
 /cmd/
 /media/
+/data/archive/

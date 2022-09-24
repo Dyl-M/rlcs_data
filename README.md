@@ -26,7 +26,10 @@ The **`rlcs_data`** project aims to pursue the opening of analytical possibiliti
 * The retrieving and structuring data around and with sites and APIs established by the community.
 * The conception of machine learning methodologies and models able to predict RLCS games' outcomes.
 
-First tries will be processed on RLCS 2021 - 2022 games, subject to game' availability. Entire datasets are available on Kaggle to the following link: [Rocket League Championship Series 2021-2022 on Kaggle](https://www.kaggle.com/dylanmonfret/rlcs-202122), using both [octane.gg](https://octane.gg/) and [ballchasing.com](https://ballchasing.com/) APIs.
+To perform these tasks, the APIs of [octane.gg](https://octane.gg/) and [ballchasing.com](https://ballchasing.com/) will be used to retrieve data, as complete as possible. All data will be available on the Kaggle platform through the links below :
+
+* [Rocket League Championship Series 2021-2022](https://www.kaggle.com/dylanmonfret/rlcs-202122).
+* Rocket League Championship Series 2022-2023 (SOON).
 
 Repository structure
 -------------
@@ -42,6 +45,9 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │
 │
 ├── data
+│   ├── archive (IGNORED)
+│   │   └── rlcs_2021-22
+│   │
 │   ├── private (IGNORED)
 │   │   ├── my_token.txt
 │   │   ├── random_seeds.json
@@ -56,13 +62,6 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   │   └── winter_major_patch.json
 │   │
 │   └── retrieved (IGNORED)
-│       ├── games_by_players.csv 
-│       ├── games_by_teams.csv
-│       ├── main.csv
-│       ├── matches_by_players.csv
-│       ├── matches_by_teams.csv
-│       ├── players_db.csv
-│       └── replays_tmp.json
 │
 ├── models (IGNORED)
 │   ├── tuning_results
@@ -78,9 +77,11 @@ Elements followed by `(IGNORED)` are kept ignored / hidden by git for privacy pu
 │   └── figures (IGNORED)
 │
 ├── src
-│   ├── RLCS
-│   │   ├── data_collection.py
-│   │   ├── data_patch.py
+│   ├── data_collection
+│   │   ├── collection.py
+│   │   └── patch.py
+│   │
+│   ├── machine_learning
 │   │   ├── ml_formatting.py
 │   │   ├── ml_predictions.py
 │   │   └── ml_training.py
