@@ -1,5 +1,5 @@
 jupyter~=1.1
-matplotlib~=3.9
+matplotlib~=3.10
 numpy~=2.1
 p-tqdm~=1.4
 pandas~=2.2
