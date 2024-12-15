@@ -1,6 +1,6 @@
 jupyter~=1.1
 matplotlib~=3.10
-numpy~=2.1
+numpy~=2.2
 p-tqdm~=1.4
 pandas~=2.2
 plotly~=5.24
