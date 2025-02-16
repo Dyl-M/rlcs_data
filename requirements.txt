@@ -9,6 +9,6 @@ requests~=2.32
 scikit-learn~=1.6
 tensorflow~=2.18
 tqdm~=4.67
-tzlocal~=5.2
+tzlocal~=5.3
 
 pyarrow
