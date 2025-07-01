@@ -2,12 +2,12 @@ jupyter~=1.1
 matplotlib~=3.9
 numpy~=2.0
 p-tqdm~=1.4
-pandas~=2.2
-plotly~=6.1
+pandas~=2.3
+plotly~=6.2
 pytz~=2025.2
 requests~=2.32
 scikit-learn~=1.6
-tensorflow~=2.18
+tensorflow~=2.19
 tqdm~=4.67
 tzlocal~=5.3
 
