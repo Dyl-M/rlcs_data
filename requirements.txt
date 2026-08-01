@@ -3,12 +3,12 @@ matplotlib~=3.11
 numpy~=2.5
 p-tqdm~=1.4
 pandas~=3.0
-plotly~=6.8
-pytz~=2026.2
+plotly~=6.9
+pytz~=2026.3
 requests~=2.34
 scikit-learn~=1.9
 tensorflow~=2.21
-tqdm~=4.68
+tqdm~=4.70
 tzlocal~=5.4
 
 pyarrow
